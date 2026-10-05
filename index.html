@@ -3,12 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Система блогу з AI</title>
+<title>Система з AI</title>
+<meta name="description" content="Курс для експертів від Каті Шевцової: веди блог з AI і не живи в ньому. Старт 01.12.2026.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800;900&family=Cormorant+Garamond:ital,wght@1,500;1,600&display=swap">
 <style>
-/* Layout: лонгрід-маніфест; темний hero з фото, далі біла колонка ~640px, сіра смуга з раннім CTA, таймлайн 3 етапи, картка ціни */
+/* Layout: лонгрід-маніфест; світлий hero, далі біла колонка ~640px, сіра смуга з раннім CTA, таймлайн 3 етапи, картка ціни */
 :root{
   --white:#FFFFFF;
   --card:#F4F4F4;
@@ -30,20 +31,15 @@ h1,h2,h3{text-wrap:balance;color:var(--ink);margin:0}
 .mark{background:linear-gradient(transparent 12%, var(--lime) 12%, var(--lime) 92%, transparent 92%);color:var(--ink);padding:0 .15em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
 
 /* HERO */
-.hero{position:relative;min-height:560px;display:flex;align-items:flex-end;color:var(--white);overflow:hidden;
-  background:
-    radial-gradient(120% 70% at 70% 20%, #4a4a4a 0%, #222 45%, #0d0d0d 100%);}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(17,17,17,0) 30%, rgba(17,17,17,.85) 85%)}
-.photo-ph{position:absolute;top:24px;right:20px;z-index:2;border:1px dashed rgba(255,255,255,.35);color:rgba(255,255,255,.6);border-radius:30px;padding:6px 14px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
-.silhouette{position:absolute;left:50%;top:8%;width:min(60vw,360px);aspect-ratio:3/4;max-width:100%;transform:translateX(-30%);border-radius:50% 50% 8px 8px / 40% 40% 8px 8px;background:radial-gradient(60% 50% at 50% 30%, #6b6b6b, #2a2a2a 70%);opacity:.55;filter:blur(1px)}
-.hero-inner{position:relative;z-index:1;width:100%;max-width:880px;margin:0 auto;padding:0 20px 56px}
-.hero .label{color:var(--lime)}
-.hero h1{color:var(--white);font-weight:900;font-size:clamp(56px,15vw,132px);line-height:.88;letter-spacing:-.02em;text-transform:uppercase;margin-top:18px}
-.hero .italic{display:block;font-size:clamp(44px,11vw,96px);line-height:1;margin-top:4px;color:var(--white)}
-.hero .sub{margin-top:24px;max-width:30ch;font-size:17px;line-height:1.5;color:#E8E8E8;font-weight:400}
+.hero{position:relative;min-height:560px;display:flex;align-items:flex-end;background:var(--white);border-bottom:1px solid var(--line);overflow:hidden}
+.hero-inner{position:relative;width:100%;max-width:880px;margin:0 auto;padding:72px 20px 56px}
+.hero .label{display:inline-block;background:var(--lime);color:var(--ink);border-radius:30px;padding:6px 16px}
+.hero h1{color:var(--ink);font-weight:900;font-size:clamp(56px,15vw,132px);line-height:.88;letter-spacing:-.02em;text-transform:uppercase;margin-top:18px}
+.hero .italic{display:block;font-size:clamp(44px,11vw,96px);line-height:1;margin-top:4px;color:var(--ink)}
+.hero .sub{margin-top:24px;max-width:30ch;font-size:17px;line-height:1.5;color:var(--text);font-weight:400}
 
 /* MANIFESTO */
-.lead{text-align:center;color:var(--muted);font-family:var(--serif);font-style:italic;font-size:clamp(26px,6vw,34px);line-height:1.25;padding-block:64px 28px}
+.lead{text-align:center;color:var(--text);font-family:var(--serif);font-style:italic;font-size:clamp(26px,6vw,34px);line-height:1.25;padding-block:64px 28px}
 .rule{height:2px;border:0;margin:0 auto 48px;max-width:680px;background:linear-gradient(90deg,transparent,var(--lime) 20%,var(--lime) 80%,transparent)}
 .prose{display:grid;gap:22px}
 .prose p{margin:0}
@@ -108,11 +104,9 @@ footer{text-align:center;color:var(--muted);font-size:13px;line-height:1.8;paddi
 
 
 <header class="hero">
-  <div class="silhouette" aria-hidden="true"></div>
-  <span class="photo-ph">тут буде фото з AI Twin</span>
   <div class="hero-inner">
     <div class="label">Курс для експертів · старт 01.12.2026</div>
-    <h1>Система блогу</h1>
+    <h1>Система</h1>
     <span class="italic">з AI</span>
     <p class="sub">Веди блог. Не живи в ньому.</p>
   </div>
@@ -222,7 +216,7 @@ footer{text-align:center;color:var(--muted);font-size:13px;line-height:1.8;paddi
     </section>
 
     <section class="price-card" id="price">
-      <h3>Система блогу з AI</h3>
+      <h3>Система з AI</h3>
       <span class="price">старт 01.12</span>
       <p class="inc">Формат і ціну оголошу на вебінарі. Ті, хто в листі очікування, дізнаються першими.</p>
       <p class="meta">щоб потрапити в лист очікування,<br>напиши мені слово СИСТЕМА в Instagram</p>
