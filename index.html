@@ -7,14 +7,16 @@
 <meta name="description" content="Курс для експертів від Каті Шевцової: веди блог з AI і не живи в ньому. Старт 01.12.2026.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800;900&family=Cormorant+Garamond:ital,wght@1,500;1,600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Cormorant+Garamond:ital,wght@1,500;1,600&display=swap">
 <style>
-/* Layout: лонгрід-маніфест; світлий hero, далі біла колонка ~640px, сіра смуга з раннім CTA, таймлайн 3 етапи, картка ціни */
+/* Layout: світлий hero, одразу карта AI Universe (4 орбіти, панель збоку, на телефоні під картою), маніфест у колонці ~640px, ранній CTA, маршрут 6 кроків по орбітах, доба системи, 3 блоки курсу, автор, ціна, футер */
 :root{
   --white:#FFFFFF;
+  --bg:#FFFFFF;
   --card:#F4F4F4;
   --line:#E2E2E2;
   --lime:#D6FB28;
+  --on-lime:#111111;
   --ink:#111111;
   --text:#3A3A3A;
   --muted:#9A9A9A;
@@ -22,24 +24,89 @@
   --serif:"Cormorant Garamond", "Playfair Display", Georgia, serif;
   color-scheme:light;
 }
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141414; --card:#1E1E1E; --line:#2E2E2E; --ink:#F4F4F4; --text:#CFCFCF; --muted:#9A9A9A; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141414; --card:#1E1E1E; --line:#2E2E2E; --ink:#F4F4F4; --text:#CFCFCF; --muted:#9A9A9A; color-scheme:dark;
+}
 *{box-sizing:border-box}
-body{margin:0;background:var(--white);color:var(--text);font-family:var(--sans);font-weight:300;font-size:18px;line-height:1.7;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:300;font-size:18px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 .wrap{max-width:680px;margin:0 auto;padding-inline:20px}
+.wide{max-width:1120px;margin:0 auto;padding-inline:20px}
 h1,h2,h3{text-wrap:balance;color:var(--ink);margin:0}
-.label{font-family:var(--sans);font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase}
+.label{font-family:var(--sans);font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
 .italic{font-family:var(--serif);font-style:italic;font-weight:500}
-.mark{background:linear-gradient(transparent 12%, var(--lime) 12%, var(--lime) 92%, transparent 92%);color:var(--ink);padding:0 .15em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.mark{background:linear-gradient(transparent 12%, var(--lime) 12%, var(--lime) 92%, transparent 92%);color:var(--on-lime);padding:0 .15em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
 
 /* HERO */
-.hero{position:relative;min-height:560px;display:flex;align-items:flex-end;background:var(--white);border-bottom:1px solid var(--line);overflow:hidden}
+.hero{position:relative;min-height:520px;display:flex;align-items:flex-end;background:var(--bg);border-bottom:1px solid var(--line);overflow:hidden}
 .hero-inner{position:relative;width:100%;max-width:880px;margin:0 auto;padding:72px 20px 56px}
-.hero .label{display:inline-block;background:var(--lime);color:var(--ink);border-radius:30px;padding:6px 16px}
+.hero .label{display:inline-block;background:var(--lime);color:var(--on-lime);border-radius:30px;padding:6px 16px}
 .hero h1{color:var(--ink);font-weight:900;font-size:clamp(56px,15vw,132px);line-height:.88;letter-spacing:-.02em;text-transform:uppercase;margin-top:18px}
 .hero .italic{display:block;font-size:clamp(44px,11vw,96px);line-height:1;margin-top:4px;color:var(--ink)}
+.hero .universe{display:block;margin-top:14px;font-weight:600;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--text)}
 .hero .sub{margin-top:24px;max-width:30ch;font-size:17px;line-height:1.5;color:var(--text);font-weight:400}
 
+/* MAP: AI UNIVERSE */
+.map-sec{padding-block:56px 48px;border-bottom:1px solid var(--line)}
+.map-head{display:grid;gap:14px;max-width:760px}
+.map-head h2{font-weight:900;font-size:clamp(34px,7vw,64px);line-height:.95;text-transform:uppercase;letter-spacing:-.01em}
+.map-head h2 .italic{display:block;text-transform:none;font-weight:500;font-size:.6em;line-height:1.1;margin-top:.15em;letter-spacing:0}
+.map-head p{margin:0;font-size:17px;font-weight:400}
+.map{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:32px;align-items:start;margin-top:32px}
+@media (max-width:860px){.map{grid-template-columns:1fr}}
+.orbit-box{min-width:0}
+@media (min-width:861px){.orbit-box{position:sticky;top:24px}}
+svg.orbits{width:100%;height:auto;display:block;max-width:100%}
+.ring{fill:none;stroke:var(--line);stroke-width:1.5}
+.ring.on{stroke:var(--ink);stroke-width:2;stroke-dasharray:6 7;animation:spin 40s linear infinite}
+@keyframes spin{to{stroke-dashoffset:-260}}
+.node circle{fill:var(--card);stroke:var(--muted);stroke-width:1.5;transition:fill .25s,stroke .25s}
+.node text{fill:var(--text);font-family:var(--sans);font-size:21px;font-weight:600;transition:opacity .25s}
+.node.on circle{fill:var(--lime);stroke:var(--lime)}
+.node.on text{fill:var(--ink)}
+.core circle{fill:var(--lime)}
+.core .big{fill:var(--on-lime);font-family:var(--sans);font-weight:900;font-size:46px}
+.core .small{fill:var(--on-lime);font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.18em}
+.ringlabel{fill:var(--muted);font-family:var(--sans);font-size:15px;font-weight:700;letter-spacing:.2em}
+.ringlabel.on{fill:var(--ink)}
+@media (max-width:560px){
+  .node text{font-size:30px}
+  .node:not(.on) text{opacity:0}
+  .node circle{r:15px}
+  .ringlabel{font-size:24px}
+  .core .big{font-size:56px}
+  .core .small{font-size:15px}
+}
+
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.tab{font:inherit;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);padding:9px 14px;border-radius:999px;cursor:pointer;line-height:1.2}
+.tab[aria-selected="true"]{background:var(--lime);color:var(--on-lime);border-color:var(--lime)}
+.tab:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.panel{min-width:0}
+.panel h3.orbit-name{font-weight:900;font-size:clamp(30px,4.4vw,44px);line-height:1;text-transform:uppercase;margin-top:6px}
+.panel .orbit-lead{font-size:20px;color:var(--ink);margin:10px 0 22px;line-height:1.35;font-weight:400}
+.panel .sublabel{display:block;margin:0 0 10px}
+.bsteps{list-style:none;margin:0 0 24px;padding:0;display:grid;gap:10px}
+.bstep{display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:16px;scroll-margin-top:24px;transition:border-color .25s}
+.bstep.hl{border-color:var(--lime)}
+.bstep > div{min-width:0}
+.bstep h4{margin:0;color:var(--ink);font-weight:800;font-size:20px;line-height:1.2}
+.bstep .tag{color:var(--muted);font-size:14px;margin:2px 0 0;font-weight:600}
+.bstep p{margin:8px 0 0;font-size:16px;line-height:1.6}
+.num{width:44px;height:44px;border-radius:50%;background:var(--lime);color:var(--on-lime);display:grid;place-items:center;font-weight:800;font-size:16px}
+.items{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.items li{display:grid;grid-template-columns:minmax(0,9.5em) minmax(0,1fr);gap:4px 16px;padding:11px 0;border-top:1px solid var(--line);font-size:15px;line-height:1.55}
+.items li:last-child{border-bottom:1px solid var(--line)}
+.items b{color:var(--ink);font-weight:700}
+@media (max-width:480px){.items li{grid-template-columns:1fr}}
+
 /* MANIFESTO */
-.lead{text-align:center;color:var(--text);font-family:var(--serif);font-style:italic;font-size:clamp(26px,6vw,34px);line-height:1.25;padding-block:64px 28px}
+.lead{text-align:center;color:var(--text);font-family:var(--serif);font-style:italic;font-size:clamp(26px,6vw,34px);line-height:1.25;padding-block:64px 28px;margin:0}
 .rule{height:2px;border:0;margin:0 auto 48px;max-width:680px;background:linear-gradient(90deg,transparent,var(--lime) 20%,var(--lime) 80%,transparent)}
 .prose{display:grid;gap:22px}
 .prose p{margin:0}
@@ -51,32 +118,64 @@ h1,h2,h3{text-wrap:balance;color:var(--ink);margin:0}
 /* EARLY CTA */
 .band{background:var(--card);margin-top:64px;padding-block:64px;text-align:center}
 .band p{margin:0 auto 26px;max-width:34ch;color:var(--ink);font-size:19px;font-weight:400}
-.btn{display:inline-block;background:var(--lime);color:var(--ink);font-family:var(--sans);font-weight:800;font-size:15px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;padding:20px 44px;border-radius:999px;border:0;cursor:pointer;transition:transform .15s ease, box-shadow .15s ease}
+.btn{display:inline-block;background:var(--lime);color:var(--on-lime);font-family:var(--sans);font-weight:800;font-size:15px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;padding:20px 44px;border-radius:999px;border:0;cursor:pointer;transition:transform .15s ease, box-shadow .15s ease}
 .btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(17,17,17,.12)}
 .btn:focus-visible{outline:3px solid var(--ink);outline-offset:4px}
-.btn.ghost{background:var(--card);font-weight:600}
+.btn.ghost{background:var(--card);color:var(--ink);font-weight:600;border:1.5px solid var(--line)}
 
-/* STEPS */
-.steps-sec{padding-block:80px 24px}
-.steps-sec h2{font-weight:800;font-size:clamp(30px,7vw,44px);line-height:1.1;text-align:center;text-transform:uppercase;letter-spacing:-.01em}
-.steps-sec h2 .italic{display:block;text-transform:none;font-size:1.05em;margin-top:6px;font-weight:500}
-.steps{list-style:none;margin:56px 0 0;padding:0;display:grid;gap:0}
-.step{display:grid;grid-template-columns:52px 1fr;gap:22px;position:relative;padding-bottom:48px}
-.step:not(:last-child)::before{content:"";position:absolute;left:25px;top:56px;bottom:0;width:2px;background:var(--line)}
-.num{width:52px;height:52px;border-radius:50%;background:var(--lime);color:var(--ink);display:grid;place-items:center;font-weight:800;font-size:18px}
-.step > div{min-width:0}
-.step h3{font-weight:800;font-size:clamp(22px,5vw,28px);line-height:1.2;margin-top:8px}
-.step p{margin:12px 0 0}
-.step .tag{color:var(--muted);margin-top:4px}
+/* ROUTE: як працює система */
+.route-sec{padding-block:80px 56px}
+.route-sec h2{font-weight:800;font-size:clamp(30px,7vw,44px);line-height:1.1;text-align:center;text-transform:uppercase;letter-spacing:-.01em}
+.route-sec h2 .italic{display:block;text-transform:none;font-size:1.05em;margin-top:6px;font-weight:500}
+.route{list-style:none;margin:40px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:760px){.route{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.route button{width:100%;height:100%;font:inherit;text-align:left;background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:16px;cursor:pointer;display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;align-items:center;color:var(--ink);transition:border-color .2s ease}
+.route button:hover{border-color:var(--lime)}
+.route button:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.route b{display:block;font-weight:800;font-size:17px;line-height:1.2}
+.route small{display:block;color:var(--muted);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-top:4px}
+@media (max-width:400px){.route button{grid-template-columns:1fr;gap:10px}}
+
+/* DAY */
+section.block{padding-block:56px;border-top:1px solid var(--line)}
+.block h2{font-weight:900;font-size:clamp(32px,6vw,64px);line-height:.95;text-transform:uppercase;letter-spacing:-.01em;margin-top:8px}
+.block h2 .italic{text-transform:none;font-size:.62em;display:block;margin-top:.12em;font-weight:500;letter-spacing:0}
+.day{margin-top:28px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:2px solid var(--ink)}
+@media (max-width:760px){.day{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:440px){.day{grid-template-columns:1fr}}
+.slot{padding:16px 16px 20px 0;min-width:0}
+.slot .t{font-weight:900;font-size:clamp(34px,5vw,52px);line-height:1;color:var(--ink);font-variant-numeric:tabular-nums}
+.slot .t small{font-size:12px;font-weight:700;letter-spacing:.15em;display:block;color:var(--muted);margin-bottom:6px;text-transform:uppercase}
+.slot p{margin:10px 0 0;font-size:15px;line-height:1.6}
+
+/* COURSE */
+.course{margin-top:28px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:760px){.course{grid-template-columns:1fr}}
+.cstep{background:var(--card);border-radius:18px;padding:22px;min-width:0;display:grid;gap:8px;align-content:start}
+.cstep h3{font-weight:900;font-size:24px;text-transform:uppercase;line-height:1.05}
+.cstep .orb{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.cstep p{margin:0;font-size:15px;line-height:1.6}
+.cstep .arrow{color:var(--muted)}
 
 /* CLIMAX */
-.climax{text-align:center;padding-block:56px 72px}
+.climax{text-align:center;padding-block:56px 72px;border-top:1px solid var(--line)}
 .climax .big{font-weight:900;text-transform:uppercase;color:var(--ink);font-size:clamp(36px,9.5vw,72px);line-height:.95;letter-spacing:-.02em}
 .climax .italic{display:block;font-size:clamp(32px,8vw,58px);line-height:1.1;margin-top:12px;color:var(--ink)}
 
+/* WORDS CTA */
+.cta{padding-block:56px 64px;border-top:1px solid var(--line);display:grid;gap:16px}
+.cta .big{font-weight:900;font-size:clamp(34px,8vw,80px);line-height:.95;color:var(--ink);text-transform:uppercase;letter-spacing:-.01em}
+.cta .big .italic{text-transform:none;display:block;font-size:.55em;font-weight:500;letter-spacing:0;margin-top:.1em}
+.cta p{max-width:56ch;margin:0;font-size:17px}
+.cta p b{color:var(--ink);font-weight:700}
+.cta p a{color:var(--ink)}
+.words{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.word{font-weight:900;font-size:22px;background:var(--lime);color:var(--on-lime);padding:8px 18px;border-radius:999px;text-decoration:none}
+.word:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.foot{font-size:13px;color:var(--muted)}
+
 /* AUTHOR */
 .author{border-top:1px solid var(--line);padding-block:56px;display:grid;gap:18px}
-.author .label{color:var(--muted)}
 .author h3{font-weight:800;font-size:28px}
 .facts{list-style:none;margin:0;padding:0;display:grid;gap:12px}
 .facts li{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:baseline}
@@ -85,10 +184,9 @@ h1,h2,h3{text-wrap:balance;color:var(--ink);margin:0}
 /* PRICE */
 .price-card{background:var(--card);border:1.5px solid var(--line);border-radius:28px;padding:52px 24px;text-align:center;display:grid;gap:22px;justify-items:center;margin-block:24px 56px}
 .price-card h3{font-weight:900;text-transform:uppercase;font-size:clamp(26px,6vw,34px);letter-spacing:.01em}
-.price{display:inline-block;background:var(--lime);color:var(--ink);border-radius:999px;padding:6px 28px;font-weight:900;font-size:clamp(34px,9vw,48px);line-height:1.2;font-variant-numeric:tabular-nums}
+.price{display:inline-block;background:var(--lime);color:var(--on-lime);border-radius:999px;padding:6px 28px;font-weight:900;font-size:clamp(34px,9vw,48px);line-height:1.2;font-variant-numeric:tabular-nums}
 .price-card .inc{color:var(--ink);font-weight:400;max-width:32ch;margin:0}
 .price-card .meta{color:var(--muted);font-size:15px;margin:0;line-height:1.6}
-.ph{color:var(--muted);font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:600}
 
 .note{display:grid;gap:18px;padding-bottom:56px}
 .note p{margin:0;font-size:16px}
@@ -98,13 +196,13 @@ h1,h2,h3{text-wrap:balance;color:var(--ink);margin:0}
 .foot-link:hover{color:var(--ink)}
 .socials{display:flex;justify-content:center;gap:14px;margin-bottom:22px}
 .socials a{width:48px;height:48px;border-radius:50%;background:var(--card);border:1.5px solid var(--line);color:var(--ink);display:grid;place-items:center;transition:background .15s ease, border-color .15s ease}
-.socials a:hover{background:var(--lime);border-color:var(--lime)}
+.socials a:hover{background:var(--lime);border-color:var(--lime);color:var(--on-lime)}
 .socials a:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
 .socials svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 footer{text-align:center;color:var(--muted);font-size:13px;line-height:1.8;padding-block:48px 56px;border-top:1px solid var(--line)}
 
-@media (prefers-reduced-motion: reduce){.btn,.socials a{transition:none}}
-@media (max-width:420px){body{font-size:17px}.step{grid-template-columns:44px 1fr;gap:16px}.num{width:44px;height:44px}.step:not(:last-child)::before{left:21px;top:48px}}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.btn,.socials a,.route button{transition:none}.ring.on{animation:none}.node circle,.node text,.bstep{transition:none}}
+@media (max-width:420px){body{font-size:17px}.btn{padding:18px 28px}}
 </style>
 </head>
 <body>
@@ -115,11 +213,33 @@ footer{text-align:center;color:var(--muted);font-size:13px;line-height:1.8;paddi
     <div class="label">Курс для експертів · старт 01.12.2026</div>
     <h1>Система</h1>
     <span class="italic">з AI</span>
+    <span class="universe">мій AI Universe</span>
     <p class="sub">Веди блог. Не живи в ньому.</p>
   </div>
 </header>
 
 <main>
+  <section class="map-sec" id="universe" aria-label="Карта системи">
+    <div class="wide">
+      <div class="map-head">
+        <span class="label">Система AI Шевцова · жовтень 2026</span>
+        <h2>Мій AI Universe<span class="italic">система для мене, а не я для системи</span></h2>
+        <p>У центрі я, жива, з голосом, історіями і своїм ритмом. Навколо чотири орбіти, які забирають рутину: <span class="mark">знання</span>, <span class="mark">проєкти</span>, <span class="mark">скіли</span> і <span class="mark">агенти</span>. Обери орбіту, щоб побачити, з чого вона складається.</p>
+      </div>
+      <div class="map">
+        <div class="orbit-box">
+          <svg class="orbits" id="orbits" viewBox="-510 -375 1020 750" role="img" aria-labelledby="mapTitle">
+            <title id="mapTitle">Чотири орбіти навколо Каті: знання, проєкти, скіли, агенти</title>
+          </svg>
+        </div>
+        <div class="panel">
+          <div class="tabs" role="tablist" id="tabs" aria-label="Орбіти"></div>
+          <div id="panel" role="tabpanel" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <div class="wrap">
     <p class="lead">І взагалі, тобі вже є що сказати.</p>
     <hr class="rule">
@@ -148,61 +268,35 @@ footer{text-align:center;color:var(--muted);font-size:13px;line-height:1.8;paddi
     </div>
   </section>
 
-  <section class="steps-sec">
-    <div class="wrap">
+  <section class="route-sec">
+    <div class="wide">
       <h2>Як працює система <span class="italic">від ідеї до результату</span></h2>
-      <ol class="steps">
-        <li class="step">
-          <span class="num">01</span>
-          <div>
-            <h3>Контент</h3>
-            <p class="tag">Що говорити</p>
-            <p>Дістаємо теми з твоєї експертності, а не з чужих рілз. Біль клієнта, ідея, кут подачі, теза. Більше ніякого «про що сьогодні постити».</p>
-          </div>
-        </li>
-        <li class="step">
-          <span class="num">02</span>
-          <div>
-            <h3>Сценарії</h3>
-            <p class="tag">Як це сказати</p>
-            <p>Хук, структура, один CTA. AI збирає чернетку з твоїх голосових і нотаток, ти правиш і додаєш себе. Текст звучить як ти.</p>
-          </div>
-        </li>
-        <li class="step">
-          <span class="num">03</span>
-          <div>
-            <h3>Візуал</h3>
-            <p class="tag">Як це виглядає</p>
-            <p>Обкладинки, композиція, типографіка, AI-візуали і B-roll. Блог стає впізнаваним без дизайнера і без години в Canva.</p>
-          </div>
-        </li>
-        <li class="step">
-          <span class="num">04</span>
-          <div>
-            <h3>Виробництво</h3>
-            <p class="tag">Рілз, каруселі, сторіз</p>
-            <p>Тут з'являється формат. Одна ідея розкладається на кілька форматів, і монтаж, дизайн чи оформлення йдуть по готовому процесу.</p>
-          </div>
-        </li>
-        <li class="step">
-          <span class="num">05</span>
-          <div>
-            <h3>Публікація</h3>
-            <p class="tag">Як випустити</p>
-            <p>Опис, CTA, ключові слова, планування і підтримка в сторіз. Пости виходять регулярно, навіть коли ти не сидиш у телефоні.</p>
-          </div>
-        </li>
-        <li class="step">
-          <span class="num">06</span>
-          <div>
-            <h3>Аналіз</h3>
-            <p class="tag">Що спрацювало</p>
-            <p>Метрики, реакції, висновки. Що повторюємо, що змінюємо, які нові ідеї з цього виростають. Коригуємо курс, не ламаємо себе.</p>
-          </div>
-        </li>
-      </ol>
+      <ol class="route" id="route"></ol>
     </div>
   </section>
+
+  <div class="wide">
+    <section class="block">
+      <span class="label">Автоматизації</span>
+      <h2>Доба системи<span class="italic">поки я живу, вона працює</span></h2>
+      <div class="day">
+        <div class="slot"><div class="t"><small>щодня</small>05:00</div><p>Ранковий план у Telegram: задачі з Notion, календар, пошта, підписники. Блок про тіло приходить окремим повідомленням.</p></div>
+        <div class="slot"><div class="t"><small>протягом дня</small>голос</div><p>Голосове в потрібну тему: бот записує витрату, складає пост, рахує калорії з фото тарілки.</p></div>
+        <div class="slot"><div class="t"><small>щодня</small>21:30</div><p>Айфон сам відправляє кроки, активні калорії і пульс у мій трекер.</p></div>
+        <div class="slot"><div class="t"><small>щодня</small>23:30</div><p>Уся база файлів копіюється на GitHub. Першого числа бот нагадує вивантажити банківські виписки.</p></div>
+      </div>
+    </section>
+
+    <section class="block">
+      <span class="label">Курс «Система з AI» · старт 01.12.2026</span>
+      <h2>Як ти збереш свою<span class="italic">ті самі орбіти, тільки твої</span></h2>
+      <div class="course">
+        <article class="cstep"><div class="num">1</div><span class="orb">Орбіта «Знання»</span><h3>Розпаковка</h3><p>Розумієш, про що постити. Збираєш свої файли: хто ти, для кого, твій голос, твій продукт, і проєкт у Claude, який тебе знає.</p></article>
+        <article class="cstep"><div class="num">2</div><span class="orb">Орбіти «Проєкти» і «Скіли»</span><h3>Проявлення</h3><p>Будуєш систему контенту у своєму стилі, з монтажем рілз через Remotion Studio. Поки ролик монтується, ти живеш.</p></article>
+        <article class="cstep"><div class="num">3</div><span class="orb">Орбіта «Агенти»</span><h3>Система агентів</h3><p>Автоматизація життя й контенту, як у мене: бот, який веде гроші, план, тіло і контент.</p></article>
+      </div>
+    </section>
+  </div>
 
   <section class="climax">
     <div class="wrap">
@@ -210,6 +304,15 @@ footer{text-align:center;color:var(--muted);font-size:13px;line-height:1.8;paddi
       <span class="italic">Тобі потрібна <span class="mark">система</span>.</span>
     </div>
   </section>
+
+  <div class="wide">
+    <section class="cta">
+      <div class="big">Хочеш таку систему?<span class="italic">покажу на твоєму прикладі</span></div>
+      <p>Напиши слово в коментарях чи в директ Instagram <a href="https://ig.me/m/kateryna__shevtsova" target="_blank" rel="noopener"><b>@kateryna__shevtsova</b></a>. РОЗБІР: безкоштовний онлайн-розбір на 30 хвилин. СИСТЕМА: лист очікування курсу.</p>
+      <div class="words"><a class="word" href="https://ig.me/m/kateryna__shevtsova" target="_blank" rel="noopener">РОЗБІР</a><a class="word" href="https://ig.me/m/kateryna__shevtsova" target="_blank" rel="noopener">СИСТЕМА</a></div>
+      <p class="foot">Це моя робоча система станом на жовтень 2026. Склад курсу ще уточнюється.</p>
+    </section>
+  </div>
 
   <div class="wrap">
     <section class="author">
@@ -258,6 +361,92 @@ footer{text-align:center;color:var(--muted);font-size:13px;line-height:1.8;paddi
     <a class="foot-link" href="https://docs.google.com/document/d/1GaZnbfaMS1v4m9-d3pjmaM9KnLYW5VHmm4oJ2kP5NnQ" target="_blank" rel="noopener">Оферта</a> і <a class="foot-link" href="https://docs.google.com/document/d/1U-QeR3jIwiFyPz0X76TAci1-e6FzSOUpZQg_Wxhuo0I" target="_blank" rel="noopener">політика конфіденційності</a>
   </div>
 </footer>
+
+<script>
+/* 6 кроків системи блогу, кожен прив'язаний до своєї орбіти */
+const STEPS = [
+  { n:"01", orbit:"know",  title:"Контент",     tag:"Що говорити",            text:"Дістаємо теми з твоєї експертності, а не з чужих рілз. Біль клієнта, ідея, кут подачі, теза. Більше ніякого «про що сьогодні постити»." },
+  { n:"02", orbit:"skill", title:"Сценарії",    tag:"Як це сказати",          text:"Хук, структура, один CTA. AI збирає чернетку з твоїх голосових і нотаток, ти правиш і додаєш себе. Текст звучить як ти." },
+  { n:"03", orbit:"proj",  title:"Візуал",      tag:"Як це виглядає",         text:"Обкладинки, композиція, типографіка, AI-візуали і B-roll. Блог стає впізнаваним без дизайнера і без години в Canva." },
+  { n:"04", orbit:"proj",  title:"Виробництво", tag:"Рілз, каруселі, сторіз", text:"Тут з'являється формат. Одна ідея розкладається на кілька форматів, і монтаж, дизайн чи оформлення йдуть по готовому процесу." },
+  { n:"05", orbit:"skill", title:"Публікація",  tag:"Як випустити",           text:"Опис, CTA, ключові слова, планування і підтримка в сторіз. Пости виходять регулярно, навіть коли ти не сидиш у телефоні." },
+  { n:"06", orbit:"agent", title:"Аналіз",      tag:"Що спрацювало",          text:"Метрики, реакції, висновки. Що повторюємо, що змінюємо, які нові ідеї з цього виростають. Коригуємо курс, не ламаємо себе." }
+];
+const ORBITS = [
+  { id:"know", name:"Знання", r:118, lead:"Одна база файлів, з якої читає вся система. Я змінюю файл в одному місці, далі копії оновлюються.",
+    nodes:["голос","аудиторія","історії","продукт","бренд","методика"],
+    items:[["positioning","хто я, для кого, про що бренд"],["voice_style","мій голос: як я говорю і пишу"],["custdev","болі й живі фрази аудиторії"],["unpacking","мої історії й факти"],["script_methodology","як будувати рілз і каруселі"],["hooks · competitors","робочі гачки і чужі формулювання, яких уникаю"],["content_plan","теми і чернетки"],["product_line","продукти, ціни, лід-магніти"],["Brandbook","мій візуал: білий, сірий, Neon Lime"]] },
+  { id:"proj", name:"Проєкти", r:190, lead:"Робочі кімнати в Claude. Кожна знає свою частину мене, тому не треба щоразу пояснювати, хто я.",
+    nodes:["Контент","Продукти","Візуали","Power BI","Я і Claude"],
+    items:[["БРЕНД • Контент","каруселі, рілз, сторіз, пости моїм голосом"],["БРЕНД • Продукти","курс, лід-магніти, воронка, прогріви"],["БРЕНД • Візуали","мій AI-двійник, обкладинки, B-roll"],["Робота · Power BI","основна робота"],["Особисте · Я і Claude","розмови про себе"]] },
+  { id:"skill", name:"Скіли", r:262, lead:"Методи: як зробити конкретну річ. Скіл дає рецепт, проєкт дає мої знання.",
+    nodes:["карусель","сторіз","тг-пост","хуки","сценарії","конкуренти","AI-двійник","монтаж","лід-магніт","прогрів","лінійка","pbi-docs","нотатки"],
+    items:[["Контент","карусель, сторіз, пост у Telegram, хуки й описи, сценарії рілз, аналіз конкурентів"],["Візуал","AI-двійник у Higgsfield, монтаж рілз у Remotion"],["Продукти","лід-магніти, прогріви, продуктова лінійка"],["Робота","документація Power BI, нотатки дзвінків"]] },
+  { id:"agent", name:"Агенти", r:340, lead:"Мій Telegram-бот «System AI». Кожна тема в групі це окремий агент, пишу текстом або голосовим.",
+    nodes:["Контент","Гроші","Ідеї","План","День","Тіло","Задачі","Пам'ять","Статистика"],
+    items:[["📝 Контент","пише пости, каруселі, рілз моїм голосом, сам нічого не публікує"],["💰 Гроші","витрати, доходи, перекази, курс валют, банківські виписки"],["💡 Ідеї","записує думки, позначає ті, що підуть у контент"],["📅 План","ранковий план о 05:00 з задачами й календарем"],["🕓 День","вечірній звіт: що зроблено проти плану, одна порада на завтра"],["⚖️ Тіло","їжа з фото чи голосу, вага, тренування, що приготувати"],["✅ Задачі","створює задачі в Notion"],["🧠 Пам'ять","тримає рішення і цілі"],["📈 Статистика","підписники в Instagram, YouTube, Telegram"]] }
+];
+const NS="http://www.w3.org/2000/svg";
+const svg=document.getElementById("orbits");
+const el=(t,a={},p=svg)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);p.appendChild(e);return e;};
+const groups={};
+ORBITS.forEach(o=>{
+  const g=el("g",{"data-orbit":o.id});
+  el("circle",{r:o.r,class:"ring"},g);
+  const lab=el("text",{x:0,y:-o.r-12,"text-anchor":"middle",class:"ringlabel"},g); lab.textContent=o.name.toUpperCase();
+  const n=o.nodes.length, off=-Math.PI/2+Math.PI/n;
+  const nodes=[];
+  o.nodes.forEach((name,i)=>{
+    const a=off+i*2*Math.PI/n, x=Math.cos(a)*o.r, y=Math.sin(a)*o.r;
+    const ng=el("g",{class:"node"},g);
+    el("circle",{cx:x.toFixed(1),cy:y.toFixed(1),r:11},ng);
+    const right=Math.cos(a)>=0, tx=x+(right?18:-18);
+    const t=el("text",{x:tx.toFixed(1),y:(y+7).toFixed(1),"text-anchor":right?"start":"end"},ng);
+    t.textContent=name; nodes.push(ng);
+  });
+  groups[o.id]={g,ring:g.querySelector(".ring"),label:lab,nodes};
+});
+const core=el("g",{class:"core"});
+el("circle",{r:60},core);
+const t1=el("text",{y:12,"text-anchor":"middle",class:"big"},core); t1.textContent="Я";
+const t2=el("text",{y:36,"text-anchor":"middle",class:"small"},core); t2.textContent="КАТЯ";
+
+const tabs=document.getElementById("tabs"), panel=document.getElementById("panel");
+ORBITS.forEach(o=>{
+  const b=document.createElement("button");
+  b.className="tab"; b.id="tab-"+o.id; b.type="button"; b.setAttribute("role","tab"); b.textContent=o.name;
+  b.addEventListener("click",()=>select(o.id)); tabs.appendChild(b);
+  groups[o.id].g.style.cursor="pointer";
+  groups[o.id].g.addEventListener("click",()=>select(o.id));
+});
+function esc(s){return s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
+function select(id,stepN){
+  const o=ORBITS.find(x=>x.id===id);
+  ORBITS.forEach(x=>{
+    const on=x.id===id, G=groups[x.id];
+    G.ring.classList.toggle("on",on); G.label.classList.toggle("on",on);
+    G.nodes.forEach(n=>n.classList.toggle("on",on));
+    document.getElementById("tab-"+x.id).setAttribute("aria-selected",on?"true":"false");
+  });
+  const steps=STEPS.filter(s=>s.orbit===id);
+  panel.innerHTML='<span class="label">Орбіта '+(ORBITS.indexOf(o)+1)+' / 4</span><h3 class="orbit-name">'+esc(o.name)+'</h3><p class="orbit-lead">'+esc(o.lead)+'</p>'
+    +(steps.length?'<span class="label sublabel">Кроки системи блогу на цій орбіті</span><ol class="bsteps">'+steps.map(s=>'<li class="bstep'+(s.n===stepN?' hl':'')+'" id="step-'+s.n+'"><span class="num">'+s.n+'</span><div><h4>'+esc(s.title)+'</h4><p class="tag">'+esc(s.tag)+'</p><p>'+esc(s.text)+'</p></div></li>').join("")+'</ol>':'')
+    +'<span class="label sublabel">З чого складається</span><ul class="items">'+o.items.map(([a,b])=>'<li><b>'+esc(a)+'</b><span>'+esc(b)+'</span></li>').join("")+'</ul>';
+}
+const route=document.getElementById("route");
+STEPS.forEach(s=>{
+  const o=ORBITS.find(x=>x.id===s.orbit);
+  const li=document.createElement("li");
+  li.innerHTML='<button type="button"><span class="num">'+s.n+'</span><span><b>'+esc(s.title)+'</b><small>орбіта '+esc(o.name)+'</small></span></button>';
+  li.querySelector("button").addEventListener("click",()=>{
+    select(s.orbit,s.n);
+    const target=document.getElementById("step-"+s.n);
+    if(target) target.scrollIntoView({block:"center"});
+  });
+  route.appendChild(li);
+});
+select("know");
+</script>
 
 </body>
 </html>
