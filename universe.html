@@ -1,0 +1,217 @@
+<title>Мій AI-юніверсум</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Montserrat:wght@300;400;600;700&family=Cormorant+Garamond:ital,wght@1,500;1,600&display=swap">
+<style>
+/* Layout: editorial-маніфест. Hero з великою типографікою, далі орбітальна карта системи (я в центрі, 4 орбіти), панель з вмістом обраної орбіти, доба системи, міст до курсу. */
+:root{
+  --bg:#FFFFFF;
+  --surface:#F4F4F4;
+  --line:#E2E2E2;
+  --ink:#111111;
+  --text:#3A3A3A;
+  --muted:#7E7F78;
+  --lime:#D6FB28;
+  --on-lime:#111111;
+  --display:"Archivo Black","Arial Black",Impact,sans-serif;
+  --sans:"Montserrat","Helvetica Neue",Arial,sans-serif;
+  --serif:"Cormorant Garamond","Playfair Display",Georgia,serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F100D; --surface:#1A1B17; --line:#2E3029; --ink:#F3F3EF; --text:#CDCEC7; --muted:#8C8D85; --lime:#D6FB28; --on-lime:#111111; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F100D; --surface:#1A1B17; --line:#2E3029; --ink:#F3F3EF; --text:#CDCEC7; --muted:#8C8D85; --lime:#D6FB28; --on-lime:#111111; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:400;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px}
+h1,h2,h3{color:var(--ink);margin:0;text-wrap:balance}
+.label{font-family:var(--sans);font-weight:700;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.it{font-family:var(--serif);font-style:italic;font-weight:500}
+.mark{background:var(--lime);color:var(--on-lime);padding:0 .18em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+
+/* HERO */
+.hero{padding-block:56px 24px;display:grid;gap:20px}
+.hero h1{font-family:var(--display);font-weight:400;font-size:clamp(46px,11vw,132px);line-height:.9;letter-spacing:-.01em;text-transform:uppercase}
+.hero h1 .it{display:block;text-transform:none;font-size:.52em;line-height:1.05;letter-spacing:0;margin-top:.15em;color:var(--ink)}
+.hero p{max-width:58ch;margin:0;font-size:18px}
+.meta{display:flex;flex-wrap:wrap;gap:8px 20px}
+
+/* MAP */
+.map{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:32px;align-items:start;padding-block:24px 40px;border-top:1px solid var(--line)}
+@media (max-width:860px){.map{grid-template-columns:1fr}}
+.orbit-box{min-width:0}
+svg.orbits{width:100%;height:auto;display:block;max-width:100%}
+.ring{fill:none;stroke:var(--line);stroke-width:1.5}
+.ring.on{stroke:var(--ink);stroke-width:2;stroke-dasharray:6 7;animation:spin 40s linear infinite}
+@keyframes spin{to{stroke-dashoffset:-260}}
+.node circle{fill:var(--surface);stroke:var(--line);stroke-width:1.5;transition:fill .25s,stroke .25s}
+.node text{fill:var(--text);font-family:var(--sans);font-size:21px;font-weight:600}
+.node.on circle{fill:var(--lime);stroke:var(--ink)}
+.node.on text{fill:var(--ink)}
+.core circle{fill:var(--lime);stroke:var(--ink);stroke-width:2}
+.core .big{fill:var(--on-lime);font-family:var(--display);font-size:46px}
+.core .small{fill:var(--on-lime);font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.18em}
+.ringlabel{fill:var(--muted);font-family:var(--sans);font-size:15px;font-weight:700;letter-spacing:.2em}
+.ringlabel.on{fill:var(--ink)}
+
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.tab{font:inherit;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);padding:9px 14px;border-radius:999px;cursor:pointer}
+.tab[aria-selected="true"]{background:var(--lime);color:var(--on-lime);border-color:var(--lime)}
+.tab:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.panel{min-width:0}
+.panel h2{font-family:var(--display);font-weight:400;font-size:clamp(30px,4.4vw,46px);line-height:1;text-transform:uppercase}
+.panel .lead{font-size:22px;color:var(--ink);margin:10px 0 18px;line-height:1.3}
+.items{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.items li{display:grid;grid-template-columns:minmax(0,9.5em) minmax(0,1fr);gap:4px 16px;padding:11px 0;border-top:1px solid var(--line)}
+.items li:last-child{border-bottom:1px solid var(--line)}
+.items b{color:var(--ink);font-weight:700;font-size:15px}
+.items span{font-size:15px}
+@media (max-width:480px){.items li{grid-template-columns:1fr}}
+
+/* DAY */
+section.block{padding-block:48px;border-top:1px solid var(--line)}
+.block h2{font-family:var(--display);font-weight:400;font-size:clamp(32px,6vw,64px);line-height:.95;text-transform:uppercase}
+.block h2 .it{text-transform:none;font-size:.62em;display:block;margin-top:.1em}
+.day{margin-top:28px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:2px solid var(--ink)}
+@media (max-width:760px){.day{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:420px){.day{grid-template-columns:1fr}}
+.slot{padding:16px 16px 20px 0;min-width:0}
+.slot .t{font-family:var(--display);font-size:clamp(34px,5vw,52px);line-height:1;color:var(--ink);font-variant-numeric:tabular-nums}
+.slot .t small{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.15em;display:block;color:var(--muted);margin-bottom:6px;text-transform:uppercase}
+.slot p{margin:10px 0 0;font-size:15px}
+
+/* COURSE */
+.steps{margin-top:28px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:760px){.steps{grid-template-columns:1fr}}
+.step{background:var(--surface);border-radius:18px;padding:22px;min-width:0;display:grid;gap:8px;align-content:start}
+.step .n{width:44px;height:44px;border-radius:50%;background:var(--lime);color:var(--on-lime);font-family:var(--display);display:grid;place-items:center;font-size:20px}
+.step h3{font-family:var(--display);font-weight:400;font-size:24px;text-transform:uppercase;line-height:1.05}
+.step .orb{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.step p{margin:0;font-size:15px}
+
+.cta{padding-block:56px 72px;border-top:1px solid var(--line);display:grid;gap:16px}
+.cta .big{font-family:var(--display);font-size:clamp(36px,8vw,92px);line-height:.92;color:var(--ink);text-transform:uppercase}
+.cta .big .it{text-transform:none;display:block;font-size:.5em}
+.cta p{max-width:56ch;margin:0}
+.words{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.word{font-family:var(--display);font-size:22px;background:var(--lime);color:var(--on-lime);padding:8px 16px;border-radius:999px}
+.foot{font-size:13px;color:var(--muted)}
+
+@media (prefers-reduced-motion:reduce){.ring.on{animation:none}.node circle{transition:none}}
+</style>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="meta"><span class="label">Система AI Шевцова</span><span class="label">Жовтень 2026</span></div>
+    <h1>Мій AI-юніверсум<span class="it">система для мене, а не я для системи</span></h1>
+    <p>У центрі я, жива, з голосом, історіями і своїм ритмом. Навколо чотири орбіти, які забирають рутину: <span class="mark">знання</span>, <span class="mark">проєкти</span>, <span class="mark">скіли</span> і <span class="mark">агенти</span>. Обери орбіту, щоб побачити, з чого вона складається.</p>
+  </header>
+
+  <section class="map" aria-label="Карта системи">
+    <div class="orbit-box">
+      <svg class="orbits" id="orbits" viewBox="-510 -375 1020 750" role="img" aria-labelledby="mapTitle">
+        <title id="mapTitle">Чотири орбіти навколо Каті: знання, проєкти, скіли, агенти</title>
+      </svg>
+    </div>
+    <div class="panel">
+      <div class="tabs" role="tablist" id="tabs"></div>
+      <div id="panel" role="tabpanel"></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <span class="label">Автоматизації</span>
+    <h2>Доба системи<span class="it">поки я живу, вона працює</span></h2>
+    <div class="day">
+      <div class="slot"><div class="t"><small>щодня</small>05:00</div><p>Ранковий план у Telegram: задачі з Notion, календар, пошта, підписники. Блок про тіло приходить окремим повідомленням.</p></div>
+      <div class="slot"><div class="t"><small>протягом дня</small>голос</div><p>Голосове в потрібну тему: бот записує витрату, складає пост, рахує калорії з фото тарілки.</p></div>
+      <div class="slot"><div class="t"><small>щодня</small>21:30</div><p>Айфон сам відправляє кроки, активні калорії і пульс у мій трекер.</p></div>
+      <div class="slot"><div class="t"><small>щодня</small>23:30</div><p>Уся база файлів копіюється на GitHub. Першого числа бот нагадує вивантажити банківські виписки.</p></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <span class="label">Курс «Система з AI» · старт 01.12.2026</span>
+    <h2>Як ти збереш свою<span class="it">ті самі орбіти, тільки твої</span></h2>
+    <div class="steps">
+      <article class="step"><div class="n">1</div><span class="orb">Орбіта «Знання»</span><h3>Розпаковка</h3><p>Розумієш, про що постити. Збираєш свої файли: хто ти, для кого, твій голос, твій продукт, і проєкт у Claude, який тебе знає.</p></article>
+      <article class="step"><div class="n">2</div><span class="orb">Орбіти «Проєкти» і «Скіли»</span><h3>Проявлення</h3><p>Будуєш систему контенту у своєму стилі, з монтажем рілз через Remotion Studio. Поки ролик монтується, ти живеш.</p></article>
+      <article class="step"><div class="n">3</div><span class="orb">Орбіта «Агенти»</span><h3>Система агентів</h3><p>Автоматизація життя й контенту, як у мене: бот, який веде гроші, план, тіло і контент.</p></article>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="big">Хочеш таку систему?<span class="it">покажу на твоєму прикладі</span></div>
+    <p>Напиши слово в коментарях чи в директ Instagram <b>@kateryna__shevtsova</b>. РОЗБІР: безкоштовний онлайн-розбір на 30 хвилин. СИСТЕМА: лист очікування курсу.</p>
+    <div class="words"><span class="word">РОЗБІР</span><span class="word">СИСТЕМА</span></div>
+    <p class="foot">Це моя робоча система станом на жовтень 2026. Склад курсу ще уточнюється.</p>
+  </section>
+</div>
+
+<script>
+const ORBITS = [
+  { id:"know", name:"Знання", r:118, lead:"Одна база файлів, з якої читає вся система. Я змінюю файл в одному місці, далі копії оновлюються.",
+    nodes:["голос","аудиторія","історії","продукт","бренд","методика"],
+    items:[["positioning","хто я, для кого, про що бренд"],["voice_style","мій голос: як я говорю і пишу"],["custdev","болі й живі фрази аудиторії"],["unpacking","мої історії й факти"],["script_methodology","як будувати рілз і каруселі"],["hooks · competitors","робочі гачки і чужі формулювання, яких уникаю"],["content_plan","теми і чернетки"],["product_line","продукти, ціни, лід-магніти"],["Brandbook","мій візуал: білий, сірий, Neon Lime"]] },
+  { id:"proj", name:"Проєкти", r:190, lead:"Робочі кімнати в Claude. Кожна знає свою частину мене, тому не треба щоразу пояснювати, хто я.",
+    nodes:["Контент","Продукти","Візуали","Power BI","Я і Claude"],
+    items:[["БРЕНД • Контент","каруселі, рілз, сторіз, пости моїм голосом"],["БРЕНД • Продукти","курс, лід-магніти, воронка, прогріви"],["БРЕНД • Візуали","мій AI-двійник, обкладинки, B-roll"],["Робота · Power BI","основна робота"],["Особисте · Я і Claude","розмови про себе"]] },
+  { id:"skill", name:"Скіли", r:262, lead:"Методи: як зробити конкретну річ. Скіл дає рецепт, проєкт дає мої знання.",
+    nodes:["карусель","сторіз","тг-пост","хуки","сценарії","конкуренти","AI-двійник","монтаж","лід-магніт","прогрів","лінійка","pbi-docs","нотатки"],
+    items:[["Контент","карусель, сторіз, пост у Telegram, хуки й описи, сценарії рілз, аналіз конкурентів"],["Візуал","AI-двійник у Higgsfield, монтаж рілз у Remotion"],["Продукти","лід-магніти, прогріви, продуктова лінійка"],["Робота","документація Power BI, нотатки дзвінків"]] },
+  { id:"agent", name:"Агенти", r:340, lead:"Мій Telegram-бот «System AI». Кожна тема в групі це окремий агент, пишу текстом або голосовим.",
+    nodes:["Контент","Гроші","Ідеї","План","День","Тіло","Задачі","Пам'ять","Статистика"],
+    items:[["📝 Контент","пише пости, каруселі, рілз моїм голосом, сам нічого не публікує"],["💰 Гроші","витрати, доходи, перекази, курс валют, банківські виписки"],["💡 Ідеї","записує думки, позначає ті, що підуть у контент"],["📅 План","ранковий план о 05:00 з задачами й календарем"],["🕓 День","вечірній звіт: що зроблено проти плану, одна порада на завтра"],["⚖️ Тіло","їжа з фото чи голосу, вага, тренування, що приготувати"],["✅ Задачі","створює задачі в Notion"],["🧠 Пам'ять","тримає рішення і цілі"],["📈 Статистика","підписники в Instagram, YouTube, Telegram"]] }
+];
+const NS="http://www.w3.org/2000/svg";
+const svg=document.getElementById("orbits");
+const el=(t,a={},p=svg)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);p.appendChild(e);return e;};
+const groups={};
+ORBITS.forEach((o,oi)=>{
+  const g=el("g",{"data-orbit":o.id});
+  el("circle",{r:o.r,class:"ring"},g);
+  const lab=el("text",{x:0,y:-o.r-12,"text-anchor":"middle",class:"ringlabel"},g); lab.textContent=o.name.toUpperCase();
+  const n=o.nodes.length, off=-Math.PI/2+Math.PI/n;
+  const nodes=[];
+  o.nodes.forEach((name,i)=>{
+    const a=off+i*2*Math.PI/n, x=Math.cos(a)*o.r, y=Math.sin(a)*o.r;
+    const ng=el("g",{class:"node"},g);
+    el("circle",{cx:x.toFixed(1),cy:y.toFixed(1),r:11},ng);
+    const right=Math.cos(a)>=0, tx=x+(right?18:-18);
+    const t=el("text",{x:tx.toFixed(1),y:(y+7).toFixed(1),"text-anchor":right?"start":"end"},ng);
+    t.textContent=name; nodes.push(ng);
+  });
+  groups[o.id]={g,ring:g.querySelector(".ring"),label:lab,nodes};
+});
+const core=el("g",{class:"core"});
+el("circle",{r:60},core);
+const t1=el("text",{y:12,"text-anchor":"middle",class:"big"},core); t1.textContent="Я";
+const t2=el("text",{y:36,"text-anchor":"middle",class:"small"},core); t2.textContent="КАТЯ";
+
+const tabs=document.getElementById("tabs"), panel=document.getElementById("panel");
+ORBITS.forEach(o=>{
+  const b=document.createElement("button");
+  b.className="tab"; b.id="tab-"+o.id; b.type="button"; b.setAttribute("role","tab"); b.textContent=o.name;
+  b.addEventListener("click",()=>select(o.id)); tabs.appendChild(b);
+  groups[o.id].g.style.cursor="pointer";
+  groups[o.id].g.addEventListener("click",()=>select(o.id));
+});
+function esc(s){return s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
+function select(id){
+  const o=ORBITS.find(x=>x.id===id);
+  ORBITS.forEach(x=>{
+    const on=x.id===id, G=groups[x.id];
+    G.ring.classList.toggle("on",on); G.label.classList.toggle("on",on);
+    G.nodes.forEach(n=>n.classList.toggle("on",on));
+    document.getElementById("tab-"+x.id).setAttribute("aria-selected",on?"true":"false");
+  });
+  panel.innerHTML='<span class="label">Орбіта '+(ORBITS.indexOf(o)+1)+' з 4</span><h2>'+esc(o.name)+'</h2><p class="lead">'+esc(o.lead)+'</p><ul class="items">'+o.items.map(([a,b])=>'<li><b>'+esc(a)+'</b><span>'+esc(b)+'</span></li>').join("")+'</ul>';
+  try{localStorage.setItem("orbit",id)}catch(e){}
+}
+let start="agent"; try{const s=localStorage.getItem("orbit"); if(s&&ORBITS.some(o=>o.id===s))start=s;}catch(e){}
+select(start);
+</script>
