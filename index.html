@@ -169,6 +169,15 @@ section.block{padding-block:56px;border-top:1px solid var(--line)}
 .cstep p{margin:0;font-size:15px;line-height:1.6}
 .cstep .arrow{color:var(--muted)}
 
+/* RESULT */
+.result{margin-top:28px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+@media (max-width:760px){.result{grid-template-columns:1fr}}
+.result li{list-style:none;background:var(--card);border-left:4px solid var(--lime);border-radius:12px;padding:20px 22px;min-width:0;display:grid;grid-template-columns:28px minmax(0,1fr);gap:14px;align-items:start}
+.result .ok{width:28px;height:28px;border-radius:50%;background:var(--lime);color:var(--on-lime);display:grid;place-items:center;font-weight:900;font-size:15px;line-height:1}
+.result h3{font-weight:800;font-size:19px;line-height:1.25}
+.result p{margin:6px 0 0;font-size:15px;line-height:1.6}
+.result-wrap{padding:0}
+
 /* CLIMAX */
 .climax{text-align:center;padding-block:56px 72px;border-top:1px solid var(--line)}
 .climax .big{font-weight:900;text-transform:uppercase;color:var(--ink);font-size:clamp(36px,9.5vw,72px);line-height:.95;letter-spacing:-.02em}
@@ -255,8 +264,8 @@ footer{text-align:center;color:var(--muted);font-size:13px;line-height:1.8;paddi
     <div class="wide">
       <h2>Для кого ця система<span class="italic">блог тут приємний бонус</span></h2>
       <ul class="who">
-        <li><span class="num">1</span><h3>Хочеш автоматизувати важливе в житті</h3><p>Гроші, план дня, задачі, тіло, звіт за день. Те, що зараз тримається в голові й нотатках, переїжджає в систему, яка працює щодня, навіть коли ти про неї не згадуєш.</p></li>
-        <li><span class="num">2</span><h3>Хочеш проявлятися</h3><p>Тобі є що сказати, але все відкладається на «потім». Система тримає твій голос, історії і теми під рукою, тому вийти до людей стає простіше, ніж промовчати.</p></li>
+        <li><span class="num">1</span><h3>Хочеш <span class="mark">автоматизувати</span> важливе в житті</h3><p>Гроші, план дня, задачі, тіло, звіт за день. Те, що зараз тримається в голові й нотатках, переїжджає в систему, яка працює щодня, навіть коли ти про неї не згадуєш.</p></li>
+        <li><span class="num">2</span><h3>Хочеш <span class="mark">проявлятися</span></h3><p>Тобі є що сказати, але все відкладається на «потім». Система тримає твій голос, історії і теми під рукою, тому вийти до людей стає простіше, ніж промовчати.</p></li>
         <li class="bonus"><span class="num">+</span><h3>Ведеш блог або хочеш почати</h3><p>Контент від ідеї до аналізу йде по готовому процесу, і блог перестає з'їдати вечори. Це приємний бонус до системи, а не головна мета.</p></li>
       </ul>
       <p class="who-note">Головне не блог. Головне, що в тебе з'являється система для тебе, а не ти для системи.</p>
@@ -269,7 +278,7 @@ footer{text-align:center;color:var(--muted);font-size:13px;line-height:1.8;paddi
 
     <div class="prose">
       <p>Тобі є що сказати і що показати. Досвід є, клієнти є, ідеї в нотатках є. А блог або стоїть, або з'їдає вечори: шукаєш теми, пишеш з нуля, переписуєш, сумніваєшся, і знову шукаєш теми.</p>
-      <p>Коротше, проблема не в тобі і не в алгоритмах. Проблема в тому, що блог у тебе працює як <b>друга робота без системи</b>. Кожен пост як перший.</p>
+      <p>Коротше, проблема не в тобі і не в алгоритмах. Проблема в тому, що блог у тебе працює як <span class="mark">друга робота без системи</span>. Кожен пост як перший.</p>
       <p>Я це прожила. Фінансовий директор, вигорання, потім консалтинг у Швейцарії. І по факту для мене завжди працювало одне правило: система для мене, а не я для системи. З блогом так само.</p>
     </div>
 
@@ -318,6 +327,17 @@ footer{text-align:center;color:var(--muted);font-size:13px;line-height:1.8;paddi
         <article class="cstep"><div class="num">2</div><span class="orb">Орбіти «Проєкти» і «Скіли»</span><h3>Проявлення</h3><p>Будуєш систему контенту у своєму стилі, з монтажем рілз через Remotion Studio. Поки ролик монтується, ти живеш.</p></article>
         <article class="cstep"><div class="num">3</div><span class="orb">Орбіта «Агенти»</span><h3>Система агентів</h3><p>Автоматизація життя й контенту, як у мене: бот, який веде гроші, план, тіло і контент.</p></article>
       </div>
+    </section>
+
+    <section class="block" aria-label="Результат">
+      <span class="label">Результат</span>
+      <h2>Що в тебе буде після курсу<span class="italic">не знання про AI, а твоя працююча система</span></h2>
+      <ul class="result result-wrap">
+        <li><span class="ok">✓</span><div><h3>Ти знаєш, <span class="mark">про що говорити</span></h3><p>Твоя тема, аудиторія, голос і продукт записані один раз. Проєкт у Claude знає тебе, і не треба щоразу пояснювати, хто ти.</p></div></li>
+        <li><span class="ok">✓</span><div><h3>Своя <span class="mark">система контенту</span></h3><p>У твоєму стилі, від ідеї до готового рілз, з монтажем через Remotion Studio. Поки ролик монтується, ти живеш.</p></div></li>
+        <li><span class="ok">✓</span><div><h3>Свої <span class="mark">агенти</span> в Telegram</h3><p>Рутина життя й контенту робиться без тебе, як у мене: гроші, план, тіло, контент.</p></div></li>
+        <li><span class="ok">✓</span><div><h3>Контент <span class="mark">звучить як ти</span></h3><p>AI забирає рутину, але не пише замість тебе. Жодних безликих «аішних» текстів.</p></div></li>
+      </ul>
     </section>
   </div>
 
