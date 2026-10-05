@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Система блогу з AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800;900&family=Cormorant+Garamond:ital,wght@1,500;1,600&display=swap">
+<style>
+/* Layout: лонгрід-маніфест; темний hero з фото, далі біла колонка ~640px, сіра смуга з раннім CTA, таймлайн 3 етапи, картка ціни */
+:root{
+  --white:#FFFFFF;
+  --card:#F4F4F4;
+  --line:#E2E2E2;
+  --lime:#D6FB28;
+  --ink:#111111;
+  --text:#3A3A3A;
+  --muted:#9A9A9A;
+  --sans:"Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --serif:"Cormorant Garamond", "Playfair Display", Georgia, serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--white);color:var(--text);font-family:var(--sans);font-weight:300;font-size:18px;line-height:1.7;-webkit-font-smoothing:antialiased}
+.wrap{max-width:680px;margin:0 auto;padding-inline:20px}
+h1,h2,h3{text-wrap:balance;color:var(--ink);margin:0}
+.label{font-family:var(--sans);font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase}
+.italic{font-family:var(--serif);font-style:italic;font-weight:500}
+.mark{background:linear-gradient(transparent 12%, var(--lime) 12%, var(--lime) 92%, transparent 92%);color:var(--ink);padding:0 .15em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+
+/* HERO */
+.hero{position:relative;min-height:560px;display:flex;align-items:flex-end;color:var(--white);overflow:hidden;
+  background:
+    radial-gradient(120% 70% at 70% 20%, #4a4a4a 0%, #222 45%, #0d0d0d 100%);}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(17,17,17,0) 30%, rgba(17,17,17,.85) 85%)}
+.photo-ph{position:absolute;top:24px;right:20px;z-index:2;border:1px dashed rgba(255,255,255,.35);color:rgba(255,255,255,.6);border-radius:30px;padding:6px 14px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+.silhouette{position:absolute;left:50%;top:8%;width:min(60vw,360px);aspect-ratio:3/4;max-width:100%;transform:translateX(-30%);border-radius:50% 50% 8px 8px / 40% 40% 8px 8px;background:radial-gradient(60% 50% at 50% 30%, #6b6b6b, #2a2a2a 70%);opacity:.55;filter:blur(1px)}
+.hero-inner{position:relative;z-index:1;width:100%;max-width:880px;margin:0 auto;padding:0 20px 56px}
+.hero .label{color:var(--lime)}
+.hero h1{color:var(--white);font-weight:900;font-size:clamp(56px,15vw,132px);line-height:.88;letter-spacing:-.02em;text-transform:uppercase;margin-top:18px}
+.hero .italic{display:block;font-size:clamp(44px,11vw,96px);line-height:1;margin-top:4px;color:var(--white)}
+.hero .sub{margin-top:24px;max-width:30ch;font-size:17px;line-height:1.5;color:#E8E8E8;font-weight:400}
+
+/* MANIFESTO */
+.lead{text-align:center;color:var(--muted);font-family:var(--serif);font-style:italic;font-size:clamp(26px,6vw,34px);line-height:1.25;padding-block:64px 28px}
+.rule{height:2px;border:0;margin:0 auto 48px;max-width:680px;background:linear-gradient(90deg,transparent,var(--lime) 20%,var(--lime) 80%,transparent)}
+.prose{display:grid;gap:22px}
+.prose p{margin:0}
+.prose b{font-weight:600;color:var(--ink)}
+.pull{text-align:center;padding-block:28px;display:grid;gap:10px}
+.pull .italic{font-size:clamp(32px,8vw,48px);line-height:1.1;color:var(--ink)}
+.pull small{font-size:16px;color:var(--text)}
+
+/* EARLY CTA */
+.band{background:var(--card);margin-top:64px;padding-block:64px;text-align:center}
+.band p{margin:0 auto 26px;max-width:34ch;color:var(--ink);font-size:19px;font-weight:400}
+.btn{display:inline-block;background:var(--lime);color:var(--ink);font-family:var(--sans);font-weight:800;font-size:15px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;padding:20px 44px;border-radius:999px;border:0;cursor:pointer;transition:transform .15s ease, box-shadow .15s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(17,17,17,.12)}
+.btn:focus-visible{outline:3px solid var(--ink);outline-offset:4px}
+.btn.ghost{background:var(--card);font-weight:600}
+
+/* STEPS */
+.steps-sec{padding-block:80px 24px}
+.steps-sec h2{font-weight:800;font-size:clamp(30px,7vw,44px);line-height:1.1;text-align:center;text-transform:uppercase;letter-spacing:-.01em}
+.steps-sec h2 .italic{display:block;text-transform:none;font-size:1.05em;margin-top:6px;font-weight:500}
+.steps{list-style:none;margin:56px 0 0;padding:0;display:grid;gap:0}
+.step{display:grid;grid-template-columns:52px 1fr;gap:22px;position:relative;padding-bottom:48px}
+.step:not(:last-child)::before{content:"";position:absolute;left:25px;top:56px;bottom:0;width:2px;background:var(--line)}
+.num{width:52px;height:52px;border-radius:50%;background:var(--lime);color:var(--ink);display:grid;place-items:center;font-weight:800;font-size:18px}
+.step > div{min-width:0}
+.step h3{font-weight:800;font-size:clamp(22px,5vw,28px);line-height:1.2;margin-top:8px}
+.step p{margin:12px 0 0}
+.step .tag{color:var(--muted);margin-top:4px}
+
+/* CLIMAX */
+.climax{text-align:center;padding-block:56px 72px}
+.climax .big{font-weight:900;text-transform:uppercase;color:var(--ink);font-size:clamp(36px,9.5vw,72px);line-height:.95;letter-spacing:-.02em}
+.climax .italic{display:block;font-size:clamp(32px,8vw,58px);line-height:1.1;margin-top:12px;color:var(--ink)}
+
+/* AUTHOR */
+.author{border-top:1px solid var(--line);padding-block:56px;display:grid;gap:18px}
+.author .label{color:var(--muted)}
+.author h3{font-weight:800;font-size:28px}
+.facts{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.facts li{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:baseline}
+.facts strong{font-weight:800;color:var(--ink);font-size:22px;font-variant-numeric:tabular-nums;min-width:3.2ch}
+
+/* PRICE */
+.price-card{background:var(--card);border:1.5px solid var(--line);border-radius:28px;padding:52px 24px;text-align:center;display:grid;gap:22px;justify-items:center;margin-block:24px 56px}
+.price-card h3{font-weight:900;text-transform:uppercase;font-size:clamp(26px,6vw,34px);letter-spacing:.01em}
+.price{display:inline-block;background:var(--lime);color:var(--ink);border-radius:999px;padding:6px 28px;font-weight:900;font-size:clamp(34px,9vw,48px);line-height:1.2;font-variant-numeric:tabular-nums}
+.price-card .inc{color:var(--ink);font-weight:400;max-width:32ch;margin:0}
+.price-card .meta{color:var(--muted);font-size:15px;margin:0;line-height:1.6}
+.ph{color:var(--muted);font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:600}
+
+.note{display:grid;gap:18px;padding-bottom:56px}
+.note p{margin:0;font-size:16px}
+.center{text-align:center}
+
+footer{text-align:center;color:var(--muted);font-size:13px;line-height:1.8;padding-block:48px 56px;border-top:1px solid var(--line)}
+
+@media (prefers-reduced-motion: reduce){.btn{transition:none}}
+@media (max-width:420px){body{font-size:17px}.step{grid-template-columns:44px 1fr;gap:16px}.num{width:44px;height:44px}.step:not(:last-child)::before{left:21px;top:48px}}
+</style>
+</head>
+<body>
+
+
+<header class="hero">
+  <div class="silhouette" aria-hidden="true"></div>
+  <span class="photo-ph">тут буде фото з AI Twin</span>
+  <div class="hero-inner">
+    <div class="label">Курс для експертів · старт 01.12.2026</div>
+    <h1>Система блогу</h1>
+    <span class="italic">з AI</span>
+    <p class="sub">Веди блог. Не живи в ньому.</p>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <p class="lead">І взагалі, тобі вже є що сказати.</p>
+    <hr class="rule">
+
+    <div class="prose">
+      <p>Тобі є що сказати і що показати. Досвід є, клієнти є, ідеї в нотатках є. А блог або стоїть, або з'їдає вечори: шукаєш теми, пишеш з нуля, переписуєш, сумніваєшся, і знову шукаєш теми.</p>
+      <p>Коротше, проблема не в тобі і не в алгоритмах. Проблема в тому, що блог у тебе працює як <b>друга робота без системи</b>. Кожен пост як перший.</p>
+      <p>Я це прожила. Фінансовий директор, вигорання, потім консалтинг у Швейцарії. І по факту для мене завжди працювало одне правило: система для мене, а не я для системи. З блогом так само.</p>
+    </div>
+
+    <div class="pull">
+      <span class="italic">AI забирає рутину. <span class="mark">Автор залишаєшся ти.</span></span>
+      <small>без безликих текстів і без життя в Instagram</small>
+    </div>
+
+    <div class="prose">
+      <p>Ми не починаємо з питання «який AI-інструмент вивчити». Ми починаємо з іншого: що ти хочеш перестати робити вручну?</p>
+      <p>І далі будуємо процес, який повторюється щотижня: від ідеї до аналізу результату. Не набір промптів, а одна система, де кожен крок зрозумілий і частину роботи вже робить AI.</p>
+    </div>
+  </div>
+
+  <section class="band">
+    <div class="wrap">
+      <p>Якщо вже відчуваєш, що тобі сюди, пиши мені слово СИСТЕМА, і далі можна не читати :)</p>
+      <a class="btn" href="https://www.instagram.com/kateryna__shevtsova" target="_blank" rel="noopener">Написати СИСТЕМА</a>
+    </div>
+  </section>
+
+  <section class="steps-sec">
+    <div class="wrap">
+      <h2>Як працює система <span class="italic">від ідеї до результату</span></h2>
+      <ol class="steps">
+        <li class="step">
+          <span class="num">01</span>
+          <div>
+            <h3>Контент</h3>
+            <p class="tag">Що говорити</p>
+            <p>Дістаємо теми з твоєї експертності, а не з чужих рілз. Біль клієнта, ідея, кут подачі, теза. Більше ніякого «про що сьогодні постити».</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="num">02</span>
+          <div>
+            <h3>Сценарії</h3>
+            <p class="tag">Як це сказати</p>
+            <p>Хук, структура, один CTA. AI збирає чернетку з твоїх голосових і нотаток, ти правиш і додаєш себе. Текст звучить як ти.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="num">03</span>
+          <div>
+            <h3>Візуал</h3>
+            <p class="tag">Як це виглядає</p>
+            <p>Обкладинки, композиція, типографіка, AI-візуали і B-roll. Блог стає впізнаваним без дизайнера і без години в Canva.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="num">04</span>
+          <div>
+            <h3>Виробництво</h3>
+            <p class="tag">Рілз, каруселі, сторіз</p>
+            <p>Тут з'являється формат. Одна ідея розкладається на кілька форматів, і монтаж, дизайн чи оформлення йдуть по готовому процесу.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="num">05</span>
+          <div>
+            <h3>Публікація</h3>
+            <p class="tag">Як випустити</p>
+            <p>Опис, CTA, ключові слова, планування і підтримка в сторіз. Пости виходять регулярно, навіть коли ти не сидиш у телефоні.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="num">06</span>
+          <div>
+            <h3>Аналіз</h3>
+            <p class="tag">Що спрацювало</p>
+            <p>Метрики, реакції, висновки. Що повторюємо, що змінюємо, які нові ідеї з цього виростають. Коригуємо курс, не ламаємо себе.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="climax">
+    <div class="wrap">
+      <div class="big">Тобі не треба більше часу.</div>
+      <span class="italic">Тобі потрібна <span class="mark">система</span>.</span>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <section class="author">
+      <div class="label">Хто веде</div>
+      <h3>Катя Шевцова</h3>
+      <ul class="facts">
+        <li><strong>13</strong><span>років фінансовим директором, тому системи і цифри для мене рідні</span></li>
+        <li><strong>CH</strong><span>BI-консультантка у Швейцарії, будую звітність і автоматизації для компаній</span></li>
+        <li><strong>AI</strong><span>веду свій блог на цій самій системі і показую весь процес, а не тільки результат</span></li>
+      </ul>
+    </section>
+
+    <section class="price-card" id="price">
+      <h3>Система блогу з AI</h3>
+      <span class="price">старт 01.12</span>
+      <p class="inc">Формат і ціну оголошу на вебінарі. Ті, хто в листі очікування, дізнаються першими.</p>
+      <p class="meta">щоб потрапити в лист очікування,<br>напиши мені слово СИСТЕМА в Instagram</p>
+      <a class="btn" href="https://www.instagram.com/kateryna__shevtsova" target="_blank" rel="noopener">Хочу в лист очікування</a>
+    </section>
+
+    <section class="note">
+      <p>Після запису я надішлю тобі дату вебінару і подарунок від мене, щоб почати вже зараз.</p>
+      <p>Є питання? Пиши в директ, відповідаю сама.</p>
+      <div class="center"><a class="btn ghost" href="https://www.instagram.com/kateryna__shevtsova" target="_blank" rel="noopener">Написати</a></div>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    Катя Шевцова · @kateryna__shevtsova<br>
+    Оферта і політика конфіденційності
+  </div>
+</footer>
+
+</body>
+</html>
