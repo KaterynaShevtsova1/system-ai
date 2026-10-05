@@ -96,9 +96,14 @@ h1,h2,h3{text-wrap:balance;color:var(--ink);margin:0}
 
 .foot-link{color:var(--text);text-decoration:underline;text-underline-offset:3px}
 .foot-link:hover{color:var(--ink)}
+.socials{display:flex;justify-content:center;gap:14px;margin-bottom:22px}
+.socials a{width:48px;height:48px;border-radius:50%;background:var(--card);border:1.5px solid var(--line);color:var(--ink);display:grid;place-items:center;transition:background .15s ease, border-color .15s ease}
+.socials a:hover{background:var(--lime);border-color:var(--lime)}
+.socials a:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.socials svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 footer{text-align:center;color:var(--muted);font-size:13px;line-height:1.8;padding-block:48px 56px;border-top:1px solid var(--line)}
 
-@media (prefers-reduced-motion: reduce){.btn{transition:none}}
+@media (prefers-reduced-motion: reduce){.btn,.socials a{transition:none}}
 @media (max-width:420px){body{font-size:17px}.step{grid-template-columns:44px 1fr;gap:16px}.num{width:44px;height:44px}.step:not(:last-child)::before{left:21px;top:48px}}
 </style>
 </head>
@@ -235,6 +240,14 @@ footer{text-align:center;color:var(--muted);font-size:13px;line-height:1.8;paddi
 
 <footer>
   <div class="wrap">
+    <nav class="socials" aria-label="Соцмережі">
+      <a href="https://t.me/kateryna_shevtsova_tg" target="_blank" rel="noopener" aria-label="Telegram-канал">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.5 4.5 2.5 11.8l6.6 2.4 2.5 6.9 3.6-4.3 5 3.7z"/><path d="M9.1 14.2 21.5 4.5"/></svg>
+      </a>
+      <a href="https://www.instagram.com/kateryna__shevtsova" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg>
+      </a>
+    </nav>
     Катя Шевцова · @kateryna__shevtsova<br>
     <a class="foot-link" href="https://docs.google.com/document/d/1GaZnbfaMS1v4m9-d3pjmaM9KnLYW5VHmm4oJ2kP5NnQ" target="_blank" rel="noopener">Оферта</a> і політика конфіденційності
   </div>
