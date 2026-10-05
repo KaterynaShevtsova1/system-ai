@@ -202,6 +202,26 @@ section.block{padding-block:56px;border-top:1px solid var(--line)}
 .facts li{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:baseline}
 .facts strong{font-weight:800;color:var(--ink);font-size:22px;font-variant-numeric:tabular-nums;min-width:3.2ch}
 
+/* CASES + REVIEWS */
+.cases{display:grid;gap:18px;padding-bottom:56px}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:480px){.stats{grid-template-columns:1fr}}
+.stat{background:var(--card);border-radius:18px;padding:18px;min-width:0}
+.stat b{display:block;font-weight:900;font-size:clamp(30px,7vw,40px);line-height:1;color:var(--ink);font-variant-numeric:tabular-nums}
+.stat b .mark{padding:0 .1em}
+.stat > span{display:block;margin-top:8px;font-size:14px;line-height:1.45}
+.clients{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.clients li{border:1.5px solid var(--line);border-radius:999px;padding:6px 14px;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+.cases p{margin:0;font-size:16px}
+.reviews-sec{padding-block:8px 56px;display:grid;gap:18px}
+.reviews-sec h2{font-weight:900;font-size:clamp(28px,6vw,40px);line-height:1;text-transform:uppercase}
+.reviews-sec h2 .italic{display:block;text-transform:none;font-weight:500;font-size:.7em;margin-top:.15em}
+.reviews{display:grid;gap:14px;margin:0;padding:0;list-style:none}
+.review{margin:0;background:var(--card);border-left:4px solid var(--lime);border-radius:12px;padding:20px 22px}
+.review blockquote{margin:0;font-family:var(--serif);font-style:italic;font-size:clamp(19px,4.6vw,22px);line-height:1.4;color:var(--ink)}
+.review figcaption{margin-top:12px;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.reviews-note{margin:0;font-size:14px;color:var(--muted)}
+
 /* PRICE */
 .price-card{background:var(--card);border:1.5px solid var(--line);border-radius:28px;padding:52px 24px;text-align:center;display:grid;gap:22px;justify-items:center;margin-block:24px 56px}
 .price-card h3{font-weight:900;text-transform:uppercase;font-size:clamp(26px,6vw,34px);letter-spacing:.01em}
@@ -358,6 +378,30 @@ footer{text-align:center;color:var(--muted);font-size:13px;line-height:1.8;paddi
         <li><strong>BI</strong><span>Power BI-консультантка в IT-компанії у Швейцарії, будую звітність і автоматизації для міжнародних корпорацій</span></li>
         <li><strong>AI</strong><span>веду свій блог на цій самій системі і показую весь процес, а не тільки результат</span></li>
       </ul>
+    </section>
+
+    <section class="cases" aria-label="Кейси">
+      <div class="label">Кейси</div>
+      <div class="stats">
+        <div class="stat"><b><span class="mark">100+</span></b><span>звітів і дашбордів у Power BI</span></div>
+        <div class="stat"><b>6 років</b><span>Power BI-консультантка в IT</span></div>
+        <div class="stat"><b>2</b><span>сертифікації Microsoft: Power BI Data Analyst і Fabric Analytics Engineer</span></div>
+      </div>
+      <p>Працювала з міжнародними компаніями:</p>
+      <ul class="clients">
+        <li>Adidas</li><li>Siemens</li><li>Merck</li><li>Novartis</li><li>AstraZeneca</li><li>Brugg Lifting</li>
+      </ul>
+      <p>Офіційна тренерка Microsoft у програмах Dashboard in a Day і Fabric in a Day. Веду 10-місячне наставництво для тих, хто йде в професію BI-аналітика.</p>
+    </section>
+
+    <section class="reviews-sec" aria-label="Відгуки">
+      <h2>Відгуки<span class="italic">учнів мого наставництва з Power BI</span></h2>
+      <ul class="reviews">
+        <li><figure class="review"><blockquote>Це просто супер! Дивлюсь і не вірю, що я змогла таке зробити! Катерино, не перестаю дякувати! В голові вже крутиться купа ідей, як застосувати ці знання в роботі!</blockquote><figcaption>Анастасія</figcaption></figure></li>
+        <li><figure class="review"><blockquote>Найкращий наставник, якого я можу щиро рекомендувати! Я з першого потоку навчання і можу впевнено сказати: Катерина неймовірна! Щира, відкрита, надихаюча та завжди готова підтримати. З нею хочеться вчитися, розвиватися і досягати більшого. Катерина це саме та людина, яка вірить у тебе навіть тоді, коли сам сумніваєшся. Дякую за все!</blockquote><figcaption>Юлія</figcaption></figure></li>
+        <li><figure class="review"><blockquote>Мені дуже сподобалось спілкування з Катериною. Вона одразу професійно направила нашу розмову в правильний вектор. Все було зрозуміло, чітко й структуровано. Дуже відчувалась щира участь і зацікавленість у прийнятті правильного для мене рішення. Якщо ви ще вагаєтесь, то вже час діяти разом з таким чудовим наставником! Дякую!</blockquote><figcaption>Тамара</figcaption></figure></li>
+      </ul>
+      <p class="reviews-note">Відгуки з платформи GoToBI. Курс «Система з AI» стартує 01.12.2026, відгуки про нього з'являться після першого потоку.</p>
     </section>
 
     <section class="price-card" id="price">
