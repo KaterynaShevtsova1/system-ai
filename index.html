@@ -105,6 +105,18 @@ svg.orbits{width:100%;height:auto;display:block;max-width:100%}
 .items b{color:var(--ink);font-weight:700}
 @media (max-width:480px){.items li{grid-template-columns:1fr}}
 
+/* WHO */
+.who-sec{padding-block:56px 8px}
+.who-sec h2{font-weight:900;font-size:clamp(32px,6vw,64px);line-height:.95;text-transform:uppercase;letter-spacing:-.01em}
+.who-sec h2 .italic{text-transform:none;font-size:.62em;display:block;margin-top:.12em;font-weight:500;letter-spacing:0}
+.who{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:760px){.who{grid-template-columns:1fr}}
+.who li{background:var(--card);border-radius:18px;padding:22px;min-width:0;display:grid;gap:10px;align-content:start}
+.who li.bonus{background:var(--bg);border:1.5px dashed var(--line)}
+.who h3{font-weight:800;font-size:21px;line-height:1.2}
+.who p{margin:0;font-size:15px;line-height:1.6}
+.who-note{margin:22px 0 0;font-size:18px;color:var(--ink);font-weight:400;max-width:60ch}
+
 /* MANIFESTO */
 .lead{text-align:center;color:var(--text);font-family:var(--serif);font-style:italic;font-size:clamp(26px,6vw,34px);line-height:1.25;padding-block:64px 28px;margin:0}
 .rule{height:2px;border:0;margin:0 auto 48px;max-width:680px;background:linear-gradient(90deg,transparent,var(--lime) 20%,var(--lime) 80%,transparent)}
@@ -237,6 +249,18 @@ footer{text-align:center;color:var(--muted);font-size:13px;line-height:1.8;paddi
           <div id="panel" role="tabpanel" aria-live="polite"></div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="who-sec" aria-label="Для кого">
+    <div class="wide">
+      <h2>Для кого ця система<span class="italic">блог тут приємний бонус</span></h2>
+      <ul class="who">
+        <li><span class="num">1</span><h3>Хочеш автоматизувати важливе в житті</h3><p>Гроші, план дня, задачі, тіло, звіт за день. Те, що зараз тримається в голові й нотатках, переїжджає в систему, яка працює щодня, навіть коли ти про неї не згадуєш.</p></li>
+        <li><span class="num">2</span><h3>Хочеш проявлятися</h3><p>Тобі є що сказати, але все відкладається на «потім». Система тримає твій голос, історії і теми під рукою, тому вийти до людей стає простіше, ніж промовчати.</p></li>
+        <li class="bonus"><span class="num">+</span><h3>Ведеш блог або хочеш почати</h3><p>Контент від ідеї до аналізу йде по готовому процесу, і блог перестає з'їдати вечори. Це приємний бонус до системи, а не головна мета.</p></li>
+      </ul>
+      <p class="who-note">Головне не блог. Головне, що в тебе з'являється система для тебе, а не ти для системи.</p>
     </div>
   </section>
 
