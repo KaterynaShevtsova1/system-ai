@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Система з AI · курс Каті Шевцової</title>
-<meta name="description" content="Курс Каті Шевцової «Система з AI»: збираєш свою систему з AI для життя і контенту, без коду. Старт 01.12.2026, передзапис одним кліком у Telegram.">
+<meta name="description" content="Курс Каті Шевцової «Система з AI»: збираєш свою систему з AI для життя і контенту, без коду. 10 тижнів, Zoom з Катею і зворотний зв'язок у чаті. Старт 01.12.2026. Дату безкоштовного вебінару напишу першою в Telegram.">
 <link rel="canonical" href="https://katerynashevtsova1.github.io/system-ai/">
 <meta name="theme-color" content="#FFFFFF">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -206,6 +206,8 @@ section.block:first-child{border-top:0}
 .why li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:var(--s3);align-items:center;color:var(--ink);font-size:17px;line-height:1.4}
 .ok{width:28px;height:28px;border-radius:50%;background:var(--lime);color:var(--on-lime);display:grid;place-items:center;font-weight:900;font-size:15px;line-height:1}
 .band .cta-row{justify-content:center}
+.band-lead{margin:0 auto var(--s5);max-width:40ch;color:var(--ink)}
+.band-free{margin:0 auto var(--s5);font-size:15px;color:var(--text)}
 .band .fine{margin:var(--s4) 0 0;font-size:14px;color:var(--muted)}
 
 
@@ -219,13 +221,26 @@ section.block:first-child{border-top:0}
 .nocode{margin-top:var(--s4);background:var(--dark);color:#F4F4F4;border-radius:var(--r-card);padding:var(--s5) var(--s6);display:grid;grid-template-columns:auto minmax(0,1fr);gap:var(--s5);align-items:center}
 .nocode b{display:block;font-weight:900;text-transform:uppercase;color:var(--lime);font-size:clamp(22px,3vw,30px);line-height:1.1}
 .nocode p{margin:0;font-size:16px;line-height:1.6;max-width:64ch}
+.fmt-h{margin-top:var(--s7);font-weight:900;font-size:clamp(24px,3vw,32px);line-height:1.1;text-transform:uppercase}
+.fmt{list-style:none;margin:var(--s5) 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4)}
+@media (max-width:960px){.fmt{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.fmt{grid-template-columns:1fr}}
+.fmt li{background:var(--card);border-radius:var(--r-card);padding:var(--s5);display:grid;gap:var(--s2);align-content:start;min-width:0}
+.fmt li.key{background:var(--lime);color:var(--on-lime)}
+.fmt b{display:block;font-weight:900;font-size:20px;line-height:1.15;color:var(--ink)}
+.fmt li.key b{color:var(--on-lime);font-size:22px;text-transform:uppercase}
+.fmt p{margin:0;font-size:15px;line-height:1.55}
 @media (max-width:640px){.nocode{grid-template-columns:1fr;gap:var(--s3);padding:var(--s5)}}
 
 
 /* AUTHOR */
 .author{padding-block:var(--s8);border-top:1px solid var(--line);display:grid;gap:var(--s5)}
 .author h2{font-weight:900;font-size:clamp(32px,5vw,48px);line-height:1.04;text-transform:uppercase}
-.author .about{margin:0;max-width:62ch}
+.author .about{margin:var(--s4) 0 0;max-width:62ch}
+.author-head{display:grid;grid-template-columns:220px minmax(0,1fr);gap:var(--s6);align-items:center}
+.author-head h2{margin-top:var(--s2)}
+.author-photo{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:cover;border-radius:var(--r-card);background:var(--card);box-shadow:12px 12px 0 var(--lime)}
+@media (max-width:600px){.author-head{grid-template-columns:1fr;gap:var(--s5)}.author-photo{max-width:280px}}
 .facts{list-style:none;margin:0;padding:0;display:grid;gap:var(--s3)}
 .facts li{display:grid;grid-template-columns:5.5ch minmax(0,1fr);gap:var(--s4);align-items:baseline;padding-bottom:var(--s3);border-bottom:1px solid var(--line)}
 .facts strong{font-weight:900;color:var(--ink);font-size:24px;line-height:1.1;font-variant-numeric:tabular-nums}
@@ -257,6 +272,12 @@ section.block:first-child{border-top:0}
 .qa details[open] summary::after{content:"−";background:var(--lime);color:var(--on-lime)}
 .qa summary:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
 .qa p{margin:0 0 var(--s5);max-width:62ch}
+
+/* LIVE: Telegram-канал */
+.live{padding-block:var(--s7) var(--s8);border-top:1px solid var(--line)}
+.live .wrap{display:grid;gap:var(--s4);justify-items:start}
+.live h2{font-weight:900;font-size:clamp(28px,5vw,44px);line-height:1.05;text-transform:uppercase}
+.live p{margin:0;max-width:52ch}
 
 /* FINAL CTA */
 .final{background:var(--card);border:1.5px solid var(--line);border-radius:28px;padding:var(--s7) var(--s5);text-align:center;display:grid;gap:var(--s5);justify-items:center;margin-block:0 var(--s8)}
@@ -292,14 +313,13 @@ footer{text-align:center;color:var(--muted);font-size:14px;line-height:1.8;paddi
 <header class="hero">
   <div class="wide hero-inner">
     <div>
-      <span class="pill">Курс · старт 01.12.2026</span>
+      <span class="pill">Курс · 10 тижнів · старт 01.12.2026</span>
       <h1><span class="pre">Тобі не треба більше часу.</span><span class="need">Тобі потрібна</span><span class="sys">система</span></h1>
-      <p class="sub">На курсі «Система з AI» ти збираєш свою команду AI-помічниць. Щоранку вони кажуть, на чому сьогодні фокус, ведуть конвеєр контенту твоїм голосом і тримають усе в одному місці. Код писати не треба.</p>
+      <p class="sub">На курсі «Система з AI» ти збираєш свою команду AI-помічниць. Щоранку вони кажуть, на чому сьогодні фокус, ведуть конвеєр контенту твоїм голосом і тримають усе в одному місці. Код писати не треба, а поруч я: Zoom зі мною і мій зворотний зв'язок у чаті.</p>
       <div class="cta-row" id="heroCta">
-        <a class="btn" href="https://t.me/kateryna_shevtsova_bot?start=tr843652f3a924f29351b172ff" target="_blank" rel="noopener">Хочу в передзапис</a>
-        <a class="alt" href="https://ig.me/m/kateryna__shevtsova" target="_blank" rel="noopener">або напиши <span translate="no">СИСТЕМА</span> в директ Instagram</a>
+        <a class="btn" href="https://t.me/kateryna_shevtsova_bot?start=tr843652f3a924f29351b172ff" target="_blank" rel="noopener">Хочу першою дізнатись дату вебінару</a>
       </div>
-      <p class="fine">Кнопка відкриє мій бот у Telegram: натисни Start, і ти в списку. Формат, ціну і всі деталі розповідаю в особистих. Бонуси раннього бронювання до 01.11.</p>
+      <p class="fine">Кнопка відкриє мій Telegram: напишу тобі першою, щойно буде дата безкоштовного вебінару. Це ні до чого не зобов'язує і нічого платити не треба.</p>
     </div>
     <figure class="chat" aria-label="Приклад: як мої помічниці відповідають у Telegram протягом дня">
       <div class="chat-head" aria-hidden="true"><span class="chat-ava">А</span><span><b>Аліса і команда</b><span class="who-bot">мій бот у Telegram</span></span></div>
@@ -377,16 +397,17 @@ footer{text-align:center;color:var(--muted);font-size:14px;line-height:1.8;paddi
   <section class="band" aria-labelledby="band-h">
     <div class="wrap">
       <h2 id="band-h">Відчуваєш, що тобі сюди?</h2>
+      <p class="band-lead">Тоді тисни кнопку: відкриється мій Telegram. Ось що це тобі дає:</p>
       <ul class="why">
-        <li><span class="ok" aria-hidden="true">✓</span><span>натискаєш кнопку, і ти в списку в Telegram</span></li>
-        <li><span class="ok" aria-hidden="true">✓</span><span>потрапляєш у передзапис і дізнаєшся формат і ціну раніше за всіх</span></li>
-        <li><span class="ok" aria-hidden="true">✓</span><span>маєш <span class="mark">бонуси раннього бронювання</span> до 01.11</span></li>
+        <li><span class="ok" aria-hidden="true">✓</span><span>напишу тобі першою, щойно буде дата <span class="mark">безкоштовного вебінару</span></span></li>
+        <li><span class="ok" aria-hidden="true">✓</span><span>на вебінарі покажу свою систему наживо і розповім ціну</span></li>
+        <li><span class="ok" aria-hidden="true">✓</span><span>про бонуси теж розповім на вебінарі</span></li>
       </ul>
+      <p class="band-free">Це ні до чого не зобов'язує і нічого платити не треба.</p>
       <div class="cta-row">
-        <a class="btn" href="https://t.me/kateryna_shevtsova_bot?start=tr843652f3a924f29351b172ff" target="_blank" rel="noopener">Хочу в передзапис</a>
-        <a class="alt" href="https://ig.me/m/kateryna__shevtsova" target="_blank" rel="noopener">або напиши <span translate="no">СИСТЕМА</span> в директ Instagram</a>
+        <a class="btn" href="https://t.me/kateryna_shevtsova_bot?start=tr843652f3a924f29351b172ff" target="_blank" rel="noopener">Хочу першою дізнатись дату вебінару</a>
       </div>
-      <p class="fine">Відповідаю сама. А далі можна не читати :)</p>
+      <p class="fine">А далі можна не читати :)</p>
     </div>
   </section>
 
@@ -423,15 +444,27 @@ footer{text-align:center;color:var(--muted);font-size:14px;line-height:1.8;paddi
         <b>Без коду</b>
         <p>Ти отримуєш готовий пакет, відкриваєш його в Claude і пишеш «розгорни». Claude сам встановлює систему, ставить тобі питання і налаштовує під тебе. Інструкції для Windows і Mac.</p>
       </div>
+      <h3 class="fmt-h">Як проходить навчання</h3>
+      <ul class="fmt">
+        <li class="key"><b>Zoom зі мною</b><p>Раз на 2 тижні живі зустрічі: дивимось твою систему разом, і я відповідаю на питання.</p></li>
+        <li class="key"><b>Мій зворотний зв'язок у чаті</b><p>Між зустрічами пишеш у груповий чат, і я відповідаю сама.</p></li>
+        <li><b>10 тижнів</b><p>Старт 01.12.2026. Уроки в записі, дивишся, коли тобі зручно.</p></li>
+        <li><b>2-3 години на тиждень</b><p>Короткі уроки і практика на твоїй системі.</p></li>
+      </ul>
     </section>
 
   </div>
 
   <div class="wrap">
     <section class="author" aria-labelledby="author-h">
-      <span class="label">Хто веде</span>
-      <h2 id="author-h">Катя Шевцова</h2>
-      <p class="about">Я будую системи все життя: спершу у фінансах, потім у даних, тепер з AI. Свій блог і свій день я веду на цій самій системі і показую весь процес, разом з помилками.</p>
+      <div class="author-head">
+        <img class="author-photo" src="kateryna.webp" width="800" height="800" alt="Катя Шевцова, авторка курсу «Система з AI»" loading="lazy" decoding="async">
+        <div>
+          <span class="label">Хто веде</span>
+          <h2 id="author-h">Катя Шевцова</h2>
+          <p class="about">Я будую системи все життя і постійно щось автоматизую: спершу у фінансах, потім у даних, тепер з AI. Задача в мене завжди одна: прибрати ручну рутину, щоб лишився час помріяти і подумати про стратегію. Свій блог і свій день я веду на цій самій системі і показую весь процес, разом з помилками.</p>
+        </div>
+      </div>
       <ul class="facts">
         <li><strong>13</strong><span>років фінансовою директоркою, тому системи і цифри для мене рідні</span></li>
         <li><strong>6</strong><span>років консультую з даних і автоматизацій в IT-компанії у Швейцарії: понад 100 звітів і дашбордів для міжнародних корпорацій</span></li>
@@ -470,14 +503,24 @@ footer{text-align:center;color:var(--muted);font-size:14px;line-height:1.8;paddi
     <div class="wrap">
       <h2 id="faq-h">Питання і відповіді</h2>
       <div class="qa">
+        <details><summary>Скільки часу це займає?</summary><p>2-3 години на тиждень: короткі уроки в записі і практика на твоїй системі. Тиждень з розпаковкою трохи довший.</p></details>
+        <details><summary>Хто відповідає на мої питання?</summary><p>Я сама. Раз на 2 тижні ми бачимось у Zoom, а між зустрічами я відповідаю в груповому чаті.</p></details>
         <details><summary>Чи треба вміти програмувати?</summary><p>Ні. Ти отримуєш готовий пакет і пишеш Claude «розгорни». Далі він сам встановлює систему, питає тебе і налаштовує під тебе. Я показую кожен крок на демо-боті.</p></details>
         <details><summary>Я не веду блог. Мені підійде?</summary><p>Так. Блог у системі одна з частин. Можна почати з життя: гроші, план дня, задачі, тіло. Контент підключиш, коли захочеш.</p></details>
         <details><summary>У мене Mac. Або Windows. Підійде?</summary><p>Так, інструкції є для обох.</p></details>
         <details><summary>Що потрібно, крім ноутбука?</summary><p>Платна підписка Claude Pro, на ній працює вся система. Її оплачуєш окремо, напряму в Claude.</p></details>
         <details><summary>AI писатиме замість мене?</summary><p>AI бере структуру, редагування, монтаж і планування. Слова, історії і голос лишаються твої, і система вчиться саме на них.</p></details>
-        <details><summary>Що буде, коли я натисну кнопку?</summary><p>Відкриється мій бот у Telegram. Натискаєш Start, і ти в передзаписі. Туди ж прийдуть деталі старту, раніше за всіх. Купувати одразу нічого не треба, а якщо стане нецікаво, пишеш «стоп».</p></details>
-        <details><summary>Коли старт?</summary><p>01.12.2026. Бонуси раннього бронювання діють до 01.11.</p></details>
+        <details><summary>Що буде, коли я натисну кнопку?</summary><p>Відкриється мій бот у Telegram. Натискаєш Start, і я напишу тобі першою, щойно буде дата безкоштовного вебінару. На вебінарі покажу систему наживо і розповім ціну. Платити нічого не треба, а якщо стане нецікаво, пишеш «стоп».</p></details>
+        <details><summary>Коли старт і скільки триває?</summary><p>Старт 01.12.2026, курс триває 10 тижнів.</p></details>
       </div>
+    </div>
+  </section>
+
+  <section class="live" aria-labelledby="live-h">
+    <div class="wrap">
+      <h2 id="live-h">Подивись систему наживо</h2>
+      <p>Ефіри, живі покази і всі анонси я роблю в Telegram-каналі. Там видно, як моя система працює щодня.</p>
+      <a class="btn ghost" href="https://t.me/kateryna_shevtsova_tg" target="_blank" rel="noopener">Мій Telegram-канал</a>
     </div>
   </section>
 
@@ -485,19 +528,19 @@ footer{text-align:center;color:var(--muted);font-size:14px;line-height:1.8;paddi
     <section class="final" id="final" aria-labelledby="final-h">
       <h2 id="final-h">Система з AI</h2>
       <span class="price">старт 01.12</span>
-      <p class="ink">Формат, ціну і всі деталі розповідаю в особистих.</p>
-      <p>У передзапис потрапляєш одним кліком через мій бот у Telegram.</p>
+      <p class="ink">10 тижнів, Zoom зі мною і мій зворотний зв'язок у чаті. Ціну розповім на безкоштовному вебінарі.</p>
+      <p>Тисни кнопку, і я напишу тобі першою, щойно буде дата.</p>
       <div class="cta-row">
-        <a class="btn" href="https://t.me/kateryna_shevtsova_bot?start=tr843652f3a924f29351b172ff" target="_blank" rel="noopener">Хочу в передзапис</a>
-        <a class="alt" href="https://ig.me/m/kateryna__shevtsova" target="_blank" rel="noopener">або напиши <span translate="no">СИСТЕМА</span> в директ Instagram</a>
+        <a class="btn" href="https://t.me/kateryna_shevtsova_bot?start=tr843652f3a924f29351b172ff" target="_blank" rel="noopener">Хочу першою дізнатись дату вебінару</a>
       </div>
-      <p class="fine">Є питання? Пиши туди ж, відповідаю сама.</p>
+      <p class="fine">Є питання? Пиши в директ, відповідаю сама.</p>
+      <a class="btn ghost" href="https://ig.me/m/kateryna__shevtsova" target="_blank" rel="noopener">Написати</a>
     </section>
   </div>
 </main>
 
 <div class="sticky" id="sticky" aria-hidden="true">
-  <a class="btn" href="https://t.me/kateryna_shevtsova_bot?start=tr843652f3a924f29351b172ff" target="_blank" rel="noopener" tabindex="-1">Хочу в передзапис</a>
+  <a class="btn" href="https://t.me/kateryna_shevtsova_bot?start=tr843652f3a924f29351b172ff" target="_blank" rel="noopener" tabindex="-1">Хочу першою дізнатись дату вебінару</a>
 </div>
 
 <footer>
