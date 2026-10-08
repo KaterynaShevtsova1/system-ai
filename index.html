@@ -225,7 +225,11 @@ section.block:first-child{border-top:0}
 /* AUTHOR */
 .author{padding-block:var(--s8);border-top:1px solid var(--line);display:grid;gap:var(--s5)}
 .author h2{font-weight:900;font-size:clamp(32px,5vw,48px);line-height:1.04;text-transform:uppercase}
-.author .about{margin:0;max-width:62ch}
+.author .about{margin:var(--s4) 0 0;max-width:62ch}
+.author-head{display:grid;grid-template-columns:220px minmax(0,1fr);gap:var(--s6);align-items:center}
+.author-head h2{margin-top:var(--s2)}
+.author-photo{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:cover;border-radius:var(--r-card);background:var(--card);box-shadow:12px 12px 0 var(--lime)}
+@media (max-width:600px){.author-head{grid-template-columns:1fr;gap:var(--s5)}.author-photo{max-width:280px}}
 .facts{list-style:none;margin:0;padding:0;display:grid;gap:var(--s3)}
 .facts li{display:grid;grid-template-columns:5.5ch minmax(0,1fr);gap:var(--s4);align-items:baseline;padding-bottom:var(--s3);border-bottom:1px solid var(--line)}
 .facts strong{font-weight:900;color:var(--ink);font-size:24px;line-height:1.1;font-variant-numeric:tabular-nums}
@@ -429,9 +433,14 @@ footer{text-align:center;color:var(--muted);font-size:14px;line-height:1.8;paddi
 
   <div class="wrap">
     <section class="author" aria-labelledby="author-h">
-      <span class="label">Хто веде</span>
-      <h2 id="author-h">Катя Шевцова</h2>
-      <p class="about">Я будую системи все життя: спершу у фінансах, потім у даних, тепер з AI. Свій блог і свій день я веду на цій самій системі і показую весь процес, разом з помилками.</p>
+      <div class="author-head">
+        <img class="author-photo" src="kateryna.webp" width="800" height="800" alt="Катя Шевцова, авторка курсу «Система з AI»" loading="lazy" decoding="async">
+        <div>
+          <span class="label">Хто веде</span>
+          <h2 id="author-h">Катя Шевцова</h2>
+          <p class="about">Я будую системи все життя: спершу у фінансах, потім у даних, тепер з AI. Свій блог і свій день я веду на цій самій системі і показую весь процес, разом з помилками.</p>
+        </div>
+      </div>
       <ul class="facts">
         <li><strong>13</strong><span>років фінансовою директоркою, тому системи і цифри для мене рідні</span></li>
         <li><strong>6</strong><span>років консультую з даних і автоматизацій в IT-компанії у Швейцарії: понад 100 звітів і дашбордів для міжнародних корпорацій</span></li>
