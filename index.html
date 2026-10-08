@@ -271,6 +271,12 @@ section.block:first-child{border-top:0}
 .qa summary:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
 .qa p{margin:0 0 var(--s5);max-width:62ch}
 
+/* LIVE: Telegram-канал */
+.live{padding-block:var(--s7) var(--s8);border-top:1px solid var(--line)}
+.live .wrap{display:grid;gap:var(--s4);justify-items:start}
+.live h2{font-weight:900;font-size:clamp(28px,5vw,44px);line-height:1.05;text-transform:uppercase}
+.live p{margin:0;max-width:52ch}
+
 /* FINAL CTA */
 .final{background:var(--card);border:1.5px solid var(--line);border-radius:28px;padding:var(--s7) var(--s5);text-align:center;display:grid;gap:var(--s5);justify-items:center;margin-block:0 var(--s8)}
 .final h2{font-weight:900;text-transform:uppercase;font-size:clamp(28px,6vw,40px);line-height:1.05}
@@ -312,7 +318,7 @@ footer{text-align:center;color:var(--muted);font-size:14px;line-height:1.8;paddi
         <a class="btn" href="https://t.me/kateryna_shevtsova_bot?start=tr843652f3a924f29351b172ff" target="_blank" rel="noopener">Хочу в передзапис</a>
         <a class="alt" href="https://ig.me/m/kateryna__shevtsova" target="_blank" rel="noopener">або напиши <span translate="no">СИСТЕМА</span> в директ Instagram</a>
       </div>
-      <p class="fine">Кнопка відкриє мій бот у Telegram: натисни Start, і ти в списку. Ціну і всі деталі розповідаю в особистих. Бонуси раннього бронювання до 01.11.</p>
+      <p class="fine">Кнопка відкриє мій бот у Telegram: натисни Start, і ти в списку. Ті, хто в списку, першими дізнаються про бронь. Ціну і всі деталі розповідаю в особистих. Бонуси раннього бронювання до 01.11.</p>
     </div>
     <figure class="chat" aria-label="Приклад: як мої помічниці відповідають у Telegram протягом дня">
       <div class="chat-head" aria-hidden="true"><span class="chat-ava">А</span><span><b>Аліса і команда</b><span class="who-bot">мій бот у Telegram</span></span></div>
@@ -392,7 +398,7 @@ footer{text-align:center;color:var(--muted);font-size:14px;line-height:1.8;paddi
       <h2 id="band-h">Відчуваєш, що тобі сюди?</h2>
       <ul class="why">
         <li><span class="ok" aria-hidden="true">✓</span><span>натискаєш кнопку, і ти в списку в Telegram</span></li>
-        <li><span class="ok" aria-hidden="true">✓</span><span>потрапляєш у передзапис і дізнаєшся ціну раніше за всіх</span></li>
+        <li><span class="ok" aria-hidden="true">✓</span><span>потрапляєш у передзапис і першою дізнаєшся про бронь</span></li>
         <li><span class="ok" aria-hidden="true">✓</span><span>маєш <span class="mark">бонуси раннього бронювання</span> до 01.11</span></li>
       </ul>
       <div class="cta-row">
@@ -438,7 +444,7 @@ footer{text-align:center;color:var(--muted);font-size:14px;line-height:1.8;paddi
       </div>
       <h3 class="fmt-h">Як проходить навчання</h3>
       <ul class="fmt">
-        <li class="key"><b>Zoom зі мною</b><p>Раз на 2 тижні живі зустрічі: розбираю твою систему і відповідаю на питання.</p></li>
+        <li class="key"><b>Zoom зі мною</b><p>Раз на 2 тижні живі зустрічі: дивимось твою систему разом, і я відповідаю на питання.</p></li>
         <li class="key"><b>Мій зворотний зв'язок у чаті</b><p>Між зустрічами пишеш у груповий чат, і я відповідаю сама.</p></li>
         <li><b>10 тижнів</b><p>Старт 01.12.2026. Уроки в записі, дивишся, коли тобі зручно.</p></li>
         <li><b>2-3 години на тиждень</b><p>Короткі уроки і практика на твоїй системі.</p></li>
@@ -502,9 +508,17 @@ footer{text-align:center;color:var(--muted);font-size:14px;line-height:1.8;paddi
         <details><summary>У мене Mac. Або Windows. Підійде?</summary><p>Так, інструкції є для обох.</p></details>
         <details><summary>Що потрібно, крім ноутбука?</summary><p>Платна підписка Claude Pro, на ній працює вся система. Її оплачуєш окремо, напряму в Claude.</p></details>
         <details><summary>AI писатиме замість мене?</summary><p>AI бере структуру, редагування, монтаж і планування. Слова, історії і голос лишаються твої, і система вчиться саме на них.</p></details>
-        <details><summary>Що буде, коли я натисну кнопку?</summary><p>Відкриється мій бот у Telegram. Натискаєш Start, і ти в передзаписі. Туди ж прийдуть деталі старту, раніше за всіх. Купувати одразу нічого не треба, а якщо стане нецікаво, пишеш «стоп».</p></details>
+        <details><summary>Що буде, коли я натисну кнопку?</summary><p>Відкриється мій бот у Telegram. Натискаєш Start, і ти в передзаписі. Туди ж першою прийде новина про бронь і деталі старту. Купувати одразу нічого не треба, а якщо стане нецікаво, пишеш «стоп».</p></details>
         <details><summary>Коли старт і скільки триває?</summary><p>Старт 01.12.2026, курс триває 10 тижнів. Бонуси раннього бронювання діють до 01.11.</p></details>
       </div>
+    </div>
+  </section>
+
+  <section class="live" aria-labelledby="live-h">
+    <div class="wrap">
+      <h2 id="live-h">Подивись систему наживо</h2>
+      <p>Ефіри, живі покази і всі анонси я роблю в Telegram-каналі. Там видно, як моя система працює щодня.</p>
+      <a class="btn ghost" href="https://t.me/kateryna_shevtsova_tg" target="_blank" rel="noopener">Мій Telegram-канал</a>
     </div>
   </section>
 
@@ -513,7 +527,7 @@ footer{text-align:center;color:var(--muted);font-size:14px;line-height:1.8;paddi
       <h2 id="final-h">Система з AI</h2>
       <span class="price">старт 01.12</span>
       <p class="ink">10 тижнів, Zoom зі мною і мій зворотний зв'язок у чаті. Ціну і всі деталі розповідаю в особистих.</p>
-      <p>У передзапис потрапляєш одним кліком через мій бот у Telegram.</p>
+      <p>У передзапис потрапляєш одним кліком через мій бот у Telegram. Ті, хто в списку, першими дізнаються про бронь.</p>
       <div class="cta-row">
         <a class="btn" href="https://t.me/kateryna_shevtsova_bot?start=tr843652f3a924f29351b172ff" target="_blank" rel="noopener">Хочу в передзапис</a>
         <a class="alt" href="https://ig.me/m/kateryna__shevtsova" target="_blank" rel="noopener">або напиши <span translate="no">СИСТЕМА</span> в директ Instagram</a>
