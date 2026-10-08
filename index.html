@@ -3,13 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Система з AI</title>
-<meta name="description" content="Курс Каті Шевцової: AI-система, яка бере на себе рутину в житті, проявленні й блозі. Старт 01.12.2026.">
+<title>Система з AI · курс Каті Шевцової</title>
+<meta name="description" content="Курс Каті Шевцової «Система з AI»: збираєш свою систему з AI для життя і контенту, без коду. Старт 01.12.2026, передзапис через слово СИСТЕМА в директ Instagram.">
+<link rel="canonical" href="https://katerynashevtsova1.github.io/system-ai/">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="uk_UA">
+<meta property="og:url" content="https://katerynashevtsova1.github.io/system-ai/">
+<meta property="og:title" content="Система з AI · курс Каті Шевцової">
+<meta property="og:description" content="Тобі не треба більше часу. Тобі потрібна система. Старт 01.12.2026.">
+<meta property="og:image" content="https://katerynashevtsova1.github.io/system-ai/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&family=Cormorant+Garamond:ital,wght@1,500;1,600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Cormorant+Garamond:ital,wght@1,500;1,600&display=swap">
 <style>
-/* Layout: світлий hero, одразу карта AI Universe (4 орбіти, панель збоку, на телефоні під картою), маніфест у колонці ~640px, ранній CTA, маршрут 6 кроків по орбітах, доба системи, 3 блоки курсу, автор, ціна, футер */
+/* Структура: герой (обіцянка + кнопка + демо-чат бота) → карта системи → доба системи → для кого → маніфест → CTA → маршрут → курс → результат → автор → відгуки → питання → фінальний CTA. Токени з brandbook 3.5 */
 :root{
   --white:#FFFFFF;
   --bg:#FFFFFF;
@@ -19,53 +32,91 @@
   --on-lime:#111111;
   --ink:#111111;
   --text:#3A3A3A;
-  --muted:#9A9A9A;
+  --muted:#6B6B6B;
+  --dark:#1A1A1A;
   --sans:"Montserrat", "Helvetica Neue", Arial, sans-serif;
   --serif:"Cormorant Garamond", "Playfair Display", Georgia, serif;
+  --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px; --s8:64px; --s9:96px;
+  --r-pill:999px; --r-card:18px; --r-small:12px;
   color-scheme:light;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --bg:#141414; --card:#1E1E1E; --line:#2E2E2E; --ink:#F4F4F4; --text:#CFCFCF; --muted:#9A9A9A; color-scheme:dark;
+    --bg:#141414; --card:#1E1E1E; --line:#2E2E2E; --ink:#F4F4F4; --text:#CFCFCF; --muted:#A8A8A8; color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --bg:#141414; --card:#1E1E1E; --line:#2E2E2E; --ink:#F4F4F4; --text:#CFCFCF; --muted:#9A9A9A; color-scheme:dark;
+  --bg:#141414; --card:#1E1E1E; --line:#2E2E2E; --ink:#F4F4F4; --text:#CFCFCF; --muted:#A8A8A8; color-scheme:dark;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:300;font-size:18px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-.wrap{max-width:680px;margin:0 auto;padding-inline:20px}
-.wide{max-width:1120px;margin:0 auto;padding-inline:20px}
+html{scroll-behavior:smooth;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:400;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;touch-action:manipulation}
+.wrap{max-width:680px;margin:0 auto;padding-inline:var(--s5)}
+.wide{max-width:1120px;margin:0 auto;padding-inline:var(--s5)}
 h1,h2,h3{text-wrap:balance;color:var(--ink);margin:0}
-.label{font-family:var(--sans);font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+p{text-wrap:pretty}
+.label{font-family:var(--sans);font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .italic{font-family:var(--serif);font-style:italic;font-weight:500}
 .mark{background:linear-gradient(transparent 12%, var(--lime) 12%, var(--lime) 92%, transparent 92%);color:var(--on-lime);padding:0 .15em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.kw{font-weight:900;color:var(--ink);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.skip{position:absolute;left:var(--s4);top:-80px;background:var(--lime);color:var(--on-lime);padding:var(--s3) var(--s4);border-radius:var(--r-pill);font-weight:700;z-index:30;text-decoration:none}
+.skip:focus{top:var(--s4)}
+h2[id],section[id]{scroll-margin-top:var(--s5)}
+
+/* Кнопки */
+.btn{display:inline-block;background:var(--lime);color:var(--on-lime);font-family:var(--sans);font-weight:800;font-size:15px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;padding:18px var(--s6);border-radius:var(--r-pill);border:0;cursor:pointer;text-align:center;line-height:20px;transition:transform .15s ease, box-shadow .15s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(17,17,17,.14)}
+.btn:active{transform:translateY(0)}
+.btn:focus-visible{outline:3px solid var(--ink);outline-offset:4px}
+.btn.ghost{background:transparent;color:var(--ink);font-weight:700;border:1.5px solid var(--ink)}
+.copy{font:inherit;font-size:14px;font-weight:600;color:var(--ink);background:transparent;border:0;border-bottom:1.5px solid var(--ink);padding:var(--s2) 0;min-height:44px;cursor:pointer}
+.copy:hover{border-bottom-color:var(--lime)}
+.copy:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s3) var(--s5)}
+.status{font-size:14px;color:var(--ink);font-weight:600;min-height:1.6em}
 
 /* HERO */
-.hero{position:relative;min-height:520px;display:flex;align-items:flex-end;background:var(--bg);border-bottom:1px solid var(--line);overflow:hidden}
-.hero-inner{position:relative;width:100%;max-width:880px;margin:0 auto;padding:72px 20px 56px}
-.hero .label{display:inline-block;background:var(--lime);color:var(--on-lime);border-radius:30px;padding:6px 16px}
-.hero h1{color:var(--ink);font-weight:900;font-size:clamp(56px,15vw,132px);line-height:.88;letter-spacing:-.02em;text-transform:uppercase;margin-top:18px}
-.hero .italic{display:block;font-size:clamp(44px,11vw,96px);line-height:1;margin-top:4px;color:var(--ink)}
-.hero .universe{display:block;margin-top:14px;font-weight:600;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--text)}
-.hero .sub{margin-top:24px;max-width:30ch;font-size:17px;line-height:1.5;color:var(--text);font-weight:400}
+.hero{border-bottom:1px solid var(--line)}
+.hero-inner{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:var(--s7);align-items:center;padding-block:var(--s8) var(--s8)}
+@media (max-width:860px){.hero-inner{grid-template-columns:1fr;gap:var(--s6);padding-block:var(--s6) var(--s7)}}
+.hero .pill{display:inline-block;background:var(--lime);color:var(--on-lime);border-radius:var(--r-pill);padding:var(--s1) var(--s4);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+.hero h1{font-weight:900;font-size:clamp(38px,5.6vw,76px);line-height:1.02;letter-spacing:-.02em;text-transform:uppercase;margin-top:var(--s5)}
+.hero h1 .italic{display:block;text-transform:none;letter-spacing:0;font-size:.82em;line-height:1.1;margin-top:var(--s2)}
+.hero .sub{margin:var(--s5) 0 0;max-width:46ch;font-size:18px;line-height:1.55;color:var(--text)}
+.hero .cta-row{margin-top:var(--s6)}
+.hero .fine{margin:var(--s4) 0 0;font-size:14px;color:var(--muted);max-width:46ch}
 
-/* MAP: AI UNIVERSE */
-.map-sec{padding-block:56px 48px;border-bottom:1px solid var(--line)}
-.map-head{display:grid;gap:14px;max-width:760px}
-.map-head h2{font-weight:900;font-size:clamp(34px,7vw,64px);line-height:.95;text-transform:uppercase;letter-spacing:-.01em}
-.map-head h2 .italic{display:block;text-transform:none;font-weight:500;font-size:.6em;line-height:1.1;margin-top:.15em;letter-spacing:0}
-.map-head p{margin:0;font-size:17px;font-weight:400}
-.map{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:32px;align-items:start;margin-top:32px}
+/* Демо-чат бота */
+.chat{margin:0;background:var(--card);border:1.5px solid var(--line);border-radius:28px;padding:var(--s5) var(--s4) var(--s4);display:grid;gap:var(--s3);min-width:0}
+.chat-head{display:flex;align-items:center;gap:var(--s3);padding:0 var(--s2) var(--s3);border-bottom:1px solid var(--line)}
+.chat-ava{width:40px;height:40px;border-radius:50%;background:var(--lime);color:var(--on-lime);display:grid;place-items:center;font-weight:900;font-size:15px;flex:none}
+.chat-head b{display:block;color:var(--ink);font-size:15px;line-height:1.2}
+.chat-head .who-bot{display:block;font-size:13px;color:var(--muted)}
+.msgs{list-style:none;margin:0;padding:0;display:grid;gap:var(--s2)}
+.msg{max-width:88%;padding:var(--s2) var(--s3);border-radius:16px;font-size:14px;line-height:1.5;background:var(--bg);color:var(--ink);border:1px solid var(--line);overflow-wrap:anywhere}
+.msg.me{justify-self:end;background:var(--lime);color:var(--on-lime);border-color:var(--lime);border-bottom-right-radius:4px}
+.msg.bot{border-bottom-left-radius:4px}
+.msg i{display:block;font-style:normal;font-weight:700;font-size:12px;color:var(--muted);margin-bottom:2px}
+.msg small{display:block;font-size:12px;color:var(--muted);margin-top:2px}
+.msg.me small{color:#3A3A3A}
+@media (max-width:860px){.msg.extra{display:none}}
+.chat figcaption{font-size:13px;color:var(--muted);padding:var(--s1) var(--s2) 0}
+
+/* MAP */
+.map-sec{padding-block:var(--s8) var(--s7);border-top:1px solid var(--line)}
+.sec-head{display:grid;gap:var(--s3);max-width:760px}
+.sec-head h2,.block h2,.who-sec h2,.faq h2,.reviews-sec h2{font-weight:900;font-size:clamp(32px,5.4vw,60px);line-height:1.04;text-transform:uppercase;letter-spacing:-.01em}
+.sec-head h2 .italic,.block h2 .italic,.who-sec h2 .italic,.reviews-sec h2 .italic,.faq h2 .italic{display:block;text-transform:none;font-weight:500;font-size:.62em;line-height:1.1;margin-top:var(--s2);letter-spacing:0}
+.sec-head p{margin:0;max-width:62ch}
+.map{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:var(--s6);align-items:start;margin-top:var(--s6)}
 @media (max-width:860px){.map{grid-template-columns:1fr}}
 .orbit-box{min-width:0}
-@media (min-width:861px){.orbit-box{position:sticky;top:24px}}
+@media (min-width:861px){.orbit-box{position:sticky;top:var(--s5)}}
 svg.orbits{width:100%;height:auto;display:block;max-width:100%}
 .ring{fill:none;stroke:var(--line);stroke-width:1.5}
 .ring.on{stroke:var(--ink);stroke-width:2;stroke-dasharray:6 7;animation:spin 40s linear infinite}
 @keyframes spin{to{stroke-dashoffset:-260}}
-.node circle{fill:var(--card);stroke:var(--muted);stroke-width:1.5;transition:fill .25s,stroke .25s}
+.node circle{fill:var(--card);stroke:#9A9A9A;stroke-width:1.5;transition:fill .25s,stroke .25s}
 .node text{fill:var(--text);font-family:var(--sans);font-size:21px;font-weight:600;transition:opacity .25s}
 .node.on circle{fill:var(--lime);stroke:var(--lime)}
 .node.on text{fill:var(--ink)}
@@ -82,195 +133,268 @@ svg.orbits{width:100%;height:auto;display:block;max-width:100%}
   .core .big{font-size:56px}
   .core .small{font-size:15px}
 }
-
-.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
-.tab{font:inherit;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);padding:9px 14px;border-radius:999px;cursor:pointer;line-height:1.2}
+.tabs{display:flex;flex-wrap:wrap;gap:var(--s2);margin-bottom:var(--s5)}
+.tab{font:inherit;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);min-height:44px;padding:var(--s2) var(--s4);border-radius:var(--r-pill);cursor:pointer;line-height:1.2;transition:border-color .2s ease}
+.tab:hover{border-color:var(--ink)}
 .tab[aria-selected="true"]{background:var(--lime);color:var(--on-lime);border-color:var(--lime)}
 .tab:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
 .panel{min-width:0}
-.panel h3.orbit-name{font-weight:900;font-size:clamp(30px,4.4vw,44px);line-height:1;text-transform:uppercase;margin-top:6px}
-.panel .orbit-lead{font-size:20px;color:var(--ink);margin:10px 0 22px;line-height:1.35;font-weight:400}
-.panel .sublabel{display:block;margin:0 0 10px}
-.bsteps{list-style:none;margin:0 0 24px;padding:0;display:grid;gap:10px}
-.bstep{display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:16px;scroll-margin-top:24px;transition:border-color .25s}
-.bstep.hl{border-color:var(--lime)}
-.bstep > div{min-width:0}
-.bstep h4{margin:0;color:var(--ink);font-weight:800;font-size:20px;line-height:1.2}
-.bstep .tag{color:var(--muted);font-size:14px;margin:2px 0 0;font-weight:600}
-.bstep p{margin:8px 0 0;font-size:16px;line-height:1.6}
-.num{width:44px;height:44px;border-radius:50%;background:var(--lime);color:var(--on-lime);display:grid;place-items:center;font-weight:800;font-size:16px}
-.items{list-style:none;margin:0;padding:0;display:grid;gap:0}
-.items li{display:grid;grid-template-columns:minmax(0,9.5em) minmax(0,1fr);gap:4px 16px;padding:11px 0;border-top:1px solid var(--line);font-size:15px;line-height:1.55}
+.panel:focus-visible{outline:2px solid var(--ink);outline-offset:8px;border-radius:var(--r-small)}
+.panel h3.orbit-name{font-weight:900;font-size:clamp(30px,4.4vw,44px);line-height:1.05;text-transform:uppercase;margin-top:var(--s2)}
+.panel .orbit-lead{font-size:19px;color:var(--ink);margin:var(--s3) 0 var(--s5);line-height:1.4}
+.panel .sublabel{display:block;margin:0 0 var(--s3)}
+.num{width:44px;height:44px;border-radius:50%;background:var(--lime);color:var(--on-lime);display:grid;place-items:center;font-weight:800;font-size:16px;font-variant-numeric:tabular-nums}
+.items{list-style:none;margin:0;padding:0;display:grid}
+.items li{display:grid;grid-template-columns:minmax(0,9.5em) minmax(0,1fr);gap:var(--s1) var(--s4);padding:var(--s3) 0;border-top:1px solid var(--line);font-size:15px;line-height:1.55}
 .items li:last-child{border-bottom:1px solid var(--line)}
 .items b{color:var(--ink);font-weight:700}
 @media (max-width:480px){.items li{grid-template-columns:1fr}}
 
+/* Секції-блоки */
+section.block{padding-block:var(--s8);border-top:1px solid var(--line)}
+section.block:first-child{border-top:0}
+
+
+/* PILLARS: три головні речі */
+.pillars{list-style:none;margin:var(--s6) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 var(--s5);border-top:2px solid var(--ink)}
+@media (max-width:760px){.pillars{grid-template-columns:1fr}}
+.pillars li{padding:var(--s5) 0;display:grid;gap:var(--s3);align-content:start;min-width:0}
+@media (max-width:760px){.pillars li+li{border-top:1px solid var(--line)}}
+.pillars h3{font-weight:900;font-size:clamp(24px,2.6vw,30px);line-height:1.1;text-transform:uppercase}
+.pillars p{margin:0;font-size:16px;max-width:40ch}
+
+/* TEAM: Аліса і помічниці */
+.team{margin-top:var(--s6);display:grid;gap:var(--s4)}
+.lead-agent{background:var(--lime);color:var(--on-lime);border-radius:var(--r-card);padding:var(--s5) var(--s6);display:grid;grid-template-columns:auto minmax(0,1fr);gap:var(--s5);align-items:center;position:relative}
+.lead-agent h3{color:var(--on-lime);font-weight:900;font-size:clamp(28px,3.4vw,40px);line-height:1.05;text-transform:uppercase}
+.lead-agent p{margin:var(--s1) 0 0;font-size:16px;max-width:52ch}
+.lead-agent .ava{background:var(--white);width:64px;height:64px;font-size:30px}
+.lead-agent::after{content:"";position:absolute;left:50%;bottom:calc(-1 * var(--s4));width:2px;height:var(--s4);background:var(--ink)}
+.crew{list-style:none;margin:0;padding:var(--s4) 0 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s3);border-top:2px solid var(--ink)}
+@media (max-width:960px){.crew{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.crew{grid-template-columns:1fr}.lead-agent{padding:var(--s5);gap:var(--s4)}.lead-agent::after{display:none}}
+.crew li{background:var(--card);border-radius:var(--r-card);padding:var(--s4);display:grid;grid-template-columns:44px minmax(0,1fr);gap:var(--s3);align-items:start;min-width:0}
+.crew h3{font-weight:800;font-size:19px;line-height:1.2}
+.crew h3 small{display:block;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:2px}
+.crew p{margin:var(--s2) 0 0;font-size:15px;line-height:1.5}
+.ava{width:44px;height:44px;border-radius:50%;background:var(--bg);border:1.5px solid var(--line);display:grid;place-items:center;font-size:20px;line-height:1}
+
 /* WHO */
-.who-sec{padding-block:56px 8px}
-.who-sec h2{font-weight:900;font-size:clamp(32px,6vw,64px);line-height:.95;text-transform:uppercase;letter-spacing:-.01em}
-.who-sec h2 .italic{text-transform:none;font-size:.62em;display:block;margin-top:.12em;font-weight:500;letter-spacing:0}
-.who{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.who-sec{padding-block:var(--s8);border-top:1px solid var(--line)}
+.who{list-style:none;margin:var(--s6) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s4)}
 @media (max-width:760px){.who{grid-template-columns:1fr}}
-.who li{background:var(--card);border-radius:18px;padding:22px;min-width:0;display:grid;gap:10px;align-content:start}
-.who li.bonus{background:var(--bg);border:1.5px dashed var(--line)}
+.who li{background:var(--card);border-radius:var(--r-card);padding:var(--s5);min-width:0;display:grid;gap:var(--s3);align-content:start}
 .who h3{font-weight:800;font-size:21px;line-height:1.2}
 .who p{margin:0;font-size:15px;line-height:1.6}
-.who-note{margin:22px 0 0;font-size:18px;color:var(--ink);font-weight:400;max-width:60ch}
 
-/* MANIFESTO */
-.lead{text-align:center;color:var(--text);font-family:var(--serif);font-style:italic;font-size:clamp(26px,6vw,34px);line-height:1.25;padding-block:64px 28px;margin:0}
-.rule{height:2px;border:0;margin:0 auto 48px;max-width:680px;background:linear-gradient(90deg,transparent,var(--lime) 20%,var(--lime) 80%,transparent)}
-.prose{display:grid;gap:22px}
-.prose p{margin:0}
-.prose b{font-weight:600;color:var(--ink)}
-.pull{text-align:center;padding-block:28px;display:grid;gap:10px}
-.pull .italic{font-size:clamp(32px,8vw,48px);line-height:1.1;color:var(--ink)}
+/* MANIFESTO (вузька колонка, ритм після широких блоків) */
+.manifesto{background:var(--card);padding-block:var(--s8)}
+.lead{text-align:center;color:var(--ink);font-family:var(--serif);font-style:italic;font-size:clamp(30px,6vw,44px);line-height:1.15;margin:0 0 var(--s6)}
+.prose{display:grid;gap:var(--s5)}
+.prose p{margin:0;max-width:62ch}
+.prose b{font-weight:700;color:var(--ink)}
+.pull{text-align:center;padding-block:var(--s6);display:grid;gap:var(--s2)}
+.pull .italic{font-size:clamp(32px,7vw,48px);line-height:1.1;color:var(--ink)}
 .pull small{font-size:16px;color:var(--text)}
 
-/* EARLY CTA */
-.band{background:var(--card);margin-top:64px;padding-block:64px;text-align:center}
-.band p{margin:0 auto 26px;max-width:34ch;color:var(--ink);font-size:19px;font-weight:400}
-.why{list-style:none;margin:0 auto 22px;padding:0;display:grid;gap:12px;max-width:30em;text-align:left}
-.why li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px;align-items:center;color:var(--ink);font-size:18px;font-weight:400;line-height:1.4}
-.why .ok{width:28px;height:28px;border-radius:50%;background:var(--lime);color:var(--on-lime);display:grid;place-items:center;font-weight:900;font-size:15px;line-height:1}
-.band p.why-tail{margin-bottom:26px;font-size:17px;color:var(--text)}
-.btn{display:inline-block;background:var(--lime);color:var(--on-lime);font-family:var(--sans);font-weight:800;font-size:15px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;padding:20px 44px;border-radius:999px;border:0;cursor:pointer;transition:transform .15s ease, box-shadow .15s ease}
-.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(17,17,17,.12)}
-.btn:focus-visible{outline:3px solid var(--ink);outline-offset:4px}
-.btn.ghost{background:var(--card);color:var(--ink);font-weight:600;border:1.5px solid var(--line)}
+/* CTA BAND */
+.band{padding-block:var(--s8);text-align:center;border-top:1px solid var(--line)}
+.band h2{font-weight:900;font-size:clamp(28px,5vw,44px);line-height:1.08;text-transform:uppercase;margin:0 auto var(--s5);max-width:20ch}
+.why{list-style:none;margin:0 auto var(--s5);padding:0;display:grid;gap:var(--s3);max-width:30em;text-align:left}
+.why li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:var(--s3);align-items:center;color:var(--ink);font-size:17px;line-height:1.4}
+.ok{width:28px;height:28px;border-radius:50%;background:var(--lime);color:var(--on-lime);display:grid;place-items:center;font-weight:900;font-size:15px;line-height:1}
+.band .cta-row{justify-content:center}
+.band .fine{margin:var(--s4) 0 0;font-size:14px;color:var(--muted)}
 
-/* ROUTE: як працює система */
-.route-sec{padding-block:80px 56px}
-.route-sec h2{font-weight:800;font-size:clamp(30px,7vw,44px);line-height:1.1;text-align:center;text-transform:uppercase;letter-spacing:-.01em}
-.route-sec h2 .italic{display:block;text-transform:none;font-size:1.05em;margin-top:6px;font-weight:500}
-.route{list-style:none;margin:40px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-@media (max-width:760px){.route{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.route button{width:100%;height:100%;font:inherit;text-align:left;background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:16px;cursor:pointer;display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px;align-items:center;color:var(--ink);transition:border-color .2s ease}
-.route button:hover{border-color:var(--lime)}
-.route button:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
-.route b{display:block;font-weight:800;font-size:17px;line-height:1.2}
-.route small{display:block;color:var(--muted);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-top:4px}
-@media (max-width:400px){.route button{grid-template-columns:1fr;gap:10px}}
-
-/* DAY */
-section.block{padding-block:56px;border-top:1px solid var(--line)}
-.block h2{font-weight:900;font-size:clamp(32px,6vw,64px);line-height:.95;text-transform:uppercase;letter-spacing:-.01em;margin-top:8px}
-.block h2 .italic{text-transform:none;font-size:.62em;display:block;margin-top:.12em;font-weight:500;letter-spacing:0}
-.day{margin-top:28px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:2px solid var(--ink)}
-@media (max-width:760px){.day{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:440px){.day{grid-template-columns:1fr}}
-.slot{padding:16px 16px 20px 0;min-width:0}
-.slot .t{font-weight:900;font-size:clamp(34px,5vw,52px);line-height:1;color:var(--ink);font-variant-numeric:tabular-nums}
-.slot .t small{font-size:12px;font-weight:700;letter-spacing:.15em;display:block;color:var(--muted);margin-bottom:6px;text-transform:uppercase}
-.slot p{margin:10px 0 0;font-size:15px;line-height:1.6}
 
 /* COURSE */
-.course{margin-top:28px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.course{margin-top:var(--s6);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s4)}
 @media (max-width:760px){.course{grid-template-columns:1fr}}
-.cstep{background:var(--card);border-radius:18px;padding:22px;min-width:0;display:grid;gap:8px;align-content:start}
-.cstep h3{font-weight:900;font-size:24px;text-transform:uppercase;line-height:1.05}
-.cstep .orb{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.cstep{background:var(--card);border-radius:var(--r-card);padding:var(--s5);min-width:0;display:grid;gap:var(--s2);align-content:start}
+.cstep h3{font-weight:900;font-size:24px;text-transform:uppercase;line-height:1.1}
+.cstep .orb{font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 .cstep p{margin:0;font-size:15px;line-height:1.6}
-.cstep .arrow{color:var(--muted)}
+.nocode{margin-top:var(--s4);background:var(--dark);color:#F4F4F4;border-radius:var(--r-card);padding:var(--s5) var(--s6);display:grid;grid-template-columns:auto minmax(0,1fr);gap:var(--s5);align-items:center}
+.nocode b{display:block;font-weight:900;text-transform:uppercase;color:var(--lime);font-size:clamp(22px,3vw,30px);line-height:1.1}
+.nocode p{margin:0;font-size:16px;line-height:1.6;max-width:64ch}
+@media (max-width:640px){.nocode{grid-template-columns:1fr;gap:var(--s3);padding:var(--s5)}}
 
-/* RESULT */
-.result{margin-top:28px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-@media (max-width:760px){.result{grid-template-columns:1fr}}
-.result li{list-style:none;background:var(--card);border-left:4px solid var(--lime);border-radius:12px;padding:20px 22px;min-width:0;display:grid;grid-template-columns:28px minmax(0,1fr);gap:14px;align-items:start}
-.result .ok{width:28px;height:28px;border-radius:50%;background:var(--lime);color:var(--on-lime);display:grid;place-items:center;font-weight:900;font-size:15px;line-height:1}
-.result h3{font-weight:800;font-size:19px;line-height:1.25}
-.result p{margin:6px 0 0;font-size:15px;line-height:1.6}
-.result-wrap{padding:0}
-
-/* CLIMAX */
-.climax{text-align:center;padding-block:56px 72px;border-top:1px solid var(--line)}
-.climax .big{font-weight:900;text-transform:uppercase;color:var(--ink);font-size:clamp(36px,9.5vw,72px);line-height:.95;letter-spacing:-.02em}
-.climax .italic{display:block;font-size:clamp(32px,8vw,58px);line-height:1.1;margin-top:12px;color:var(--ink)}
-
-/* WORDS CTA */
-.cta{padding-block:56px 64px;border-top:1px solid var(--line);display:grid;gap:16px}
-.cta .big{font-weight:900;font-size:clamp(34px,8vw,80px);line-height:.95;color:var(--ink);text-transform:uppercase;letter-spacing:-.01em}
-.cta .big .italic{text-transform:none;display:block;font-size:.55em;font-weight:500;letter-spacing:0;margin-top:.1em}
-.cta p{max-width:56ch;margin:0;font-size:17px}
-.cta p b{color:var(--ink);font-weight:700}
-.cta p a{color:var(--ink)}
-.words{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
-.word{font-weight:900;font-size:22px;background:var(--lime);color:var(--on-lime);padding:8px 18px;border-radius:999px;text-decoration:none}
-.word:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
-.foot{font-size:13px;color:var(--muted)}
 
 /* AUTHOR */
-.author{border-top:1px solid var(--line);padding-block:56px;display:grid;gap:18px}
-.author h3{font-weight:800;font-size:28px}
-.facts{list-style:none;margin:0;padding:0;display:grid;gap:12px}
-.facts li{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:baseline}
-.facts strong{font-weight:800;color:var(--ink);font-size:22px;font-variant-numeric:tabular-nums;min-width:3.2ch}
+.author{padding-block:var(--s8);border-top:1px solid var(--line);display:grid;gap:var(--s5)}
+.author h2{font-weight:900;font-size:clamp(32px,5vw,48px);line-height:1.04;text-transform:uppercase}
+.author .about{margin:0;max-width:62ch}
+.facts{list-style:none;margin:0;padding:0;display:grid;gap:var(--s3)}
+.facts li{display:grid;grid-template-columns:5.5ch minmax(0,1fr);gap:var(--s4);align-items:baseline;padding-bottom:var(--s3);border-bottom:1px solid var(--line)}
+.facts strong{font-weight:900;color:var(--ink);font-size:24px;line-height:1.1;font-variant-numeric:tabular-nums}
 
-/* CASES + REVIEWS */
-.cases{display:grid;gap:18px;padding-bottom:56px}
-.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-@media (max-width:480px){.stats{grid-template-columns:1fr}}
-.stat{background:var(--card);border-radius:18px;padding:18px;min-width:0}
-.stat b{display:block;font-weight:900;font-size:clamp(30px,7vw,40px);line-height:1;color:var(--ink);font-variant-numeric:tabular-nums}
-.stat b .mark{padding:0 .1em}
-.stat > span{display:block;margin-top:8px;font-size:14px;line-height:1.45}
-.cases p{margin:0;font-size:16px}
-.reviews-sec{padding-block:8px 56px;display:grid;gap:18px}
-.reviews-sec h2{font-weight:900;font-size:clamp(28px,6vw,40px);line-height:1;text-transform:uppercase}
-.reviews-sec h2 .italic{display:block;text-transform:none;font-weight:500;font-size:.7em;margin-top:.15em}
-.reviews{display:grid;gap:14px;margin:0;padding:0;list-style:none}
-.review{margin:0;background:var(--card);border-left:4px solid var(--lime);border-radius:12px;padding:20px 22px}
-.review blockquote{margin:0;font-family:var(--serif);font-style:italic;font-size:clamp(19px,4.6vw,22px);line-height:1.4;color:var(--ink)}
-.review figcaption{margin-top:12px;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-.shots{list-style:none;margin:0;padding:0;columns:2 300px;column-gap:14px}
-.shots li{break-inside:avoid;margin:0 0 14px;border-radius:14px;overflow:hidden;border:1.5px solid var(--line);background:#17212b}
-.shots img{display:block;width:100%;height:auto}
+/* REVIEWS */
+.reviews-sec{padding-block:0 var(--s8);display:grid;gap:var(--s5)}
+.reviews{display:grid;gap:var(--s3);margin:0;padding:0;list-style:none}
+.review{margin:0;background:var(--card);border-left:4px solid var(--lime);border-radius:var(--r-small);padding:var(--s5)}
+.review blockquote{margin:0;font-family:var(--serif);font-style:italic;font-size:clamp(20px,4.6vw,23px);line-height:1.4;color:var(--ink)}
+.review figcaption{margin-top:var(--s3);font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .reviews-note{margin:0;font-size:15px;color:var(--text)}
+.more{border:1.5px solid var(--line);border-radius:var(--r-card);background:var(--bg)}
+.more summary{cursor:pointer;list-style:none;padding:var(--s4) var(--s5);min-height:56px;display:flex;align-items:center;justify-content:space-between;gap:var(--s4);font-weight:700;color:var(--ink)}
+.more summary::-webkit-details-marker{display:none}
+.more summary::after{content:"+";font-weight:900;font-size:24px;line-height:1}
+.more[open] summary::after{content:"−"}
+.more summary:focus-visible{outline:3px solid var(--ink);outline-offset:3px;border-radius:var(--r-card)}
+.shots{list-style:none;margin:0;padding:0 var(--s4) var(--s4);columns:2 300px;column-gap:var(--s3)}
+.shots li{break-inside:avoid;margin:0 0 var(--s3);border-radius:var(--r-small);overflow:hidden;border:1.5px solid var(--line);background:#17212b}
+.shots img{display:block;width:100%;height:auto}
 
-/* PRICE */
-.price-card{background:var(--card);border:1.5px solid var(--line);border-radius:28px;padding:52px 24px;text-align:center;display:grid;gap:22px;justify-items:center;margin-block:24px 56px}
-.price-card h3{font-weight:900;text-transform:uppercase;font-size:clamp(26px,6vw,34px);letter-spacing:.01em}
-.price{display:inline-block;background:var(--lime);color:var(--on-lime);border-radius:999px;padding:6px 28px;font-weight:900;font-size:clamp(34px,9vw,48px);line-height:1.2;font-variant-numeric:tabular-nums}
-.price-card .inc{color:var(--ink);font-weight:400;max-width:32ch;margin:0}
-.price-card .meta{color:var(--text);font-size:16px;margin:0;line-height:1.7}
-.kw{font-weight:900;color:var(--ink);font-size:1.2em;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+/* FAQ */
+.faq{padding-block:var(--s8);border-top:1px solid var(--line)}
+.qa{margin-top:var(--s6);border-top:2px solid var(--ink)}
+.qa details{border-bottom:1px solid var(--line)}
+.qa summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:var(--s4);padding:var(--s4) 0;min-height:56px;font-weight:700;font-size:18px;color:var(--ink);line-height:1.35}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{content:"+";flex:none;width:32px;height:32px;border-radius:50%;background:var(--card);display:grid;place-items:center;font-weight:900;font-size:20px;line-height:1}
+.qa details[open] summary::after{content:"−";background:var(--lime);color:var(--on-lime)}
+.qa summary:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.qa p{margin:0 0 var(--s5);max-width:62ch}
 
-.note{display:grid;gap:18px;padding-bottom:56px}
-.note p{margin:0;font-size:16px}
-.center{text-align:center}
+/* FINAL CTA */
+.final{background:var(--card);border:1.5px solid var(--line);border-radius:28px;padding:var(--s7) var(--s5);text-align:center;display:grid;gap:var(--s5);justify-items:center;margin-block:0 var(--s8)}
+.final h2{font-weight:900;text-transform:uppercase;font-size:clamp(28px,6vw,40px);line-height:1.05}
+.price{display:inline-block;background:var(--lime);color:var(--on-lime);border-radius:var(--r-pill);padding:var(--s1) var(--s6);font-weight:900;font-size:clamp(32px,8vw,44px);line-height:1.2;font-variant-numeric:tabular-nums}
+.final p{margin:0;max-width:34ch}
+.final .ink{color:var(--ink)}
+.final .cta-row{justify-content:center}
+.final .fine{font-size:14px;color:var(--muted)}
 
+/* Липка кнопка на телефоні */
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:20;padding:var(--s3) var(--s4) calc(var(--s3) + env(safe-area-inset-bottom));background:var(--bg);border-top:1px solid var(--line);display:none;transform:translateY(110%);transition:transform .25s ease}
+.sticky .btn{width:100%;padding-block:var(--s4);font-size:14px}
+.sticky.show{transform:translateY(0)}
+@media (max-width:760px){.sticky{display:block}html{scroll-padding-bottom:96px}footer{padding-bottom:calc(var(--s9) + env(safe-area-inset-bottom))}}
+
+/* FOOTER */
 .foot-link{color:var(--text);text-decoration:underline;text-underline-offset:3px}
 .foot-link:hover{color:var(--ink)}
-.socials{display:flex;justify-content:center;gap:14px;margin-bottom:22px}
-.socials a{width:48px;height:48px;border-radius:50%;background:var(--card);border:1.5px solid var(--line);color:var(--ink);display:grid;place-items:center;transition:background .15s ease, border-color .15s ease}
+.socials{display:flex;justify-content:center;gap:var(--s3);margin-bottom:var(--s5)}
+.socials a{width:48px;height:48px;border-radius:50%;background:var(--card);border:1.5px solid var(--line);color:var(--ink);display:grid;place-items:center;transition:background-color .15s ease, border-color .15s ease}
 .socials a:hover{background:var(--lime);border-color:var(--lime);color:var(--on-lime)}
 .socials a:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
 .socials svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-footer{text-align:center;color:var(--muted);font-size:13px;line-height:1.8;padding-block:48px 56px;border-top:1px solid var(--line)}
+footer{text-align:center;color:var(--muted);font-size:14px;line-height:1.8;padding-block:var(--s7) var(--s8);border-top:1px solid var(--line)}
 
-@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.btn,.socials a,.route button{transition:none}.ring.on{animation:none}.node circle,.node text,.bstep{transition:none}}
-@media (max-width:420px){body{font-size:17px}.btn{padding:18px 28px}}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.btn,.socials a,.tab,.sticky{transition:none}.ring.on{animation:none}.node circle,.node text{transition:none}.btn:hover{transform:none}}
 </style>
 </head>
 <body>
-
+<a class="skip" href="#main">Перейти до змісту</a>
 
 <header class="hero">
-  <div class="hero-inner">
-    <div class="label">Курс · старт 01.12.2026</div>
-    <h1>Система</h1>
-    <span class="italic">з AI</span>
-    <span class="universe">мій AI Universe</span>
-    <p class="sub">Система для життя, проявлення і блогу. Ти живеш, вона працює.</p>
+  <div class="wide hero-inner">
+    <div>
+      <span class="pill">Курс · старт 01.12.2026</span>
+      <h1>Тобі не треба більше часу<span class="italic">Тобі потрібна система</span></h1>
+      <p class="sub">На курсі «Система з AI» ти збираєш свою команду AI-помічниць. Щоранку вони кажуть, на чому сьогодні фокус, ведуть конвеєр контенту твоїм голосом і тримають усе в одному місці. Код писати не треба.</p>
+      <div class="cta-row" id="heroCta">
+        <a class="btn" href="https://ig.me/m/kateryna__shevtsova" target="_blank" rel="noopener">Написати <span translate="no">СИСТЕМА</span> в директ</a>
+        <button class="copy" type="button" data-copy>Скопіювати слово</button>
+      </div>
+      <p class="status" role="status" aria-live="polite"></p>
+      <p class="fine">Це передзапис. Формат, ціну і всі деталі розповідаю в особистих. Бонуси раннього бронювання до 01.11.</p>
+    </div>
+    <figure class="chat" aria-label="Приклад: як мої помічниці відповідають у Telegram протягом дня">
+      <div class="chat-head" aria-hidden="true"><span class="chat-ava">А</span><span><b>Аліса і команда</b><span class="who-bot">мій бот у Telegram</span></span></div>
+      <ul class="msgs">
+        <li class="msg bot"><i>📋 Софія</i>Доброго ранку. Сьогодні 2 зустрічі і 4 вільні години.<br>🎯 Фокус: сценарій рілз, відповісти учням, тренування.<small>08:00</small></li>
+        <li class="msg me">🎤 Голосове, 0:12<small>12:30</small></li>
+        <li class="msg bot"><i>✍️ Ліра</i>Почула: рілз про те, як ти перестала тримати все в голові. Сценарій готовий: хук, три кадри, заклик. Глянеш?<small>12:31</small></li>
+        <li class="msg me extra">💰 обід 24 франки<small>13:40</small></li>
+        <li class="msg bot extra"><i>💰 Белла</i>Записала: кафе, 24 CHF.<small>13:40</small></li>
+      </ul>
+      <figcaption>Приклад розмови з моїми помічницями.</figcaption>
+    </figure>
   </div>
 </header>
 
-<main>
-  <section class="map-sec" id="universe" aria-label="Карта системи">
+<main id="main">
+  <div class="wide">
+    <section class="block" aria-labelledby="pillars-h">
+      <h2 id="pillars-h">Що робить система<span class="italic">три речі, заради яких її будують</span></h2>
+      <ol class="pillars">
+        <li><span class="num" aria-hidden="true">1</span><h3>Фокус на день</h3><p>Зранку одне повідомлення: задачі, зустрічі і пошта разом. Ти одразу бачиш, що саме тобі сьогодні робити, і не тримаєш усе в голові.</p></li>
+        <li><span class="num" aria-hidden="true">2</span><h3>Конвеєр контенту</h3><p>Сценарії, рілз, відео, каруселі і сторіз ідуть по готовому процесу, разом з монтажем. Усе твоїм голосом і з твоїм контекстом.</p></li>
+        <li><span class="num" aria-hidden="true">3</span><h3>Усе в одному місці</h3><p>Задачі, ідеї, гроші, тіло і контент живуть у команді AI-помічниць. Пишеш одне голосове, а далі вони розбираються самі.</p></li>
+      </ol>
+    </section>
+
+    <section class="block" aria-labelledby="team-h">
+      <span class="label">Моя команда в Telegram</span>
+      <h2 id="team-h">Знайомся: Аліса і її помічниці<span class="italic">ти збереш таку команду собі</span></h2>
+      <div class="team">
+        <div class="lead-agent">
+          <span class="ava" aria-hidden="true">👑</span>
+          <div><h3>Аліса</h3><p>Головна. Приймає всі мої повідомлення й голосові і сама передає потрібній помічниці.</p></div>
+        </div>
+        <ul class="crew">
+          <li><span class="ava" aria-hidden="true">📋</span><div><h3>Софія <small>план і задачі</small></h3><p>Щоранку збирає план дня і веде задачі.</p></div></li>
+          <li><span class="ava" aria-hidden="true">✍️</span><div><h3>Ліра <small>контент</small></h3><p>Пише сценарії, каруселі, сторіз і пости моїм голосом.</p></div></li>
+          <li><span class="ava" aria-hidden="true">💡</span><div><h3>Мія <small>ідеї</small></h3><p>Ловить ідеї і позначає ті, що підходять для контенту.</p></div></li>
+          <li><span class="ava" aria-hidden="true">🧠</span><div><h3>Тея <small>пам'ять</small></h3><p>Пам'ятає рішення, людей і цілі.</p></div></li>
+          <li><span class="ava" aria-hidden="true">⏳</span><div><h3>Ора <small>день</small></h3><p>Увечері підсумовує, що зроблено і куди пішов час.</p></div></li>
+          <li><span class="ava" aria-hidden="true">💰</span><div><h3>Белла <small>гроші</small></h3><p>Записує витрати й доходи, рахує місяць.</p></div></li>
+          <li><span class="ava" aria-hidden="true">🌿</span><div><h3>Віта <small>тіло</small></h3><p>Калорії, вага, тренування і що приготувати.</p></div></li>
+          <li><span class="ava" aria-hidden="true">⭐</span><div><h3>Стела <small>статистика</small></h3><p>Рахує підписників і показує ріст.</p></div></li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <section class="who-sec" aria-labelledby="who-h">
     <div class="wide">
-      <div class="map-head">
-        <h2><span class="italic">система для мене, а не я для системи</span></h2>
-        <p>У центрі я, жива, з голосом, історіями і своїм ритмом. Навколо чотири орбіти, які забирають рутину: <span class="mark">знання</span>, <span class="mark">проєкти</span>, <span class="mark">скіли</span> і <span class="mark">агенти</span>. Обери орбіту, щоб побачити, з чого вона складається.</p>
+      <h2 id="who-h">Для кого ця система<span class="italic">блог у ній одна з частин</span></h2>
+      <ul class="who">
+        <li><span class="num" aria-hidden="true">1</span><h3>Хочеш <span class="mark">автоматизувати</span> важливе в житті</h3><p>Гроші, план дня, задачі, тіло, звіт за день. Те, що зараз тримається в голові й нотатках, переїжджає в систему, яка працює щодня, навіть коли ти про неї не згадуєш.</p></li>
+        <li><span class="num" aria-hidden="true">2</span><h3>Хочеш <span class="mark">проявлятися</span></h3><p>Досвід є, а пости відкладаються на «потім». Система тримає твій голос, історії і теми під рукою, тому вийти до людей стає простіше, ніж промовчати.</p></li>
+        <li><span class="num" aria-hidden="true">3</span><h3>Ведеш блог або хочеш почати</h3><p>Контент від ідеї до аналізу йде по готовому процесу, і блог перестає з'їдати вечори.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="manifesto" aria-label="Чому система">
+    <div class="wrap">
+      <p class="lead">Тобі вже є що сказати.</p>
+      <div class="prose">
+        <p>Досвід є, клієнти є, ідеї в нотатках є. А день розтягують дрібниці: витрати, задачі, план. Блог або стоїть, або з'їдає вечори: шукаєш теми, пишеш з нуля, переписуєш, сумніваєшся.</p>
+        <p>Коротше, усе це тримається на тобі вручну. Кожен пост як перший, кожен понеділок з нуля.</p>
+        <p>Я це прожила: 13 років фінансовою директоркою, вигорання, потім IT і консалтинг у Швейцарії. По факту мене завжди рятувало одне правило: <b>система для мене, а не я для системи</b>. Так я і зібрала свою систему з AI.</p>
+      </div>
+      <div class="pull">
+        <span class="italic">AI забирає рутину.<br><span class="mark">Автором залишаєшся ти.</span></span>
+        <small>твій голос, твої історії, твій ритм</small>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" aria-labelledby="band-h">
+    <div class="wrap">
+      <h2 id="band-h">Відчуваєш, що тобі сюди?</h2>
+      <ul class="why">
+        <li><span class="ok" aria-hidden="true">✓</span><span>пишеш мені слово <b class="kw" translate="no">СИСТЕМА</b> в директ</span></li>
+        <li><span class="ok" aria-hidden="true">✓</span><span>потрапляєш у передзапис і дізнаєшся формат і ціну раніше за всіх</span></li>
+        <li><span class="ok" aria-hidden="true">✓</span><span>маєш <span class="mark">бонуси раннього бронювання</span> до 01.11</span></li>
+      </ul>
+      <div class="cta-row">
+        <a class="btn" href="https://ig.me/m/kateryna__shevtsova" target="_blank" rel="noopener">Написати <span translate="no">СИСТЕМА</span> в директ</a>
+        <button class="copy" type="button" data-copy>Скопіювати слово</button>
+      </div>
+      <p class="status" role="status" aria-live="polite"></p>
+      <p class="fine">Відповідаю сама. А далі можна не читати :)</p>
+    </div>
+  </section>
+
+  <section class="map-sec" aria-labelledby="map-h">
+    <div class="wide">
+      <div class="sec-head">
+        <h2 id="map-h">Так влаштована моя система<span class="italic">чотири орбіти навколо мене</span></h2>
+        <p>У центрі я: голос, історії, мій ритм. Навколо чотири орбіти, які забирають рутину: <span class="mark">знання</span>, <span class="mark">проєкти</span>, <span class="mark">скіли</span> і <span class="mark">агенти</span>. Натисни на орбіту, щоб побачити, що в ній.</p>
       </div>
       <div class="map">
         <div class="orbit-box">
@@ -278,167 +402,104 @@ footer{text-align:center;color:var(--muted);font-size:13px;line-height:1.8;paddi
             <title id="mapTitle">Чотири орбіти навколо Каті: знання, проєкти, скіли, агенти</title>
           </svg>
         </div>
-        <div class="panel">
-          <div class="tabs" role="tablist" id="tabs" aria-label="Орбіти"></div>
-          <div id="panel" role="tabpanel" aria-live="polite"></div>
+        <div class="panel-wrap">
+          <div class="tabs" role="tablist" id="tabs" aria-label="Орбіти системи"></div>
+          <div id="panel" class="panel" role="tabpanel" tabindex="0"></div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="who-sec" aria-label="Для кого">
-    <div class="wide">
-      <h2>Для кого ця система<span class="italic">блог тут приємний бонус</span></h2>
-      <ul class="who">
-        <li><span class="num">1</span><h3>Хочеш <span class="mark">автоматизувати</span> важливе в житті</h3><p>Гроші, план дня, задачі, тіло, звіт за день. Те, що зараз тримається в голові й нотатках, переїжджає в систему, яка працює щодня, навіть коли ти про неї не згадуєш.</p></li>
-        <li><span class="num">2</span><h3>Хочеш <span class="mark">проявлятися</span></h3><p>Тобі є що сказати, але все відкладається на «потім». Система тримає твій голос, історії і теми під рукою, тому вийти до людей стає простіше, ніж промовчати.</p></li>
-        <li class="bonus"><span class="num">+</span><h3>Ведеш блог або хочеш почати</h3><p>Контент від ідеї до аналізу йде по готовому процесу, і блог перестає з'їдати вечори. Це приємний бонус до системи, а не головна мета.</p></li>
-      </ul>
-      <p class="who-note">Головне не блог. Головне, що в тебе з'являється система для тебе, а не ти для системи.</p>
-    </div>
-  </section>
-
-  <div class="wrap">
-    <p class="lead">І взагалі, тобі вже є що сказати.</p>
-    <hr class="rule">
-
-    <div class="prose">
-      <p>Тобі є що сказати і що показати. Досвід є, клієнти є, ідеї в нотатках є. А блог або стоїть, або з'їдає вечори: шукаєш теми, пишеш з нуля, переписуєш, сумніваєшся, і знову шукаєш теми.</p>
-      <p>Коротше, проблема не в тобі і не в алгоритмах. Проблема в тому, що блог у тебе працює як <span class="mark">друга робота без системи</span>. Кожен пост як перший.</p>
-      <p>Я це прожила. Фінансовий директор, вигорання, потім консалтинг у Швейцарії. І по факту для мене завжди працювало одне правило: система для мене, а не я для системи. З блогом так само.</p>
-    </div>
-
-    <div class="pull">
-      <span class="italic">AI забирає рутину.<br><span class="mark">Автором залишаєшся ти.</span></span>
-      <small>без безликих текстів і без життя в Instagram</small>
-    </div>
-
-    <div class="prose">
-      <p>Ми не починаємо з питання «який AI-інструмент вивчити». Ми починаємо з іншого: що ти хочеш перестати робити вручну?</p>
-      <p>І далі будуємо процес, який повторюється щотижня: від ідеї до аналізу результату. Не набір промптів, а одна система, де кожен крок зрозумілий і частину роботи вже робить AI.</p>
-    </div>
-  </div>
-
-  <section class="band">
-    <div class="wrap">
-      <p>Якщо вже відчуваєш, що тобі сюди, напиши мені в директ слово <b class="kw">СИСТЕМА</b>. Ось що це тобі дає:</p>
-      <ul class="why">
-        <li><span class="ok">✓</span><span>потрапляєш у предзапис</span></li>
-        <li><span class="ok">✓</span><span>дізнаєшся про формат, ціну і старт раніше за всіх</span></li>
-        <li><span class="ok">✓</span><span>отримуєш <span class="mark">бонуси раннього бронювання</span></span></li>
-      </ul>
-      <p class="why-tail">А далі можна не читати :)</p>
-      <a class="btn" href="https://ig.me/m/kateryna__shevtsova" target="_blank" rel="noopener">Хочу в предзапис</a>
-    </div>
-  </section>
-
-  <section class="route-sec">
-    <div class="wide">
-      <h2>Як працює система <span class="italic">від ідеї до результату</span></h2>
-      <ol class="route" id="route"></ol>
-    </div>
-  </section>
-
   <div class="wide">
-    <section class="block">
-      <span class="label">Автоматизації</span>
-      <h2>Доба системи<span class="italic">поки я живу, вона працює</span></h2>
-      <div class="day">
-        <div class="slot"><div class="t"><small>щодня</small>05:00</div><p>Ранковий план у Telegram: задачі, календар і пошта в одному повідомленні.</p></div>
-        <div class="slot"><div class="t"><small>протягом дня</small>голос</div><p>Голосове в потрібну тему: бот записує витрату, складає пост, рахує калорії з фото тарілки.</p></div>
-        <div class="slot"><div class="t"><small>щодня</small>21:30</div><p>Айфон сам відправляє кроки, активні калорії і пульс у мій трекер.</p></div>
-        <div class="slot"><div class="t"><small>щодня</small>23:30</div><p>Система сама зберігає копію всього, нічого не губиться.</p></div>
-      </div>
-    </section>
-
-    <section class="block">
+    <section class="block" aria-labelledby="course-h">
       <span class="label">Курс «Система з AI» · старт 01.12.2026</span>
-      <h2>Як ти збереш свою<span class="italic">ті самі орбіти, тільки твої</span></h2>
+      <h2 id="course-h">Як ти збереш свою<span class="italic">ті самі орбіти, тільки твої</span></h2>
       <div class="course">
-        <article class="cstep"><div class="num">1</div><span class="orb">Орбіта «Знання»</span><h3>Розпаковка</h3><p>Розумієш, про що постити. Збираєш свої файли: хто ти, для кого, твій голос, твій продукт, і проєкт у Claude, який тебе знає.</p></article>
-        <article class="cstep"><div class="num">2</div><span class="orb">Орбіти «Проєкти» і «Скіли»</span><h3>Проявлення</h3><p>Будуєш систему контенту у своєму стилі, з монтажем рілз через Remotion Studio. Поки ролик монтується, ти живеш.</p></article>
-        <article class="cstep"><div class="num">3</div><span class="orb">Орбіта «Агенти»</span><h3>Система агентів</h3><p>Автоматизація життя й контенту, як у мене: бот, який веде гроші, план, тіло і контент.</p></article>
+        <article class="cstep"><div class="num" aria-hidden="true">1</div><span class="orb">Орбіта «Знання»</span><h3>Розпаковка</h3><p>Розумієш, про що говорити. Збираєш файли знань: хто ти, для кого, твій голос, твій продукт. І проєкт у Claude, який тебе знає.</p></article>
+        <article class="cstep"><div class="num" aria-hidden="true">2</div><span class="orb">Орбіти «Проєкти» і «Скіли»</span><h3>Проявлення</h3><p>Будуєш систему контенту у своєму стилі, разом зі студією монтажу рілз, яка збирає ролик за тебе. Поки ролик монтується, ти живеш.</p></article>
+        <article class="cstep"><div class="num" aria-hidden="true">3</div><span class="orb">Орбіта «Агенти»</span><h3>Система агентів</h3><p>Свій бот у Telegram, як у мене: гроші, план дня, тіло і контент. Ти пишеш голосовим, він робить роботу.</p></article>
+      </div>
+      <div class="nocode">
+        <b>Без коду</b>
+        <p>Ти отримуєш готовий пакет, відкриваєш його в Claude і пишеш «розгорни». Claude сам встановлює систему, ставить тобі питання і налаштовує під тебе. Інструкції для Windows і Mac.</p>
       </div>
     </section>
 
-    <section class="block" aria-label="Результат">
-      <span class="label">Результат</span>
-      <h2>Що в тебе буде після курсу<span class="italic">не знання про AI, а твоя працююча система</span></h2>
-      <ul class="result result-wrap">
-        <li><span class="ok">✓</span><div><h3>Ти знаєш, <span class="mark">про що говорити</span></h3><p>Твоя тема, аудиторія, голос і продукт записані один раз. AI знає тебе, і не треба щоразу пояснювати, хто ти.</p></div></li>
-        <li><span class="ok">✓</span><div><h3>Своя <span class="mark">система контенту</span></h3><p>У твоєму стилі, від ідеї до готового рілз, разом з монтажем. Поки ролик монтується, ти живеш.</p></div></li>
-        <li><span class="ok">✓</span><div><h3>Свої <span class="mark">агенти</span> в Telegram</h3><p>Рутина життя й контенту робиться без тебе, як у мене: гроші, план, тіло, контент.</p></div></li>
-        <li><span class="ok">✓</span><div><h3>Контент <span class="mark">звучить як ти</span></h3><p>AI забирає рутину, але не пише замість тебе. Жодних безликих «аішних» текстів.</p></div></li>
-      </ul>
-    </section>
   </div>
 
-  <section class="climax">
-    <div class="wrap">
-      <div class="big">Тобі не треба більше часу.</div>
-      <span class="italic">Тобі потрібна <span class="mark">система</span>.</span>
-    </div>
-  </section>
-
-
   <div class="wrap">
-    <section class="author">
-      <div class="label">Хто веде</div>
-      <h3>Катя Шевцова</h3>
+    <section class="author" aria-labelledby="author-h">
+      <span class="label">Хто веде</span>
+      <h2 id="author-h">Катя Шевцова</h2>
+      <p class="about">Я будую системи все життя: спершу у фінансах, потім у даних, тепер з AI. Свій блог і свій день я веду на цій самій системі і показую весь процес, разом з помилками.</p>
       <ul class="facts">
-        <li><strong>13</strong><span>років фінансовим директором, тому системи і цифри для мене рідні</span></li>
-        <li><strong>BI</strong><span>Power BI-консультантка в IT-компанії у Швейцарії, будую звітність і автоматизації для міжнародних корпорацій</span></li>
-        <li><strong>AI</strong><span>веду свій блог на цій самій системі і показую весь процес, а не тільки результат</span></li>
+        <li><strong>13</strong><span>років фінансовою директоркою, тому системи і цифри для мене рідні</span></li>
+        <li><strong>6</strong><span>років консультую з даних і автоматизацій в IT-компанії у Швейцарії: понад 100 звітів і дашбордів для міжнародних корпорацій</span></li>
+        <li><strong>2</strong><span>сертифікації Microsoft. Веду тренінги з AI, Power BI і Fabric</span></li>
       </ul>
     </section>
 
-    <section class="cases" aria-label="Кейси">
-      <div class="label">Кейси</div>
-      <div class="stats">
-        <div class="stat"><b><span class="mark">100+</span></b><span>звітів і дашбордів у Power BI</span></div>
-        <div class="stat"><b>6 років</b><span>Power BI-консультантка в IT</span></div>
-        <div class="stat"><b>2</b><span>сертифікації Microsoft з аналітики даних</span></div>
-      </div>
-      <p>Веду тренінги з <span class="mark">AI, Power BI і Fabric</span> від Microsoft</p>
-    </section>
-
-    <section class="reviews-sec" aria-label="Відгуки">
-      <h2>Відгуки<span class="italic">учнів моїх навчань</span></h2>
+    <section class="reviews-sec" aria-labelledby="reviews-h">
+      <h2 id="reviews-h">Відгуки<span class="italic">людей, яких я вже навчала</span></h2>
+      <p class="reviews-note">«Система з AI» стартує вперше 01.12.2026, тому тут відгуки з моїх інших навчань і наставництва.</p>
       <ul class="reviews">
         <li><figure class="review"><blockquote>Це просто супер! Дивлюсь і не вірю, що я змогла таке зробити! Катерино, не перестаю дякувати! В голові вже крутиться купа ідей, як застосувати ці знання в роботі!</blockquote><figcaption>Анастасія</figcaption></figure></li>
         <li><figure class="review"><blockquote>Найкращий наставник, якого я можу щиро рекомендувати! Я з першого потоку навчання і можу впевнено сказати: Катерина неймовірна! Щира, відкрита, надихаюча та завжди готова підтримати. З нею хочеться вчитися, розвиватися і досягати більшого. Катерина це саме та людина, яка вірить у тебе навіть тоді, коли сам сумніваєшся. Дякую за все!</blockquote><figcaption>Юлія</figcaption></figure></li>
         <li><figure class="review"><blockquote>Мені дуже сподобалось спілкування з Катериною. Вона одразу професійно направила нашу розмову в правильний вектор. Все було зрозуміло, чітко й структуровано. Дуже відчувалась щира участь і зацікавленість у прийнятті правильного для мене рішення. Якщо ви ще вагаєтесь, то вже час діяти разом з таким чудовим наставником! Дякую!</blockquote><figcaption>Ольга</figcaption></figure></li>
       </ul>
-      <ul class="shots" aria-label="Скріни відгуків з Telegram">
-        <li><img src="reviews/review-1.webp" width="900" height="193" alt="Відгук у Telegram: Дякую тобі, Катя. Завдяки наставництву я отримала цю посаду. Ти додала мені впевненості, а я ризикнула і заявила про себе." loading="lazy" decoding="async"></li>
-        <li><img src="reviews/review-2.webp" width="546" height="112" alt="Відгук у Telegram: І це твій вплив допоміг в моєму розвитку. Тому ділюся з тобою. Твій вклад приносить плоди." loading="lazy" decoding="async"></li>
-        <li><img src="reviews/review-3.webp" width="535" height="222" alt="Відгук у Telegram: Мені сподобалося, можна було б дивитися цей стрім весь день. Сподобалося, що Катя показувала повний цикл: задачу, виконання, комунікацію з клієнтом." loading="lazy" decoding="async"></li>
-        <li><img src="reviews/review-4.webp" width="900" height="180" alt="Відгук у Telegram: Мені весь проєкт Наставництва з тобою подобається." loading="lazy" decoding="async"></li>
-        <li><img src="reviews/review-5.webp" width="900" height="501" alt="Відгук у Telegram: Катя, дякую! Я подивилась і надихнулась! Ти знизила рівень майбутніх тривог мені особисто. Те, що ти для нас робиш, це дуже круто." loading="lazy" decoding="async"></li>
-        <li><img src="reviews/review-6.webp" width="545" height="139" alt="Відгук у Telegram: Катю, ти зараз даєш всі інструменти, з якими я стикаюся на роботі. Це найкорисніший курс, який з теорії відразу в практику." loading="lazy" decoding="async"></li>
-        <li><img src="reviews/review-7.webp" width="543" height="98" alt="Відгук у Telegram: Вже зробив, побудував модель і сиджу такий, дивлюся на неї, кайфую. Дякую, що зустрічаю таких людей як ти, які запалюють іскру." loading="lazy" decoding="async"></li>
-        <li><img src="reviews/review-8.webp" width="535" height="358" alt="Відгук у Telegram: Щиро вітаю з закінченням курсу! Те, що ти робиш, неймовірно. Немає подібних проєктів на просторах онлайн викладання." loading="lazy" decoding="async"></li>
-        <li><img src="reviews/review-9.webp" width="527" height="102" alt="Відгук у Telegram: Тобі дуже дякую за поради. Ти з тих людей, які надали мені сил рухатись далі і не здаватись." loading="lazy" decoding="async"></li>
-        <li><img src="reviews/review-10.webp" width="540" height="125" alt="Відгук у Telegram: Ти перший на моїй пам'яті тічер, який так дійсно переймається за навчання і загалом за своїх учнів." loading="lazy" decoding="async"></li>
-      </ul>
-      <p class="reviews-note">«Система з AI» стартує вперше 01.12.2026, тому тут відгуки моїх учнів з інших навчань.</p>
-      <div><a class="btn ghost" href="https://t.me/gotobicases" target="_blank" rel="noopener">Усі відгуки в Telegram →</a></div>
+      <details class="more">
+        <summary>Ще 10 відгуків у скрінах з Telegram</summary>
+        <ul class="shots">
+          <li><img src="reviews/review-1.webp" width="900" height="193" alt="Відгук у Telegram: Дякую тобі, Катя. Завдяки наставництву я отримала цю посаду. Ти додала мені впевненості, а я ризикнула і заявила про себе." loading="lazy" decoding="async"></li>
+          <li><img src="reviews/review-2.webp" width="546" height="112" alt="Відгук у Telegram: І це твій вплив допоміг в моєму розвитку. Тому ділюся з тобою. Твій вклад приносить плоди." loading="lazy" decoding="async"></li>
+          <li><img src="reviews/review-3.webp" width="535" height="222" alt="Відгук у Telegram: Мені сподобалося, можна було б дивитися цей стрім весь день. Сподобалося, що Катя показувала повний цикл: задачу, виконання, комунікацію з клієнтом." loading="lazy" decoding="async"></li>
+          <li><img src="reviews/review-4.webp" width="900" height="180" alt="Відгук у Telegram: Мені весь проєкт Наставництва з тобою подобається." loading="lazy" decoding="async"></li>
+          <li><img src="reviews/review-5.webp" width="900" height="501" alt="Відгук у Telegram: Катя, дякую! Я подивилась і надихнулась! Ти знизила рівень майбутніх тривог мені особисто. Те, що ти для нас робиш, це дуже круто." loading="lazy" decoding="async"></li>
+          <li><img src="reviews/review-6.webp" width="545" height="139" alt="Відгук у Telegram: Катю, ти зараз даєш всі інструменти, з якими я стикаюся на роботі. Це найкорисніший курс, який з теорії відразу в практику." loading="lazy" decoding="async"></li>
+          <li><img src="reviews/review-7.webp" width="543" height="98" alt="Відгук у Telegram: Вже зробив, побудував модель і сиджу такий, дивлюся на неї, кайфую. Дякую, що зустрічаю таких людей як ти, які запалюють іскру." loading="lazy" decoding="async"></li>
+          <li><img src="reviews/review-8.webp" width="535" height="358" alt="Відгук у Telegram: Щиро вітаю з закінченням курсу! Те, що ти робиш, неймовірно. Немає подібних проєктів на просторах онлайн викладання." loading="lazy" decoding="async"></li>
+          <li><img src="reviews/review-9.webp" width="527" height="102" alt="Відгук у Telegram: Тобі дуже дякую за поради. Ти з тих людей, які надали мені сил рухатись далі і не здаватись." loading="lazy" decoding="async"></li>
+          <li><img src="reviews/review-10.webp" width="540" height="125" alt="Відгук у Telegram: Ти перший на моїй пам'яті тічер, який так дійсно переймається за навчання і загалом за своїх учнів." loading="lazy" decoding="async"></li>
+        </ul>
+      </details>
+      <div><a class="btn ghost" href="https://t.me/gotobicases" target="_blank" rel="noopener">Усі відгуки в Telegram</a></div>
     </section>
+  </div>
 
-    <section class="price-card" id="price">
-      <h3>Система з AI</h3>
+  <section class="faq" aria-labelledby="faq-h">
+    <div class="wrap">
+      <h2 id="faq-h">Питання і відповіді</h2>
+      <div class="qa">
+        <details><summary>Чи треба вміти програмувати?</summary><p>Ні. Ти отримуєш готовий пакет і пишеш Claude «розгорни». Далі він сам встановлює систему, питає тебе і налаштовує під тебе. Я показую кожен крок на демо-боті.</p></details>
+        <details><summary>Я не веду блог. Мені підійде?</summary><p>Так. Блог у системі одна з частин. Можна почати з життя: гроші, план дня, задачі, тіло. Контент підключиш, коли захочеш.</p></details>
+        <details><summary>У мене Mac. Або Windows. Підійде?</summary><p>Так, інструкції є для обох.</p></details>
+        <details><summary>Що потрібно, крім ноутбука?</summary><p>Платна підписка Claude Pro, на ній працює вся система. Її оплачуєш окремо, напряму в Claude.</p></details>
+        <details><summary>AI писатиме замість мене?</summary><p>AI бере структуру, редагування, монтаж і планування. Слова, історії і голос лишаються твої, і система вчиться саме на них.</p></details>
+        <details><summary><span>Що буде, коли я напишу <span translate="no">СИСТЕМА</span>?</span></summary><p>Я сама відповім тобі в директ і розповім формат, ціну і всі деталі. Ти в передзаписі, тому дізнаєшся про відкриття раніше за всіх. Купувати одразу нічого не треба.</p></details>
+        <details><summary>Коли старт?</summary><p>01.12.2026. Бонуси раннього бронювання діють до 01.11.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <section class="final" id="final" aria-labelledby="final-h">
+      <h2 id="final-h">Система з AI</h2>
       <span class="price">старт 01.12</span>
-      <p class="inc">Формат, ціну і всі деталі розповідаю в особистих.</p>
-      <p class="meta">щоб потрапити в предзапис,<br>напиши мені слово <b class="kw">СИСТЕМА</b> в Instagram</p>
-      <a class="btn" href="https://ig.me/m/kateryna__shevtsova" target="_blank" rel="noopener">Хочу в предзапис</a>
-    </section>
-
-    <section class="note">
-      <p>Є питання? Пиши в директ, відповідаю сама.</p>
-      <div class="center"><a class="btn ghost" href="https://ig.me/m/kateryna__shevtsova" target="_blank" rel="noopener">Написати</a></div>
+      <p class="ink">Формат, ціну і всі деталі розповідаю в особистих.</p>
+      <p>Щоб потрапити в передзапис, напиши мені слово <b class="kw" translate="no">СИСТЕМА</b> в Instagram.</p>
+      <div class="cta-row">
+        <a class="btn" href="https://ig.me/m/kateryna__shevtsova" target="_blank" rel="noopener">Написати <span translate="no">СИСТЕМА</span> в директ</a>
+        <button class="copy" type="button" data-copy>Скопіювати слово</button>
+      </div>
+      <p class="status" role="status" aria-live="polite"></p>
+      <p class="fine">Є питання? Пиши туди ж, відповідаю сама.</p>
     </section>
   </div>
 </main>
+
+<div class="sticky" id="sticky" aria-hidden="true">
+  <a class="btn" href="https://ig.me/m/kateryna__shevtsova" target="_blank" rel="noopener" tabindex="-1">Написати <span translate="no">СИСТЕМА</span> в директ</a>
+</div>
 
 <footer>
   <div class="wrap">
@@ -456,21 +517,12 @@ footer{text-align:center;color:var(--muted);font-size:13px;line-height:1.8;paddi
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.4 2.6 2.2 4.3 5 4.5"/></svg>
       </a>
     </nav>
-    Катя Шевцова · @kateryna__shevtsova<br>
+    <span translate="no">Катя Шевцова · @kateryna__shevtsova</span><br>
     <a class="foot-link" href="https://docs.google.com/document/d/1GaZnbfaMS1v4m9-d3pjmaM9KnLYW5VHmm4oJ2kP5NnQ" target="_blank" rel="noopener">Оферта</a> і <a class="foot-link" href="privacy.html">політика конфіденційності</a>
   </div>
 </footer>
 
 <script>
-/* 6 кроків системи блогу, кожен прив'язаний до своєї орбіти */
-const STEPS = [
-  { n:"01", orbit:"know",  title:"Контент",     tag:"Що говорити",            text:"Дістаємо теми з твоєї експертності, а не з чужих рілз. Біль клієнта, ідея, кут подачі, теза. Більше ніякого «про що сьогодні постити»." },
-  { n:"02", orbit:"skill", title:"Сценарії",    tag:"Як це сказати",          text:"Хук, структура, один CTA. AI збирає чернетку з твоїх голосових і нотаток, ти правиш і додаєш себе. Текст звучить як ти." },
-  { n:"03", orbit:"proj",  title:"Візуал",      tag:"Як це виглядає",         text:"Обкладинки, композиція, типографіка, AI-візуали і B-roll. Блог стає впізнаваним без дизайнера і без години в Canva." },
-  { n:"04", orbit:"proj",  title:"Виробництво", tag:"Рілз, каруселі, сторіз", text:"Тут з'являється формат. Одна ідея розкладається на кілька форматів, і монтаж, дизайн чи оформлення йдуть по готовому процесу." },
-  { n:"05", orbit:"skill", title:"Публікація",  tag:"Як випустити",           text:"Опис, CTA, ключові слова, планування і підтримка в сторіз. Пости виходять регулярно, навіть коли ти не сидиш у телефоні." },
-  { n:"06", orbit:"agent", title:"Автоматизація · Агенти",      tag:"Що робиться саме",          text:"Рутина переїжджає до агентів: план дня, гроші, тіло, ідеї. Ти пишеш голосовим, вони роблять роботу. А аналіз контенту підказує, що повторити і що змінити." }
-];
 const ORBITS = [
   { id:"know", name:"Знання", r:118, lead:"Усе, що робить мене мною, записано один раз. Системі не треба щоразу пояснювати, хто я.",
     nodes:["голос","історії","аудиторія","продукт","стиль"],
@@ -481,7 +533,7 @@ const ORBITS = [
   { id:"skill", name:"Скіли", r:262, lead:"Готові рецепти: як зробити конкретну річ так, як я люблю. Один раз налаштувала, далі просто прошу.",
     nodes:["карусель","сторіз","пост","хуки","сценарії","фото","монтаж","прогрів"],
     items:[["Тексти","каруселі, сторіз, пости, хуки і сценарії рілз"],["Візуал і відео","фото з AI-двійником і монтаж рілз"],["Продажі","прогріви і подарунки для підписників"]] },
-  { id:"agent", name:"Агенти", r:340, lead:"Мій бот у Telegram. Я пишу йому голосовим, а він робить роботу.",
+  { id:"agent", name:"Агенти", r:340, lead:"Моя команда в Telegram: Аліса і вісім помічниць. Я пишу голосовим, вони роблять роботу.",
     nodes:["Контент","Гроші","План","День","Тіло","Ідеї"],
     items:[["Контент","пише тексти моїм голосом"],["Гроші","записує витрати й доходи, рахує місяць"],["План і день","ранковий план і вечірній звіт"],["Тіло","їжа, вага, тренування"]] }
 ];
@@ -510,41 +562,64 @@ el("circle",{r:60},core);
 const t1=el("text",{y:12,"text-anchor":"middle",class:"big"},core); t1.textContent="Я";
 const t2=el("text",{y:36,"text-anchor":"middle",class:"small"},core); t2.textContent="КАТЯ";
 
+/* Вкладки орбіт: ARIA tabs з клавіатурою (стрілки, Home, End) */
 const tabs=document.getElementById("tabs"), panel=document.getElementById("panel");
-ORBITS.forEach(o=>{
+const tabEls=ORBITS.map(o=>{
   const b=document.createElement("button");
-  b.className="tab"; b.id="tab-"+o.id; b.type="button"; b.setAttribute("role","tab"); b.textContent=o.name;
+  b.className="tab"; b.id="tab-"+o.id; b.type="button";
+  b.setAttribute("role","tab"); b.setAttribute("aria-controls","panel"); b.textContent=o.name;
   b.addEventListener("click",()=>select(o.id)); tabs.appendChild(b);
   groups[o.id].g.style.cursor="pointer";
   groups[o.id].g.addEventListener("click",()=>select(o.id));
+  return b;
+});
+tabs.addEventListener("keydown",e=>{
+  const i=tabEls.indexOf(document.activeElement); if(i<0) return;
+  let j=null;
+  if(e.key==="ArrowRight"||e.key==="ArrowDown") j=(i+1)%tabEls.length;
+  else if(e.key==="ArrowLeft"||e.key==="ArrowUp") j=(i-1+tabEls.length)%tabEls.length;
+  else if(e.key==="Home") j=0; else if(e.key==="End") j=tabEls.length-1;
+  if(j===null) return;
+  e.preventDefault(); select(ORBITS[j].id); tabEls[j].focus();
 });
 function esc(s){return s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
-function select(id,stepN){
+function select(id){
   const o=ORBITS.find(x=>x.id===id);
-  ORBITS.forEach(x=>{
+  ORBITS.forEach((x,i)=>{
     const on=x.id===id, G=groups[x.id];
     G.ring.classList.toggle("on",on); G.label.classList.toggle("on",on);
     G.nodes.forEach(n=>n.classList.toggle("on",on));
-    document.getElementById("tab-"+x.id).setAttribute("aria-selected",on?"true":"false");
+    tabEls[i].setAttribute("aria-selected",on?"true":"false");
+    tabEls[i].tabIndex=on?0:-1;
   });
-  const steps=STEPS.filter(s=>s.orbit===id);
-  panel.innerHTML='<span class="label">Орбіта '+(ORBITS.indexOf(o)+1)+' / 4</span><h3 class="orbit-name">'+esc(o.name)+'</h3><p class="orbit-lead">'+esc(o.lead)+'</p>'
-    +(steps.length?'<span class="label sublabel">Кроки системи блогу на цій орбіті</span><ol class="bsteps">'+steps.map(s=>'<li class="bstep'+(s.n===stepN?' hl':'')+'" id="step-'+s.n+'"><span class="num">'+s.n+'</span><div><h4>'+esc(s.title)+'</h4><p class="tag">'+esc(s.tag)+'</p><p>'+esc(s.text)+'</p></div></li>').join("")+'</ol>':'')
+  panel.setAttribute("aria-labelledby","tab-"+id);
+  panel.innerHTML='<span class="label">Орбіта '+(ORBITS.indexOf(o)+1)+' з 4</span><h3 class="orbit-name">'+esc(o.name)+'</h3><p class="orbit-lead">'+esc(o.lead)+'</p>'
     +'<span class="label sublabel">З чого складається</span><ul class="items">'+o.items.map(([a,b])=>'<li><b>'+esc(a)+'</b><span>'+esc(b)+'</span></li>').join("")+'</ul>';
 }
-const route=document.getElementById("route");
-STEPS.forEach(s=>{
-  const o=ORBITS.find(x=>x.id===s.orbit);
-  const li=document.createElement("li");
-  li.innerHTML='<button type="button"><span class="num">'+s.n+'</span><span><b>'+esc(s.title)+'</b><small>орбіта '+esc(o.name)+'</small></span></button>';
-  li.querySelector("button").addEventListener("click",()=>{
-    select(s.orbit,s.n);
-    const target=document.getElementById("step-"+s.n);
-    if(target) target.scrollIntoView({block:"center"});
-  });
-  route.appendChild(li);
-});
 select("know");
+
+/* Кнопка «Скопіювати слово»: Instagram не підставляє текст у директ, тому слово можна взяти з собою */
+document.querySelectorAll("[data-copy]").forEach(b=>{
+  b.addEventListener("click",async()=>{
+    const st=b.parentElement.nextElementSibling;
+    let ok=false;
+    try{await navigator.clipboard.writeText("СИСТЕМА");ok=true;}catch(e){
+      const t=document.createElement("textarea");t.value="СИСТЕМА";t.setAttribute("readonly","");t.style.position="fixed";t.style.opacity="0";document.body.appendChild(t);t.select();
+      try{ok=document.execCommand("copy");}catch(e2){}
+      t.remove();
+    }
+    if(st) st.textContent=ok?"Скопійовано. Встав слово в директ.":"Не вийшло скопіювати. Просто напиши СИСТЕМА в директ.";
+  });
+});
+
+/* Липка кнопка на телефоні: з'являється після першого екрана, ховається біля фінальної кнопки */
+const sticky=document.getElementById("sticky");
+if("IntersectionObserver" in window){
+  let heroVisible=true, finalVisible=false;
+  const upd=()=>{const show=!heroVisible&&!finalVisible;sticky.classList.toggle("show",show);sticky.setAttribute("aria-hidden",show?"false":"true");sticky.querySelector("a").tabIndex=show?0:-1;};
+  new IntersectionObserver(([e])=>{heroVisible=e.isIntersecting;upd();}).observe(document.querySelector(".hero"));
+  new IntersectionObserver(([e])=>{finalVisible=e.isIntersecting;upd();}).observe(document.getElementById("final"));
+}
 </script>
 
 </body>
