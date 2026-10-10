@@ -1,0 +1,605 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Як працює моя система з AI · Катя Шевцова</title>
+<meta name="description" content="Схема моєї системи з AI: я пишу голосове в Telegram, Аліса передає його потрібній помічниці, відповідь приходить у той самий чат. Вісім помічниць, одна база знань і автоматизації, які працюють самі.">
+<link rel="canonical" href="https://katerynashevtsova1.github.io/system-ai/system.html">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#141414" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="uk_UA">
+<meta property="og:url" content="https://katerynashevtsova1.github.io/system-ai/system.html">
+<meta property="og:title" content="Так працює моя система з AI">
+<meta property="og:description" content="Одне голосове в Telegram, і далі працює команда з восьми помічниць.">
+<meta property="og:image" content="https://katerynashevtsova1.github.io/system-ai/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Cormorant+Garamond:ital,wght@1,500;1,600&display=swap">
+<style>
+/* Структура: герой (одна думка) → інтерактивна схема системи з анімацією голосового → приклад покроково → команда → одна база і синхронізація → що працює саме → контент-конвеєр → CTA. Токени ті самі, що в index.html */
+:root{
+  --bg:#FFFFFF;
+  --card:#F4F4F4;
+  --line:#E2E2E2;
+  --lime:#D6FB28;
+  --on-lime:#111111;
+  --ink:#111111;
+  --text:#3A3A3A;
+  --muted:#6B6B6B;
+  --edge:#9A9A9A;
+  --sans:"Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --serif:"Cormorant Garamond", "Playfair Display", Georgia, serif;
+  --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px; --s8:64px; --s9:96px;
+  --r-pill:999px; --r-card:18px; --r-small:12px;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141414; --card:#1E1E1E; --line:#2E2E2E; --ink:#F4F4F4; --text:#CFCFCF; --muted:#A8A8A8; --edge:#6A6A6A; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141414; --card:#1E1E1E; --line:#2E2E2E; --ink:#F4F4F4; --text:#CFCFCF; --muted:#A8A8A8; --edge:#6A6A6A; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:400;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;touch-action:manipulation}
+.wrap{max-width:760px;margin:0 auto;padding-inline:var(--s5)}
+.wide{max-width:1200px;margin:0 auto;padding-inline:var(--s5)}
+@media (max-width:480px){.wrap,.wide{padding-inline:var(--s4)}}
+h1,h2,h3{text-wrap:balance;color:var(--ink);margin:0}
+p{text-wrap:pretty}
+.italic{font-family:var(--serif);font-style:italic;font-weight:500}
+.skip{position:absolute;left:var(--s4);top:-80px;background:var(--lime);color:var(--on-lime);padding:var(--s3) var(--s4);border-radius:var(--r-pill);font-weight:700;z-index:30;text-decoration:none}
+.skip:focus{top:var(--s4)}
+
+/* Кнопки, як на головній */
+.btn{display:inline-block;background:var(--lime);color:var(--on-lime);font-family:var(--sans);font-weight:800;font-size:15px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;padding:18px var(--s6);border-radius:var(--r-pill);border:0;cursor:pointer;text-align:center;line-height:20px;transition:transform .15s ease, box-shadow .15s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(17,17,17,.14)}
+.btn:focus-visible{outline:3px solid var(--ink);outline-offset:4px}
+.ghost{font:inherit;font-size:14px;font-weight:700;color:var(--ink);background:var(--bg);border:1.5px solid var(--ink);border-radius:var(--r-pill);min-height:44px;padding:var(--s2) var(--s5);cursor:pointer;transition:background-color .15s ease}
+.ghost:hover{background:var(--card)}
+.ghost:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+
+/* Верхня смуга */
+.top{border-bottom:1px solid var(--line)}
+.top .wide{display:flex;align-items:center;min-height:56px}
+.home{color:var(--ink);font-weight:800;font-size:15px;text-decoration:none;padding-block:var(--s3)}
+.home:hover{text-decoration:underline;text-decoration-color:var(--lime);text-decoration-thickness:3px;text-underline-offset:6px}
+.home:focus-visible{outline:3px solid var(--ink);outline-offset:3px;border-radius:4px}
+
+/* HERO */
+.hero{display:grid;gap:var(--s4);padding-block:var(--s6) var(--s5)}
+.hero h1{font-weight:900;font-size:clamp(36px,4.1vw,60px);line-height:.98;text-transform:uppercase;letter-spacing:-.02em}
+.hero .intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s3) var(--s7);align-items:start}
+.hero h1 .italic{display:block;text-transform:none;font-size:.56em;line-height:1.1;letter-spacing:0;margin-top:var(--s2)}
+.hero p{margin:0;font-size:17px;max-width:46ch}
+.hero .hint{margin-top:var(--s3);font-size:15px;color:var(--muted)}
+.hero .intro .hint{margin-top:0}
+@media (max-width:860px){.hero{padding-block:var(--s6) var(--s4)}.hero .intro{grid-template-columns:1fr}.hero h1{font-size:clamp(36px,10vw,56px)}}
+
+/* СХЕМА */
+.diagram{position:relative;min-width:0}
+.diagram svg{display:block;width:100%;height:auto;overflow:visible}
+.d-edge{stroke:var(--edge);stroke-width:1.5;fill:none}
+.d-edge.dash{stroke-dasharray:5 6}
+.d-label{fill:var(--muted);font-family:var(--sans);font-size:13px;font-weight:600}
+.d-group{fill:var(--muted);font-family:var(--sans);font-size:14px;font-weight:700}
+.d-frame{fill:none;stroke:var(--line);stroke-width:1.5}
+.node{cursor:pointer;outline:none}
+.node .shape{fill:var(--card);stroke:var(--line);stroke-width:1.5;transition:fill .2s ease,stroke .2s ease}
+.node .t{fill:var(--ink);font-family:var(--sans);font-weight:800;font-size:18px}
+.node .s{fill:var(--text);font-family:var(--sans);font-weight:400;font-size:13.5px}
+.node.dark .shape{fill:var(--ink);stroke:var(--ink)}
+.node.dark .t,.node.dark .s{fill:var(--bg)}
+.node.me .shape{fill:var(--lime);stroke:var(--lime)}
+.node.me .t{fill:var(--on-lime);font-size:44px;font-weight:900}
+.node.me .s{fill:var(--on-lime);font-weight:700;font-size:13px}
+.node:hover .shape{stroke:var(--ink)}
+.node .focus{fill:none;stroke:var(--ink);stroke-width:3;opacity:0}
+.node:focus-visible .focus{opacity:1}
+.node.on .shape,.node.lit .shape{fill:var(--lime);stroke:var(--lime)}
+.node.on .t,.node.on .s,.node.lit .t,.node.lit .s{fill:var(--on-lime)}
+.flow-path{fill:none;stroke:var(--ink);stroke-width:2;stroke-dasharray:2 7;stroke-linecap:round;opacity:0;transition:opacity .3s ease}
+.flow-path.show{opacity:.7}
+.flow-dot{fill:var(--lime);stroke:var(--ink);stroke-width:2.5;opacity:0}
+.flow-dot.show{opacity:1}
+
+.d-bar{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s3) var(--s5);margin-top:var(--s4);padding-bottom:var(--s7)}
+.flow-cap{margin:0;font-size:15px;color:var(--ink);font-weight:600;min-height:1.6em}
+.flow-cap span{color:var(--muted);font-weight:400}
+
+/* Пояснення біля блоку */
+.pop{position:absolute;z-index:5;width:min(340px,calc(100% - 16px));background:var(--bg);color:var(--text);border:1.5px solid var(--ink);border-radius:var(--r-card);padding:var(--s4) var(--s5) var(--s5);box-shadow:0 18px 40px rgba(17,17,17,.16)}
+.pop[hidden]{display:none}
+.pop h3{font-size:20px;font-weight:900;line-height:1.15;padding-right:36px}
+.pop .role{display:block;font-family:var(--serif);font-style:italic;font-weight:500;font-size:20px;color:var(--ink);margin-top:2px}
+.pop p{margin:var(--s2) 0 0;font-size:15px;line-height:1.55}
+.pop .x{position:absolute;top:var(--s2);right:var(--s2);width:40px;height:40px;border-radius:50%;border:0;background:transparent;color:var(--ink);font:inherit;font-size:24px;line-height:1;cursor:pointer}
+.pop .x:hover{background:var(--card)}
+.pop .x:focus-visible{outline:3px solid var(--ink);outline-offset:0}
+
+/* Секції */
+section.block{padding-block:var(--s8);border-top:1px solid var(--line)}
+.block h2{font-weight:900;font-size:clamp(30px,5vw,56px);line-height:1.04;text-transform:uppercase;letter-spacing:-.01em}
+.block h2 .italic{display:block;text-transform:none;font-weight:500;font-size:.62em;line-height:1.1;margin-top:var(--s2);letter-spacing:0}
+.block .lead{margin:var(--s4) 0 0;max-width:60ch}
+
+/* Приклад покроково */
+.steps{list-style:none;margin:var(--s6) 0 0;padding:0;counter-reset:st;display:grid;gap:0}
+.steps>li{counter-increment:st;display:grid;grid-template-columns:44px minmax(0,1fr);gap:var(--s4);padding-block:var(--s5);border-top:1px solid var(--line)}
+.steps>li:last-child{border-bottom:1px solid var(--line)}
+.steps>li::before{content:counter(st);font-weight:900;font-size:40px;line-height:1;color:var(--ink)}
+.steps h3{font-size:19px;font-weight:800;line-height:1.3}
+.steps p{margin:var(--s2) 0 0}
+.quote{display:inline-block;margin-top:var(--s3);background:var(--card);border:1px solid var(--line);border-radius:16px 16px 16px 4px;padding:var(--s2) var(--s4);font-size:15px;color:var(--ink)}
+.quote.me{background:var(--lime);border-color:var(--lime);color:var(--on-lime);border-radius:16px 16px 4px 16px}
+.split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s3);margin-top:var(--s3)}
+@media (max-width:560px){.split{grid-template-columns:1fr}}
+.split div{background:var(--card);border-radius:var(--r-small);padding:var(--s4)}
+.split b{display:block;color:var(--ink);font-size:16px}
+.split p{margin-top:var(--s1);font-size:15px}
+
+/* Команда */
+.alisa{margin-top:var(--s6);display:grid;grid-template-columns:auto minmax(0,1fr);gap:var(--s4);align-items:start;background:var(--ink);color:var(--bg);border-radius:var(--r-card);padding:var(--s5)}
+.alisa .ava{width:56px;height:56px;border-radius:50%;background:var(--lime);color:var(--on-lime);display:grid;place-items:center;font-weight:900;font-size:22px}
+.alisa h3{color:var(--bg);font-size:22px;font-weight:900}
+.alisa p{margin:var(--s2) 0 0;color:var(--bg);opacity:.86;max-width:62ch}
+.team{list-style:none;margin:var(--s4) 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s3)}
+@media (max-width:960px){.team{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.team{grid-template-columns:1fr}}
+.team li{background:var(--card);border-radius:var(--r-card);padding:var(--s5);min-width:0}
+.team b{display:block;color:var(--ink);font-size:22px;font-weight:900;line-height:1.1}
+.team .role{display:block;font-family:var(--serif);font-style:italic;font-weight:500;font-size:20px;color:var(--ink)}
+.team p{margin:var(--s2) 0 0;font-size:15px}
+
+/* База і синхронізація */
+.base{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s7);margin-top:var(--s6);align-items:start}
+@media (max-width:860px){.base{grid-template-columns:1fr;gap:var(--s6)}}
+.base h3{font-size:22px;font-weight:900;line-height:1.2}
+.base p{margin:var(--s3) 0 0}
+.files{list-style:none;margin:var(--s4) 0 0;padding:0;display:flex;flex-wrap:wrap;gap:var(--s2)}
+.files li{border:1.5px solid var(--ink);border-radius:var(--r-pill);padding:var(--s1) var(--s4);font-size:14px;font-weight:600;color:var(--ink)}
+.sync{list-style:none;margin:var(--s4) 0 0;padding:0;display:grid;gap:0;border-left:2px solid var(--ink)}
+.sync li{position:relative;padding:0 0 var(--s5) var(--s5)}
+.sync li:last-child{padding-bottom:0}
+.sync li::before{content:"";position:absolute;left:-7px;top:7px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--ink)}
+.sync li:first-child::before{background:var(--lime);border-color:var(--ink)}
+.sync b{color:var(--ink)}
+.sync p{margin:var(--s1) 0 0;font-size:15px}
+
+/* Що працює саме */
+.times{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:var(--s6);border-top:2px solid var(--ink)}
+@media (max-width:760px){.times{grid-template-columns:1fr}}
+.times div{padding:var(--s5) var(--s5) var(--s5) 0;min-width:0}
+@media (max-width:760px){.times div{padding-right:0;border-bottom:1px solid var(--line)}}
+.times h3{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(36px,4.4vw,52px);line-height:1}
+.times p{margin:var(--s3) 0 0;font-size:16px}
+
+/* Контент-конвеєр */
+.belt{list-style:none;margin:var(--s6) 0 0;padding:0;counter-reset:bt;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--s3)}
+@media (max-width:960px){.belt{grid-template-columns:1fr;gap:0}}
+.belt li{counter-increment:bt;position:relative;background:var(--card);border-radius:var(--r-card);padding:var(--s5);min-width:0}
+.belt li::before{content:counter(bt);display:grid;place-items:center;width:36px;height:36px;border-radius:50%;border:1.5px solid var(--ink);font-weight:900;font-size:15px;color:var(--ink);margin-bottom:var(--s3)}
+.belt li:last-child::before{background:var(--lime);border-color:var(--lime);color:var(--on-lime)}
+@media (min-width:961px){.belt li:not(:last-child)::after{content:"";position:absolute;top:42px;right:calc(-1 * var(--s3));width:var(--s3);height:2px;background:var(--ink)}}
+@media (max-width:960px){.belt li:not(:last-child){margin-bottom:var(--s5)}.belt li:not(:last-child)::after{content:"";position:absolute;left:42px;bottom:calc(-1 * var(--s5));width:2px;height:var(--s5);background:var(--ink)}}
+.belt h3{font-size:18px;font-weight:800;line-height:1.25}
+@media (max-width:960px){.belt li{display:grid;grid-template-columns:36px minmax(0,1fr);gap:0 var(--s4);padding:var(--s4) var(--s5) var(--s4) var(--s4)}.belt li::before{margin:0;grid-row:1 / span 2}.belt li:not(:last-child)::after{left:33px}.belt h3{align-self:center}}
+.belt p{margin:var(--s2) 0 0;font-size:15px}
+
+/* CTA */
+.final{background:var(--card);border:1.5px solid var(--line);border-radius:28px;padding:var(--s7) var(--s5);text-align:center;display:grid;gap:var(--s5);justify-items:center;margin-block:var(--s8)}
+.final h2{font-weight:900;text-transform:uppercase;font-size:clamp(28px,6vw,44px);line-height:1.05}
+.final h2 .italic{display:block;text-transform:none;font-weight:500;font-size:.66em;margin-top:var(--s2)}
+.final p{margin:0;max-width:44ch}
+.final .fine{font-size:14px;color:var(--muted)}
+
+/* FOOTER, як на головній */
+.foot-link{color:var(--text);text-decoration:underline;text-underline-offset:3px}
+.foot-link:hover{color:var(--ink)}
+.socials{display:flex;justify-content:center;gap:var(--s3);margin-bottom:var(--s5)}
+.socials a{width:48px;height:48px;border-radius:50%;background:var(--card);border:1.5px solid var(--line);color:var(--ink);display:grid;place-items:center;transition:background-color .15s ease, border-color .15s ease}
+.socials a:hover{background:var(--lime);border-color:var(--lime);color:var(--on-lime)}
+.socials a:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.socials svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+footer{text-align:center;color:var(--muted);font-size:14px;line-height:1.8;padding-block:var(--s7) var(--s8);border-top:1px solid var(--line)}
+
+@media (prefers-reduced-motion: reduce){.btn,.ghost,.socials a,.node .shape,.flow-path{transition:none}.btn:hover{transform:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">До змісту</a>
+
+<header class="top">
+  <div class="wide"><a class="home" href="./">Система з AI · Катя Шевцова</a></div>
+</header>
+
+<main id="main">
+  <div class="wide">
+    <div class="hero">
+      <h1>Так працює моя система з AI<span class="italic">я пишу в Telegram, далі працює команда</span></h1>
+      <div class="intro">
+        <p>У центрі я. Пишу текстом або голосовим в одну Telegram-групу, а далі Аліса і вісім помічниць роблять роботу: план, контент, гроші, тіло.</p>
+        <p class="hint">Натисни на будь-який блок схеми, щоб побачити, що це і навіщо.</p>
+      </div>
+    </div>
+
+    <div class="diagram" id="diagram">
+      <svg id="map" role="group" aria-label="Схема системи: я, Telegram, Аліса, команда з восьми помічниць, сервіси і мозок системи"></svg>
+      <div class="pop" id="pop" role="region" aria-live="polite" aria-label="Пояснення до блоку" hidden>
+        <button class="x" type="button" id="popClose" aria-label="Закрити пояснення">×</button>
+        <div id="popBody"></div>
+      </div>
+    </div>
+    <div class="d-bar">
+      <button class="ghost" type="button" id="play">Показати шлях голосового</button>
+      <p class="flow-cap" id="cap"><span>Голосове йде від мене до потрібної помічниці і назад.</span></p>
+    </div>
+  </div>
+
+  <section class="block" aria-labelledby="ex-h">
+    <div class="wrap">
+      <h2 id="ex-h">Одне голосове<span class="italic">що відбувається, поки я йду далі у своїх справах</span></h2>
+      <ol class="steps">
+        <li>
+          <div>
+            <h3>Я надиктовую голосове</h3>
+            <p>Можна попросити кілька справ одним повідомленням.</p>
+            <span class="quote me">Купила продукти на тиждень. І напиши пост про те, чому вечори з'їдає рутина.</span>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h3>Аліса чує і показує, що почула</h3>
+            <p>Голосове розпізнається прямо на моєму ноутбуці. Аліса одразу ставить реакцію 👀, щоб я бачила: дійшло. Першим рядком відповіді вона показує, що почула, тож помилку я помічаю відразу.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h3>Аліса розуміє, чиї це справи</h3>
+            <p>Тут дві справи: покупка йде до Белли, пост до Ліри. Аліса робить їх по черзі, кожну за правилами потрібної помічниці.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h3>Помічниці роблять свою частину</h3>
+            <div class="split">
+              <div><b>Белла записала витрату</b><p>Цифри рахує перевірена програма, а не AI «з голови». Так у грошах немає помилок.</p></div>
+              <div><b>Ліра склала чернетку поста</b><p>Бере мій голос і мої історії з папки «Знання». Готовий текст ще раз перевіряється, чи він справді мій.</p></div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h3>Відповідь приходить у Telegram</h3>
+            <p>У той самий чат: «записала» і чернетка поста. Публікую я сама, коли захочу. Сама система нічого не викладає.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="team-h">
+    <div class="wide">
+      <h2 id="team-h">Команда<span class="italic">одна головна і вісім помічниць</span></h2>
+      <div class="alisa">
+        <span class="ava" aria-hidden="true">А</span>
+        <div>
+          <h3>Аліса, головна агентка</h3>
+          <p>Приймає всі мої повідомлення й голосові, розуміє, чия це справа, і передає потрібній помічниці. Насправді мозок один: кожна помічниця це набір правил, який Аліса відкриває під конкретну справу. Тому мені не треба пам'ятати, кому писати.</p>
+        </div>
+      </div>
+      <ul class="team">
+        <li><b>Софія</b><span class="role">план і задачі</span><p>Ставить задачі в Notion і щоранку збирає мені план дня із задач, календаря й пошти.</p></li>
+        <li><b>Ліра</b><span class="role">контент</span><p>Пише пости, каруселі, сценарії рілз і сторіз моїм голосом. Сама нічого не публікує.</p></li>
+        <li><b>Мія</b><span class="role">ідеї</span><p>Ловить думки й ідеї, позначає ті, що підходять для контенту. Вміє чесно перевірити ідею продукту.</p></li>
+        <li><b>Тея</b><span class="role">пам'ять</span><p>Пам'ятає рішення, домовленості й статуси проєктів. Тримає мої цілі перед очима.</p></li>
+        <li><b>Ора</b><span class="role">день</span><p>Увечері показує, що я зробила проти плану і скільки часу пішло на головну ціль. Щопонеділка підсумок тижня.</p></li>
+        <li><b>Белла</b><span class="role">гроші</span><p>Записує витрати й доходи, перераховує валюти, рахує підсумки місяця.</p></li>
+        <li><b>Віта</b><span class="role">тіло</span><p>Рахує калорії з фото чи голосового, веде тренування й кроки, підказує, що приготувати з того, що є вдома.</p></li>
+        <li><b>Стела</b><span class="role">статистика</span><p>Рахує підписників в Instagram, YouTube і Telegram і показує, як вони ростуть.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="base-h">
+    <div class="wide">
+      <h2 id="base-h">Одна база<span class="italic">усе читає з одного місця</span></h2>
+      <div class="base">
+        <div>
+          <h3>Мозок системи</h3>
+          <p>Claude Code на моєму ноутбуці. Це AI, який працює з файлами на компі і відповідає мені в Telegram. Аліса з командою живуть саме тут.</p>
+          <p>Поруч папка «Знання»: усе, що робить мене мною, записане один раз. Звідси читають помічниці, мої проєкти в Claude і скіли. Без цієї папки AI пише «загалом», а з нею пише мною.</p>
+          <ul class="files" aria-label="Що лежить у папці «Знання»">
+            <li>мій голос</li><li>позиціонування</li><li>аудиторія</li><li>продукт</li><li>брендбук</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Як усе синхронізується</h3>
+          <ol class="sync">
+            <li><b>Ноутбук головний.</b><p>Усі файли живуть і змінюються тут.</p></li>
+            <li><b>Щоночі копія всього летить на GitHub.</b><p>Це і запасна копія, і джерело для інших. Ключі й паролі туди не потрапляють ніколи.</p></li>
+            <li><b>Проєкти в Claude беруть файли бренду з GitHub.</b><p>Окремих копій немає, тому немає і розбіжностей. Якщо файл змінився, ранковий план сам нагадає оновити проєкти.</p></li>
+            <li><b>Хмарні сесії Claude Code нічого не міняють напряму.</b><p>Тільки пропонують зміни. Вночі ноутбук спершу забирає їх собі, а потім відправляє свої.</p></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="time-h">
+    <div class="wide">
+      <h2 id="time-h">Що працює саме<span class="italic">без мого повідомлення</span></h2>
+      <div class="times">
+        <div><h3>Зранку</h3><p>План дня в Telegram: задачі, календар і пошта в одному повідомленні.</p></div>
+        <div><h3>Увечері</h3><p>Айфон сам відправляє кроки й активність за день у мій трекер тіла.</p></div>
+        <div><h3>Уночі</h3><p>Копія всього на GitHub, і бот починає новий день з чистою пам'яттю розмови.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="belt-h">
+    <div class="wide">
+      <h2 id="belt-h">Контент-конвеєр<span class="italic">від думки до рілз</span></h2>
+      <ol class="belt">
+        <li><h3>Ідея</h3><p>Кидаю думку голосовим, Мія її ловить і зберігає.</p></li>
+        <li><h3>Сценарій моїм голосом</h3><p>Ліра пише за моїми файлами: як я говорю, мої історії, моя аудиторія.</p></li>
+        <li><h3>Візуал</h3><p>Фото й обкладинки з моїм AI-двійником.</p></li>
+        <li><h3>Монтаж рілз</h3><p>Відео збирається з коду (Remotion), тому кожен ролик в одному стилі: субтитри, обкладинка, перебивки.</p></li>
+        <li><h3>Публікація</h3><p>Тільки після мого «ок».</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <section class="final" aria-labelledby="final-h">
+      <h2 id="final-h">Таку систему можна зібрати<span class="italic">і без коду</span></h2>
+      <p>На безкоштовному вебінарі покажу цю систему наживо і розповім, як зібрати свою.</p>
+      <a class="btn" href="https://t.me/kateryna_shevtsova_bot?start=tr843652f3a924f29351b172ff" target="_blank" rel="noopener">Хочу першою дізнатись дату вебінару</a>
+      <p class="fine">Кнопка відкриє мій Telegram: напишу тобі першою, щойно буде дата.</p>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <nav class="socials" aria-label="Соцмережі">
+      <a href="https://t.me/kateryna_shevtsova_tg" target="_blank" rel="noopener" aria-label="Telegram-канал">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.5 4.5 2.5 11.8l6.6 2.4 2.5 6.9 3.6-4.3 5 3.7z"/><path d="M9.1 14.2 21.5 4.5"/></svg>
+      </a>
+      <a href="https://www.instagram.com/kateryna__shevtsova" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg>
+      </a>
+      <a href="https://youtube.com/@kateryna.shevtsova.official" target="_blank" rel="noopener" aria-label="YouTube">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.2v5.6l4.8-2.8z" fill="currentColor"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@kateryna_shevtsova" target="_blank" rel="noopener" aria-label="TikTok">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.4 2.6 2.2 4.3 5 4.5"/></svg>
+      </a>
+    </nav>
+    <span translate="no">Катя Шевцова · @kateryna__shevtsova</span><br>
+    <a class="foot-link" href="privacy.html">Політика конфіденційності</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Що це і навіщо: текст для кожного блоку схеми
+  const INFO = {
+    me:{t:"Я", s:"Катя", h:"Я", p:["Пишу текстом або голосовим в одну Telegram-групу. Кожна тема в групі це окрема справа: контент, гроші, ідеї, план, тіло.","Не треба відкривати десять програм. Я просто кажу, що треба, і йду далі."]},
+    tg:{t:"Telegram", s:"одна група з темами", h:"Telegram-група", p:["Одна група з темами. Пишу в потрібну тему або просто в групу, далі розбирається Аліса.","Сюди ж приходять усі відповіді, тож я нічого не шукаю по різних місцях."]},
+    alisa:{t:"Аліса", s:"головна агентка", h:"Аліса", role:"головна агентка", p:["Приймає всі мої повідомлення й голосові, розуміє, чия це справа, і передає потрібній помічниці.","Першим ділом ставить 👀, щоб я бачила: повідомлення дійшло."]},
+    sofia:{t:"Софія", s:"план і задачі", role:"план і задачі", p:["Ставить задачі в Notion і щоранку збирає мені план дня із задач, календаря й пошти."]},
+    lira:{t:"Ліра", s:"контент", role:"контент", p:["Пише пости, каруселі, сценарії рілз і сторіз моїм голосом, за файлами з папки «Знання».","Сама нічого не публікує."]},
+    mia:{t:"Мія", s:"ідеї", role:"ідеї", p:["Ловить думки й ідеї, позначає ті, що підходять для контенту.","На «перевір ідею» шукає схожі продукти і чесно каже, що додати, а чого уникати."]},
+    teya:{t:"Тея", s:"пам'ять", role:"пам'ять", p:["Пам'ятає рішення, домовленості й статуси проєктів. Тримає мої цілі перед очима."]},
+    ora:{t:"Ора", s:"день", role:"день", p:["Увечері показує, що я зробила проти плану і скільки часу пішло на головну ціль.","Щопонеділка підсумок тижня."]},
+    bella:{t:"Белла", s:"гроші", role:"гроші", p:["Записує витрати й доходи, перераховує валюти, рахує підсумки місяця.","Цифри рахує перевірена програма, а не AI «з голови»."]},
+    vita:{t:"Віта", s:"тіло", role:"тіло", p:["Рахує калорії з фото чи голосового, веде тренування й кроки.","Підказує, що приготувати з того, що є вдома."]},
+    stela:{t:"Стела", s:"статистика", role:"статистика", p:["Рахує підписників в Instagram, YouTube і Telegram і показує, як вони ростуть."]},
+    notion:{t:"Notion", s:"задачі", h:"Notion", role:"задачі", p:["Тут живуть мої задачі. Софія ставить їх сюди і бере звідси для плану дня."]},
+    cal:{t:"Календар і пошта", s:"Google: план, зустрічі", h:"Google Calendar і Gmail", role:"план дня і зустрічі", p:["Зранку Софія дивиться календар і пошту, щоб скласти план.","Для зустрічей система шукає вільні вікна, а після мого «так» ставить подію із Zoom. Людям сама не пише."]},
+    tgout:{t:"Telegram", s:"відповіді", h:"Telegram", role:"відповіді", p:["Кожна помічниця відповідає мені в Telegram, у тій самій темі, де я писала.","Ранковий план теж приходить сюди."]},
+    body:{t:"Трекер тіла", s:"їжа, тренування, кроки", h:"Трекер тіла", role:"їжа, тренування, кроки", p:["Мій власний трекер. Віта записує туди їжу й тренування, а ввечері айфон сам додає кроки за день."]},
+    gh:{t:"GitHub", s:"нічна копія", h:"GitHub", role:"нічна копія всього", p:["Щоночі сюди копіюється вся система. Звідси мої проєкти в Claude беруть файли бренду.","Ключі, паролі й гроші сюди не потрапляють ніколи."]},
+    claude:{t:"Claude Code", s:"на моєму ноутбуці", h:"Claude Code", role:"на моєму ноутбуці", p:["AI, який працює з файлами на компі і відповідає мені в Telegram. Аліса з командою живуть саме тут.","Ноутбук головний: усе змінюється тут, а решта бере копії."]},
+    know:{t:"Папка «Знання»", s:["мій голос, позиціонування, аудиторія,","продукт, брендбук"], h:"Папка «Знання»", role:"одна база про мене", p:["Мій голос, позиціонування, аудиторія, продукт, брендбук. Записано один раз.","Звідси читає все: помічниці, проєкти в Claude, скіли. Без цієї папки AI пише «загалом», а з нею пише мною."]}
+  };
+  const TEAM = ["sofia","lira","mia","teya","ora","bella","vita","stela"];
+  const SERV = ["notion","cal","tgout","body","gh"];
+
+  // Дві розкладки: широка (горизонтальна) і телефон (блок під блоком)
+  function wideLayout(){
+    const L = {vb:[0,56,1200,580], n:{}, edges:[], labels:[], groups:[], frames:[]};
+    L.n.me = {c:[78,262], r:58};
+    L.n.tg = {x:176,y:207,w:176,h:110};
+    L.n.alisa = {x:404,y:197,w:176,h:130};
+    TEAM.forEach((id,i)=>{ L.n[id] = {x: i<4 ? 638 : 804, y: 104 + (i%4)*80, w:150, h:64}; });
+    SERV.forEach((id,i)=>{ L.n[id] = {x:1000, y:86 + i*72, w:196, h:58}; });
+    L.n.claude = {x:176,y:500,w:404,h:116};
+    L.n.know = {x:622,y:500,w:562,h:116, oneLine:true};
+    L.frames.push([622,86,346,338]);
+    L.groups.push([622,72,"Команда: 8 помічниць"],[1000,72,"Куди пишуть і звідки читають"],[176,486,"Мозок системи"]);
+    L.edges.push(["M136 262H176"],["M352 262H404"],["M580 262H622"],["M968 262H984"],["M984 115V403"]);
+    SERV.forEach((id,i)=>L.edges.push(["M984 "+(115+i*72)+"H1000"]));
+    L.edges.push(["M492 327V500","dash"],["M795 424V500","dash"],["M580 558H622"],["M1098 432V500","dash"]);
+    L.labels.push([502,420,"живе тут"],[805,466,"читають"],[1108,470,"копія"],[1108,486,"вночі"]);
+    L.flow = [[78,262,"me"],[264,262,"tg"],[492,262,"alisa"],[604,262],[604,216],[879,216,"bella"]];
+    return L;
+  }
+  function phoneLayout(){
+    const L = {vb:[0,0,360,1340], n:{}, edges:[], labels:[], groups:[], frames:[]};
+    L.n.me = {c:[180,64], r:52};
+    L.n.tg = {x:30,y:156,w:300,h:76};
+    L.n.alisa = {x:30,y:272,w:300,h:88};
+    TEAM.forEach((id,i)=>{ L.n[id] = {x: i<4 ? 22 : 184, y: 430 + (i%4)*72, w:154, h:60}; });
+    SERV.forEach((id,i)=>{ L.n[id] = {x:22, y:778 + i*58, w:316, h:50}; });
+    L.n.claude = {x:22,y:1116,w:316,h:84};
+    L.n.know = {x:22,y:1222,w:316,h:104};
+    L.frames.push([8,414,344,308]);
+    L.groups.push([180,402,"Команда: 8 помічниць","middle"],[180,766,"Куди пишуть і звідки читають","middle"],[180,1104,"Мозок системи","middle"]);
+    L.edges.push(["M180 116V156"],["M180 232V272"],["M180 360V384"],["M180 722V748"],["M180 1060V1086"],["M180 1200V1222"]);
+    L.flow = [[180,64,"me"],[180,194,"tg"],[180,316,"alisa"],[180,532],[261,532,"bella"]];
+    return L;
+  }
+
+  const NS = "http://www.w3.org/2000/svg";
+  const svg = document.getElementById("map");
+  const wrap = document.getElementById("diagram");
+  const pop = document.getElementById("pop"), popBody = document.getElementById("popBody");
+  const cap = document.getElementById("cap"), playBtn = document.getElementById("play");
+  const mq = window.matchMedia("(max-width: 700px)");
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let L, nodes = {}, current = null, flowPath, flowDot, raf = 0, played = false;
+
+  const el = (tag, attrs, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); (parent || svg).appendChild(e); return e; };
+
+  function build(){
+    stopFlow();
+    closePop(false);
+    L = mq.matches ? phoneLayout() : wideLayout();
+    svg.textContent = "";
+    svg.setAttribute("viewBox", L.vb.join(" "));
+    L.frames.forEach(f => el("rect", {x:f[0], y:f[1], width:f[2], height:f[3], rx:22, class:"d-frame"}));
+    L.edges.forEach(e => el("path", {d:e[0], class:"d-edge" + (e[1] ? " " + e[1] : "")}));
+    L.groups.forEach(g => { el("text", {x:g[0], y:g[1], "text-anchor":g[3] || "start", class:"d-group"}).textContent = g[2]; });
+    L.labels.forEach(l => { el("text", {x:l[0], y:l[1], class:"d-label"}).textContent = l[2]; });
+    nodes = {};
+    Object.keys(L.n).forEach(id => {
+      const p = L.n[id], d = INFO[id];
+      const g = el("g", {class:"node" + (id === "me" ? " me" : id === "alisa" ? " dark" : ""), tabindex:"0", role:"button", "aria-controls":"pop", "aria-expanded":"false",
+        "aria-label": d.t + ", " + (Array.isArray(d.s) ? d.s.join(" ") : d.s) + ". Що це і навіщо"});
+      g.dataset.id = id;
+      if (p.c){
+        el("circle", {cx:p.c[0], cy:p.c[1], r:p.r + 6, class:"focus"}, g);
+        el("circle", {cx:p.c[0], cy:p.c[1], r:p.r, class:"shape"}, g);
+        el("text", {x:p.c[0], y:p.c[1] + 10, "text-anchor":"middle", class:"t"}, g).textContent = d.t;
+        el("text", {x:p.c[0], y:p.c[1] + 30, "text-anchor":"middle", class:"s"}, g).textContent = d.s;
+      } else {
+        el("rect", {x:p.x - 5, y:p.y - 5, width:p.w + 10, height:p.h + 10, rx:17, class:"focus"}, g);
+        el("rect", {x:p.x, y:p.y, width:p.w, height:p.h, rx:12, class:"shape"}, g);
+        const subs = Array.isArray(d.s) ? (p.oneLine ? [d.s.join(" ")] : d.s) : [d.s];
+        const block = 22 + subs.length * 19;
+        let y = p.y + (p.h - block) / 2 + 17;
+        el("text", {x:p.x + 14, y:y, class:"t"}, g).textContent = d.t;
+        subs.forEach(s => { y += 20; el("text", {x:p.x + 14, y:y, class:"s"}, g).textContent = s; });
+      }
+      g.addEventListener("click", ev => { ev.stopPropagation(); toggle(id); });
+      g.addEventListener("keydown", ev => { if (ev.key === "Enter" || ev.key === " "){ ev.preventDefault(); toggle(id); } });
+      nodes[id] = g;
+    });
+    const d = "M" + L.flow.map(p => p[0] + " " + p[1]).join("L");
+    flowPath = el("path", {d:d, class:"flow-path", "aria-hidden":"true"});
+    flowDot = el("circle", {r:10, cx:L.flow[0][0], cy:L.flow[0][1], class:"flow-dot", "aria-hidden":"true"});
+  }
+
+  // Пояснення поруч із блоком
+  function toggle(id){ current === id ? closePop(true) : openPop(id); }
+  function openPop(id){
+    if (current && nodes[current]){ nodes[current].classList.remove("on"); nodes[current].setAttribute("aria-expanded","false"); }
+    current = id;
+    const d = INFO[id], g = nodes[id];
+    g.classList.add("on"); g.setAttribute("aria-expanded","true");
+    popBody.innerHTML = "<h3>" + (d.h || d.t) + "</h3>" + (d.role ? '<span class="role">' + d.role + "</span>" : "") + d.p.map(x => "<p>" + x + "</p>").join("");
+    pop.hidden = false;
+    place();
+  }
+  function closePop(refocus){
+    if (!current) { pop.hidden = true; return; }
+    const g = nodes[current];
+    if (g){ g.classList.remove("on"); g.setAttribute("aria-expanded","false"); if (refocus) g.focus(); }
+    current = null; pop.hidden = true;
+  }
+  function place(){
+    if (!current) return;
+    const wr = wrap.getBoundingClientRect(), nr = nodes[current].querySelector(".shape").getBoundingClientRect();
+    const pw = pop.offsetWidth, ph = pop.offsetHeight, gap = 12;
+    let left, top;
+    const roomRight = wr.right - nr.right, roomLeft = nr.left - wr.left;
+    if (!mq.matches && roomRight >= pw + gap){ left = nr.right - wr.left + gap; top = nr.top - wr.top; }
+    else if (!mq.matches && roomLeft >= pw + gap){ left = nr.left - wr.left - pw - gap; top = nr.top - wr.top; }
+    else {
+      left = Math.min(Math.max(nr.left - wr.left, 8), wr.width - pw - 8);
+      top = nr.bottom - wr.top + gap;
+      if (top + ph > wr.height && nr.top - wr.top - ph - gap > 0) top = nr.top - wr.top - ph - gap;
+    }
+    top = Math.max(0, Math.min(top, wr.height - ph));
+    pop.style.left = left + "px"; pop.style.top = top + "px";
+  }
+  document.getElementById("popClose").addEventListener("click", () => closePop(true));
+  document.addEventListener("keydown", ev => { if (ev.key === "Escape" && current) closePop(true); });
+  document.addEventListener("click", ev => { if (current && !pop.contains(ev.target)) closePop(false); });
+  window.addEventListener("resize", place);
+
+  // Одна анімація: шлях голосового від мене до Белли і назад
+  const CAPS_THERE = {me:"Я надиктувала голосове", tg:"Голосове прийшло в Telegram-групу", alisa:"Аліса зрозуміла: це про гроші, справа Белли", bella:"Белла записала витрату"};
+  const CAPS_BACK = {tg:"Відповідь прийшла в той самий чат", me:"Готово: я бачу «записала» в Telegram"};
+  function setCap(n, text){ cap.innerHTML = "<b>" + n + ".</b> " + text; }
+  function lightOnly(ids){ Object.keys(nodes).forEach(k => nodes[k].classList.toggle("lit", ids.includes(k))); }
+  function stopFlow(){
+    cancelAnimationFrame(raf); raf = 0;
+    playBtn.textContent = "Показати шлях голосового";
+    if (flowDot){ flowDot.classList.remove("show"); flowPath.classList.remove("show"); }
+    Object.keys(nodes).forEach(k => nodes[k].classList.remove("lit"));
+  }
+  function playFlow(){
+    stopFlow();
+    closePop(false);
+    if (reduce.matches){
+      flowPath.classList.add("show");
+      lightOnly(["me","tg","alisa","bella"]);
+      cap.textContent = "Я надиктувала голосове, Аліса зрозуміла, Белла записала витрату, відповідь прийшла в Telegram.";
+      return;
+    }
+    // ключові точки туди і назад, швидкість стала, на вузлах пауза
+    const there = L.flow.map(p => ({x:p[0], y:p[1], id:p[2], cap:p[2] && CAPS_THERE[p[2]]}));
+    const back = there.slice(0, -1).reverse().map(p => ({x:p.x, y:p.y, id:p.id, cap:p.id && CAPS_BACK[p.id]}));
+    const pts = there.concat(back);
+    const speed = mq.matches ? 0.22 : 0.32, hold = 750;
+    const keys = []; let t = 0;
+    pts.forEach((p, i) => {
+      if (i) { const q = pts[i-1]; t += Math.hypot(p.x - q.x, p.y - q.y) / speed; }
+      keys.push({t:t, p:p});
+      if (p.cap) t += hold;
+      keys.push({t:t, p:p});
+    });
+    const total = t + 600;
+    let step = 0, last = null, start = null, lit = [];
+    flowPath.classList.add("show"); flowDot.classList.add("show");
+    playBtn.textContent = "Зупинити";
+    const tick = now => {
+      if (start === null) start = now;
+      const e = now - start;
+      let k = 0; while (k < keys.length - 1 && keys[k+1].t <= e) k++;
+      const a = keys[k], b = keys[Math.min(k+1, keys.length-1)];
+      const f = b.t > a.t ? Math.min(1, (e - a.t) / (b.t - a.t)) : 1;
+      flowDot.setAttribute("cx", a.p.x + (b.p.x - a.p.x) * f);
+      flowDot.setAttribute("cy", a.p.y + (b.p.y - a.p.y) * f);
+      if (a.p.cap && last !== a){ last = a; if (keys.indexOf(a) % 2 === 0){ step++; setCap(step, a.p.cap); lightOnly([a.p.id]); } }
+      if (e < total) raf = requestAnimationFrame(tick);
+      else stopFlow();
+    };
+    raf = requestAnimationFrame(tick);
+  }
+  playBtn.addEventListener("click", ev => { ev.stopPropagation(); raf ? stopFlow() : playFlow(); });
+
+  build();
+  mq.addEventListener("change", build);
+
+  // Один раз сама, коли схема з'являється на екрані
+  if ("IntersectionObserver" in window && !reduce.matches){
+    const io = new IntersectionObserver(es => { if (es[0].isIntersecting && !played){ played = true; io.disconnect(); setTimeout(playFlow, 500); } }, {rootMargin:"0px 0px -35% 0px"});
+    io.observe(wrap);
+  }
+})();
+</script>
+</body>
+</html>
