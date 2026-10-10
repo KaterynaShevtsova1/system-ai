@@ -74,6 +74,15 @@ h2[id],section[id]{scroll-margin-top:var(--s5)}
 .alt:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
 .cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s3) var(--s5)}
 
+/* Верхня смуга з переходом на схему системи */
+.topbar{border-bottom:1px solid var(--line)}
+.topbar .wide{display:flex;align-items:center;justify-content:space-between;gap:var(--s3);min-height:60px}
+.topbar .brand{color:var(--ink);font-weight:800;font-size:15px;line-height:1.2}
+.how{display:inline-flex;align-items:center;min-height:44px;padding:var(--s2) var(--s4);border:1.5px solid var(--ink);border-radius:var(--r-pill);color:var(--ink);font-weight:700;font-size:14px;text-decoration:none;white-space:nowrap;transition:background-color .15s ease}
+.how:hover{background:var(--card)}
+.how:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+@media (max-width:380px){.topbar .brand{font-size:13px}}
+
 /* HERO */
 .hero{border-bottom:1px solid var(--line)}
 .hero-inner{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:var(--s7);align-items:center;padding-block:var(--s8) var(--s8)}
@@ -306,11 +315,18 @@ section.block:first-child{border-top:0}
 .socials svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 footer{text-align:center;color:var(--muted);font-size:14px;line-height:1.8;padding-block:var(--s7) var(--s8);border-top:1px solid var(--line)}
 
-@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.btn,.socials a,.tab,.sticky{transition:none}.ring.on{animation:none}.node circle,.node text{transition:none}.btn:hover{transform:none}}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.how,.btn,.socials a,.tab,.sticky{transition:none}.ring.on{animation:none}.node circle,.node text{transition:none}.btn:hover{transform:none}}
 </style>
 </head>
 <body>
 <a class="skip" href="#main">Перейти до змісту</a>
+
+<nav class="topbar" aria-label="Сторінки сайту">
+  <div class="wide">
+    <span class="brand">Катя Шевцова</span>
+    <a class="how" href="system.html">Як це працює у мене</a>
+  </div>
+</nav>
 
 <header class="hero">
   <div class="wide hero-inner">
