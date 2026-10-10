@@ -166,7 +166,7 @@ section.block:first-child{border-top:0}
 .pillars p b{font-weight:700;color:var(--ink)}
 .pillars p{margin:0;font-size:16px;max-width:40ch}
 
-/* TEAM: Аліса і агенти */
+/* TEAM: Марічка і агенти */
 .team{margin-top:var(--s6);display:grid;gap:var(--s4)}
 .lead-agent{background:var(--lime);color:var(--on-lime);border-radius:var(--r-card);padding:var(--s5) var(--s6);display:grid;grid-template-columns:auto minmax(0,1fr);gap:var(--s5);align-items:center;position:relative}
 .lead-agent h3{color:var(--on-lime);font-weight:900;font-size:clamp(28px,3.4vw,40px);line-height:1.05;text-transform:uppercase}
@@ -180,6 +180,7 @@ section.block:first-child{border-top:0}
 .crew h3{font-weight:800;font-size:19px;line-height:1.2}
 .crew h3 small{display:block;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:2px}
 .crew p{margin:var(--s2) 0 0;font-size:15px;line-height:1.5}
+@media (min-width:1100px){.crew{grid-template-columns:repeat(5,minmax(0,1fr))}.crew li{grid-template-columns:1fr;align-content:start}}
 .ava{width:44px;height:44px;border-radius:50%;background:var(--bg);border:1.5px solid var(--line);display:grid;place-items:center;font-size:20px;line-height:1}
 
 /* WHO */
@@ -323,11 +324,11 @@ footer{text-align:center;color:var(--muted);font-size:14px;line-height:1.8;paddi
       <p class="fine">Кнопка відкриє мій Telegram: напишу тобі першою, щойно буде дата безкоштовного вебінару.</p>
     </div>
     <figure class="chat" aria-label="Приклад: як мої агенти відповідають у Telegram протягом дня">
-      <div class="chat-head" aria-hidden="true"><span class="chat-ava">А</span><span><b>Аліса і команда</b><span class="who-bot">мій бот у Telegram</span></span></div>
+      <div class="chat-head" aria-hidden="true"><span class="chat-ava">М</span><span><b>Марічка і команда</b><span class="who-bot">мій бот у Telegram</span></span></div>
       <ul class="msgs">
-        <li class="msg bot"><i>📋 Софія</i>Доброго ранку. Сьогодні 2 зустрічі і 4 вільні години.<br>🎯 Фокус: сценарій рілз, відповісти учням, тренування.<small>08:00</small></li>
+        <li class="msg bot"><i>📋 Тарас</i>Доброго ранку. Сьогодні 2 зустрічі і 4 вільні години.<br>🎯 Фокус: сценарій рілз, відповісти учням, тренування.<small>08:00</small></li>
         <li class="msg me">🎤 Голосове, 0:12<small>12:30</small></li>
-        <li class="msg bot"><i>✍️ Ліра</i>Почула: рілз про те, як ти перестала тримати все в голові. Сценарій готовий: хук, три кадри, заклик. Глянеш?<small>12:31</small></li>
+        <li class="msg bot"><i>✍️ Лея</i>Почула: рілз про те, як ти перестала тримати все в голові. Сценарій готовий: хук, три кадри, заклик. Глянеш?<small>12:31</small></li>
         <li class="msg me extra">💰 обід 350 гривень<small>13:40</small></li>
         <li class="msg bot extra"><i>💰 Белла</i>Записала: кафе, 350 грн.<small>13:40</small></li>
       </ul>
@@ -349,21 +350,23 @@ footer{text-align:center;color:var(--muted);font-size:14px;line-height:1.8;paddi
 
     <section class="block" aria-labelledby="team-h">
       <span class="label">Моя команда в Telegram</span>
-      <h2 id="team-h">Знайомся: Аліса і її агенти<span class="italic">ти збереш таку команду собі</span></h2>
+      <h2 id="team-h">Знайомся: Марічка і її агенти<span class="italic">ти збереш таку команду собі</span></h2>
       <div class="team">
         <div class="lead-agent">
           <span class="ava" aria-hidden="true">👑</span>
-          <div><h3>Аліса</h3><p>Головна. Приймає всі мої повідомлення й голосові і сама передає потрібному агенту.</p></div>
+          <div><h3>Марічка</h3><p>Головна. Приймає всі мої повідомлення й голосові, вирішує, кому з агентів передати, і відповідає мені сама.</p></div>
         </div>
         <ul class="crew">
-          <li><span class="ava" aria-hidden="true">📋</span><div><h3>Софія <small>план і задачі</small></h3><p>Щоранку збирає план дня і веде задачі.</p></div></li>
-          <li><span class="ava" aria-hidden="true">✍️</span><div><h3>Ліра <small>контент</small></h3><p>Пише сценарії, каруселі, сторіз і пости моїм голосом.</p></div></li>
-          <li><span class="ava" aria-hidden="true">💡</span><div><h3>Мія <small>ідеї</small></h3><p>Ловить ідеї і позначає ті, що підходять для контенту.</p></div></li>
+          <li><span class="ava" aria-hidden="true">✍️</span><div><h3>Лея <small>контент</small></h3><p>Пише каруселі, рілз, сторіз і пости моїм голосом.</p></div></li>
+          <li><span class="ava" aria-hidden="true">💰</span><div><h3>Белла <small>гроші</small></h3><p>Записує витрати й доходи, рахує підсумки місяця.</p></div></li>
+          <li><span class="ava" aria-hidden="true">💡</span><div><h3>Мія <small>ідеї</small></h3><p>Ловить ідеї і перевіряє ідеї продуктів.</p></div></li>
           <li><span class="ava" aria-hidden="true">🧠</span><div><h3>Тея <small>пам'ять</small></h3><p>Пам'ятає рішення, людей і цілі.</p></div></li>
-          <li><span class="ava" aria-hidden="true">⏳</span><div><h3>Ора <small>день</small></h3><p>Увечері підсумовує, що зроблено і куди пішов час.</p></div></li>
-          <li><span class="ava" aria-hidden="true">💰</span><div><h3>Белла <small>гроші</small></h3><p>Записує витрати й доходи, рахує місяць.</p></div></li>
-          <li><span class="ava" aria-hidden="true">🌿</span><div><h3>Віта <small>тіло</small></h3><p>Калорії, вага, тренування і що приготувати.</p></div></li>
-          <li><span class="ava" aria-hidden="true">⭐</span><div><h3>Стела <small>статистика</small></h3><p>Рахує підписників і показує ріст.</p></div></li>
+          <li><span class="ava" aria-hidden="true">📋</span><div><h3>Тарас <small>задачі і план</small></h3><p>Веде задачі в Notion і щоранку збирає план дня.</p></div></li>
+          <li><span class="ava" aria-hidden="true">⏳</span><div><h3>Сірожа <small>день</small></h3><p>Увечері підсумовує, що зроблено проти плану і куди пішов час.</p></div></li>
+          <li><span class="ava" aria-hidden="true">⭐</span><div><h3>Остап <small>статистика</small></h3><p>Рахує підписників і показує ріст.</p></div></li>
+          <li><span class="ava" aria-hidden="true">🌿</span><div><h3>Віта <small>тіло</small></h3><p>Калорії, вага, тренування і що приготувати з того, що є вдома.</p></div></li>
+          <li><span class="ava" aria-hidden="true">🤝</span><div><h3>Назар <small>зустрічі</small></h3><p>Шукає вільні слоти, а після мого «так» створює Zoom і подію.</p></div></li>
+          <li><span class="ava" aria-hidden="true">🎬</span><div><h3>Марко <small>монтаж рілз</small></h3><p>Монтує рілз з відео: субтитри, обкладинка, перебивки.</p></div></li>
         </ul>
       </div>
     </section>
@@ -575,9 +578,9 @@ const ORBITS = [
   { id:"skill", name:"Скіли", r:262, lead:"Готові рецепти: як зробити конкретну річ так, як я люблю. Один раз налаштувала, далі просто прошу.",
     nodes:["карусель","сторіз","пост","хуки","сценарії","фото","монтаж","прогрів"],
     items:[["Тексти","каруселі, сторіз, пости, хуки і сценарії рілз"],["Візуал і відео","фото з AI-двійником і монтаж рілз"],["Продажі","прогріви і подарунки для підписників"]] },
-  { id:"agent", name:"Агенти", r:340, lead:"Моя команда в Telegram: Аліса і вісім агентів. Я пишу голосовим, вони роблять роботу.",
-    nodes:["Контент","Гроші","План","День","Тіло","Ідеї"],
-    items:[["Контент","пише тексти моїм голосом"],["Гроші","записує витрати й доходи, рахує місяць"],["План і день","ранковий план і вечірній звіт"],["Тіло","їжа, вага, тренування"]] }
+  { id:"agent", name:"Агенти", r:340, lead:"Моя команда в Telegram: Марічка і десять агентів. Я пишу голосовим, вони роблять роботу.",
+    nodes:["Контент","Гроші","План","День","Тіло","Ідеї","Зустрічі","Монтаж"],
+    items:[["Контент","пише тексти моїм голосом"],["Гроші","записує витрати й доходи, рахує місяць"],["План і день","ранковий план і вечірній звіт"],["Тіло","їжа, вага, тренування"],["Зустрічі і монтаж","вільні слоти й Zoom, монтаж рілз"]] }
 ];
 const NS="http://www.w3.org/2000/svg";
 const svg=document.getElementById("orbits");
