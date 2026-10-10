@@ -163,9 +163,10 @@ section.block:first-child{border-top:0}
 .pillars li{padding:var(--s5) 0;display:grid;gap:var(--s3);align-content:start;min-width:0}
 @media (max-width:760px){.pillars li+li{border-top:1px solid var(--line)}}
 .pillars h3{font-weight:900;font-size:clamp(24px,2.6vw,30px);line-height:1.1;text-transform:uppercase}
+.pillars p b{font-weight:700;color:var(--ink)}
 .pillars p{margin:0;font-size:16px;max-width:40ch}
 
-/* TEAM: Аліса і помічниці */
+/* TEAM: Аліса і агенти */
 .team{margin-top:var(--s6);display:grid;gap:var(--s4)}
 .lead-agent{background:var(--lime);color:var(--on-lime);border-radius:var(--r-card);padding:var(--s5) var(--s6);display:grid;grid-template-columns:auto minmax(0,1fr);gap:var(--s5);align-items:center;position:relative}
 .lead-agent h3{color:var(--on-lime);font-weight:900;font-size:clamp(28px,3.4vw,40px);line-height:1.05;text-transform:uppercase}
@@ -315,22 +316,22 @@ footer{text-align:center;color:var(--muted);font-size:14px;line-height:1.8;paddi
     <div>
       <span class="pill">Курс · 10 тижнів · старт 01.12.2026</span>
       <h1><span class="pre">Тобі не треба більше часу.</span><span class="need">Тобі потрібна</span><span class="sys">система</span></h1>
-      <p class="sub">На курсі «Система з AI» ти збираєш свою команду AI-помічниць. Щоранку вони кажуть, на чому сьогодні фокус, ведуть конвеєр контенту твоїм голосом і тримають усе в одному місці. Код писати не треба, а поруч я: онлайн-зустрічі зі мною в Zoom раз на 2 тижні і мій зворотний зв'язок у чаті.</p>
+      <p class="sub">На курсі «Система з AI» ти збираєш свою команду AI-агентів. Щоранку вони кажуть, на чому сьогодні фокус, ведуть конвеєр контенту твоїм голосом і тримають усе в одному місці. Код писати не треба, а поруч я: онлайн-зустрічі зі мною в Zoom раз на 2 тижні і мій зворотний зв'язок у чаті.</p>
       <div class="cta-row" id="heroCta">
         <a class="btn" href="https://t.me/kateryna_shevtsova_bot?start=tr843652f3a924f29351b172ff" target="_blank" rel="noopener">Хочу першою дізнатись дату вебінару</a>
       </div>
-      <p class="fine">Кнопка відкриє мій Telegram: напишу тобі першою, щойно буде дата безкоштовного вебінару. Це ні до чого не зобов'язує і нічого платити не треба.</p>
+      <p class="fine">Кнопка відкриє мій Telegram: напишу тобі першою, щойно буде дата безкоштовного вебінару.</p>
     </div>
-    <figure class="chat" aria-label="Приклад: як мої помічниці відповідають у Telegram протягом дня">
+    <figure class="chat" aria-label="Приклад: як мої агенти відповідають у Telegram протягом дня">
       <div class="chat-head" aria-hidden="true"><span class="chat-ava">А</span><span><b>Аліса і команда</b><span class="who-bot">мій бот у Telegram</span></span></div>
       <ul class="msgs">
         <li class="msg bot"><i>📋 Софія</i>Доброго ранку. Сьогодні 2 зустрічі і 4 вільні години.<br>🎯 Фокус: сценарій рілз, відповісти учням, тренування.<small>08:00</small></li>
         <li class="msg me">🎤 Голосове, 0:12<small>12:30</small></li>
         <li class="msg bot"><i>✍️ Ліра</i>Почула: рілз про те, як ти перестала тримати все в голові. Сценарій готовий: хук, три кадри, заклик. Глянеш?<small>12:31</small></li>
-        <li class="msg me extra">💰 обід 24 франки<small>13:40</small></li>
-        <li class="msg bot extra"><i>💰 Белла</i>Записала: кафе, 24 CHF.<small>13:40</small></li>
+        <li class="msg me extra">💰 обід 350 гривень<small>13:40</small></li>
+        <li class="msg bot extra"><i>💰 Белла</i>Записала: кафе, 350 грн.<small>13:40</small></li>
       </ul>
-      <figcaption>Приклад розмови з моїми помічницями.</figcaption>
+      <figcaption>Приклад розмови з моїми агентами.</figcaption>
     </figure>
   </div>
 </header>
@@ -341,18 +342,18 @@ footer{text-align:center;color:var(--muted);font-size:14px;line-height:1.8;paddi
       <h2 id="pillars-h">Що робить система<span class="italic">три речі, заради яких її будують</span></h2>
       <ol class="pillars">
         <li><span class="num" aria-hidden="true">1</span><h3>Фокус на день</h3><p>Зранку одне повідомлення: задачі, зустрічі і пошта разом. Ти одразу бачиш, що саме тобі сьогодні робити, і не тримаєш усе в голові.</p></li>
-        <li><span class="num" aria-hidden="true">2</span><h3>Конвеєр контенту</h3><p>Сценарії, рілз, відео, каруселі і сторіз ідуть по готовому процесу, разом з монтажем. Усе твоїм голосом і з твоїм контекстом.</p></li>
-        <li><span class="num" aria-hidden="true">3</span><h3>Усе в одному місці</h3><p>Задачі, ідеї, гроші, тіло і контент живуть у команді AI-помічниць. Пишеш одне голосове, а далі вони розбираються самі.</p></li>
+        <li><span class="num" aria-hidden="true">2</span><h3>Конвеєр контенту</h3><p>Сценарії, рілз, відео, каруселі і сторіз ідуть по готовому процесу, разом з монтажем. <b>Усе твоїм голосом і з твоїм контекстом.</b></p></li>
+        <li><span class="num" aria-hidden="true">3</span><h3>Усе в одному місці</h3><p>Задачі, ідеї, гроші, тіло і контент живуть у команді AI-агентів. Пишеш одне голосове, а далі вони розбираються самі.</p></li>
       </ol>
     </section>
 
     <section class="block" aria-labelledby="team-h">
       <span class="label">Моя команда в Telegram</span>
-      <h2 id="team-h">Знайомся: Аліса і її помічниці<span class="italic">ти збереш таку команду собі</span></h2>
+      <h2 id="team-h">Знайомся: Аліса і її агенти<span class="italic">ти збереш таку команду собі</span></h2>
       <div class="team">
         <div class="lead-agent">
           <span class="ava" aria-hidden="true">👑</span>
-          <div><h3>Аліса</h3><p>Головна. Приймає всі мої повідомлення й голосові і сама передає потрібній помічниці.</p></div>
+          <div><h3>Аліса</h3><p>Головна. Приймає всі мої повідомлення й голосові і сама передає потрібному агенту.</p></div>
         </div>
         <ul class="crew">
           <li><span class="ava" aria-hidden="true">📋</span><div><h3>Софія <small>план і задачі</small></h3><p>Щоранку збирає план дня і веде задачі.</p></div></li>
@@ -407,7 +408,6 @@ footer{text-align:center;color:var(--muted);font-size:14px;line-height:1.8;paddi
       <div class="cta-row">
         <a class="btn" href="https://t.me/kateryna_shevtsova_bot?start=tr843652f3a924f29351b172ff" target="_blank" rel="noopener">Хочу першою дізнатись дату вебінару</a>
       </div>
-      <p class="fine">А далі можна не читати :)</p>
     </div>
   </section>
 
@@ -462,12 +462,12 @@ footer{text-align:center;color:var(--muted);font-size:14px;line-height:1.8;paddi
         <div>
           <span class="label">Хто веде</span>
           <h2 id="author-h">Катя Шевцова</h2>
-          <p class="about">Я будую системи все життя і постійно щось автоматизую: спершу у фінансах, потім у даних, тепер з AI. Задача в мене завжди одна: прибрати ручну рутину, щоб лишився час помріяти і подумати про стратегію. Свій блог і свій день я веду на цій самій системі і показую весь процес, разом з помилками.</p>
+          <p class="about">Я будую системи все життя і постійно щось автоматизую: спершу у фінансах, потім у даних, тепер з AI. Задача в мене завжди одна: прибрати ручну рутину, щоб лишився час помріяти і подумати про стратегію. Свій блог і свій день я веду на цій самій системі і показую весь процес: зі складнощами і з тим, як я з ними справляюсь.</p>
         </div>
       </div>
       <ul class="facts">
         <li><strong>13</strong><span>років фінансовою директоркою, тому системи і цифри для мене рідні</span></li>
-        <li><strong>6</strong><span>років консультую з даних і автоматизацій в IT-компанії у Швейцарії: понад 100 звітів і дашбордів для міжнародних корпорацій</span></li>
+        <li><strong>6</strong><span>років в IT-компанії у Швейцарії: будую і автоматизую звітність міжнародних корпорацій</span></li>
         <li><strong>2</strong><span>сертифікації Microsoft. Веду тренінги з AI, Power BI і Fabric</span></li>
       </ul>
     </section>
@@ -575,7 +575,7 @@ const ORBITS = [
   { id:"skill", name:"Скіли", r:262, lead:"Готові рецепти: як зробити конкретну річ так, як я люблю. Один раз налаштувала, далі просто прошу.",
     nodes:["карусель","сторіз","пост","хуки","сценарії","фото","монтаж","прогрів"],
     items:[["Тексти","каруселі, сторіз, пости, хуки і сценарії рілз"],["Візуал і відео","фото з AI-двійником і монтаж рілз"],["Продажі","прогріви і подарунки для підписників"]] },
-  { id:"agent", name:"Агенти", r:340, lead:"Моя команда в Telegram: Аліса і вісім помічниць. Я пишу голосовим, вони роблять роботу.",
+  { id:"agent", name:"Агенти", r:340, lead:"Моя команда в Telegram: Аліса і вісім агентів. Я пишу голосовим, вони роблять роботу.",
     nodes:["Контент","Гроші","План","День","Тіло","Ідеї"],
     items:[["Контент","пише тексти моїм голосом"],["Гроші","записує витрати й доходи, рахує місяць"],["План і день","ранковий план і вечірній звіт"],["Тіло","їжа, вага, тренування"]] }
 ];
