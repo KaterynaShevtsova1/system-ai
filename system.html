@@ -212,6 +212,54 @@ section.block{padding-block:var(--s8);border-top:1px solid var(--line)}
 @media (max-width:960px){.belt li{display:grid;grid-template-columns:36px minmax(0,1fr);gap:0 var(--s4);padding:var(--s4) var(--s5) var(--s4) var(--s4)}.belt li::before{margin:0;grid-row:1 / span 2}.belt li:not(:last-child)::after{left:33px}.belt h3{align-self:center}}
 .belt p{margin:var(--s2) 0 0;font-size:15px}
 
+/* Хто куди публікує */
+.pub{display:grid;grid-template-columns:minmax(0,.8fr) 48px minmax(0,1.1fr) 48px minmax(0,.9fr) 48px minmax(0,1.5fr);align-items:center;gap:var(--s3);margin-top:var(--s7)}
+.pub-col{min-width:0}
+.pub-me,.pub-boss{display:grid;justify-items:center;text-align:center;gap:var(--s1)}
+.pub-me b,.pub-boss b{color:var(--ink);font-weight:900;font-size:22px;line-height:1.1;margin-top:var(--s2)}
+.pub-me > span:last-child,.pub-boss > span:last-child{font-weight:500;font-size:15px;color:var(--text)}
+.pub .ic{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.pub-ava{width:52px;height:52px;border-radius:50%;border:1.5px solid var(--ink);display:grid;place-items:center;color:var(--ink);flex:none}
+.pub-ava.big-ic{width:88px;height:88px}
+.pub-ava.big-ic .ic{width:36px;height:36px}
+.boss{width:136px;height:136px;border-radius:50%;background:var(--lime);color:var(--on-lime);display:grid;place-items:center}
+.boss .ic{width:56px;height:56px;stroke-width:1.5}
+.pub-boss b{font-size:28px}
+.pub-arrow{display:grid;place-items:center}
+.pub-arrow svg{width:48px;height:24px;fill:none;stroke:var(--lime);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.team3,.ready,.pipes{list-style:none;margin:0;padding:0;display:grid;gap:var(--s3)}
+.team3 li,.ready li{display:flex;align-items:center;gap:var(--s3)}
+.team3 b,.ready b{display:block;color:var(--ink);font-weight:900;font-size:17px;line-height:1.15}
+.team3 li span span,.ready li span span{display:block;font-weight:500;font-size:14px;color:var(--text)}
+.pub-team{display:grid;justify-items:start;gap:var(--s3)}
+.down-arrow{width:24px;height:32px;margin-left:14px;fill:none;stroke:var(--lime);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.ready li{color:var(--ink);border:1.5px solid var(--line);border-radius:var(--r-small);padding:var(--s2) var(--s3)}
+.pipes li{display:flex;align-items:center;gap:var(--s3)}
+.plate{display:grid;border:1.5px solid var(--ink);border-radius:var(--r-pill);padding:6px var(--s4);min-width:150px}
+.plate b{color:var(--ink);font-weight:900;font-size:15px;line-height:1.2}
+.plate span{font-weight:500;font-size:12px;color:var(--text);line-height:1.3}
+.pipe-arrow{width:40px;height:16px;flex:none;fill:none;stroke:var(--lime);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.logos{display:flex;gap:var(--s3)}
+.logo{width:28px;height:28px;fill:var(--ink)}
+.pub-strip{margin-top:var(--s7);border:1.5px solid var(--ink);border-radius:var(--r-card);padding:var(--s4) var(--s5);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:var(--s3) var(--s6)}
+.pub-strip > span{display:flex;align-items:center;gap:var(--s3);color:var(--ink)}
+.pub-strip b{font-weight:900;font-size:16px}
+.pub-strip .ic{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.pub-note{margin:var(--s4) 0 0;font-weight:500;font-size:16px;color:var(--text)}
+@media (max-width:900px){
+  .pub{grid-template-columns:1fr;justify-items:center;gap:var(--s4)}
+  .pub-arrow svg{transform:rotate(90deg)}
+  .pub-team{justify-items:center}
+  .down-arrow{margin-left:0}
+  .pipes{justify-self:center}
+  .pipes li{display:grid;grid-template-columns:150px 40px 68px;gap:var(--s3)}
+  .pipes .plate{min-width:0}
+  .pub-strip{flex-direction:column;align-items:flex-start}
+  .pub-strip > span{flex-wrap:wrap}
+  .pub-strip b{white-space:nowrap}
+}
+@media (max-width:400px){.pipes li{grid-template-columns:136px 32px 60px;gap:var(--s2)}.plate{padding-inline:var(--s3)}.pipe-arrow{width:32px}.logo{width:24px;height:24px}.pub-strip{padding:var(--s4)}.pub-strip > span{gap:var(--s2)}.pub-strip b{font-size:14px}.pub-strip .pipe-arrow{width:24px}}
+
 /* CTA */
 .final{background:var(--card);border:1.5px solid var(--line);border-radius:28px;padding:var(--s7) var(--s5);text-align:center;display:grid;gap:var(--s5);justify-items:center;margin-block:var(--s8)}
 .final h2{font-weight:900;text-transform:uppercase;font-size:clamp(28px,6vw,44px);line-height:1.05}
@@ -376,6 +424,50 @@ footer{text-align:center;color:var(--muted);font-size:14px;line-height:1.8;paddi
         <li><h3>Монтаж рілз</h3><p>Тарас на ноуті монтує у відеостудії: субтитри, обкладинка, перебивки. Відео збирається з коду (Remotion), тому кожен ролик в одному стилі.</p></li>
         <li><h3>Планування</h3><p>Пост стає в розклад тільки після мого «так».</p></li>
       </ol>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="pub-h">
+    <div class="wide">
+      <h2 id="pub-h">Хто куди публікує<span class="italic">від думки до соцмереж</span></h2>
+      <div class="pub">
+        <div class="pub-col pub-me">
+          <span class="pub-ava big-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7"/></svg></span>
+          <b>Я</b>
+          <span>Думки й голосові</span>
+        </div>
+        <span class="pub-arrow" aria-hidden="true"><svg viewBox="0 0 48 24"><path d="M2 12h40M34 4l8 8-8 8"/></svg></span>
+        <div class="pub-col pub-team">
+          <ul class="team3">
+            <li><span class="pub-ava"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l4.2-1 10.6-10.6a2.1 2.1 0 0 0-3-3L5.2 16 4 20z"/><path d="M14.5 6.5l3 3"/></svg></span><span><b>Лея</b><span>Тексти</span></span></li>
+            <li><span class="pub-ava"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18c1.2 0 1.8-.8 1.8-1.7 0-1.3-1-1.6-1-2.6 0-1 .8-1.7 1.9-1.7H17a4 4 0 0 0 4-4C21 6.6 17 3 12 3z"/><circle cx="7.5" cy="11" r="1.2"/><circle cx="10" cy="7" r="1.2"/><circle cx="14.5" cy="7" r="1.2"/></svg></span><span><b>Марко</b><span>Візуал</span></span></li>
+            <li><span class="pub-ava"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="9" width="18" height="11" rx="1.5"/><path d="M3 9l1.4-4.6 16.2 3.2L21 9M8 5.2l2 3.6M13 6.2l2 3.2"/></svg></span><span><b>Тарас</b><span>Монтаж</span></span></li>
+          </ul>
+          <svg class="down-arrow" viewBox="0 0 24 32" aria-hidden="true"><path d="M12 2v24M5 19l7 7 7-7"/></svg>
+          <ul class="ready">
+            <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></svg><span><b>Готове</b><span>Google Диск</span></span></li>
+            <li><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span><b>Картка</b><span>в Notion</span></span></li>
+          </ul>
+        </div>
+        <span class="pub-arrow" aria-hidden="true"><svg viewBox="0 0 48 24"><path d="M2 12h40M34 4l8 8-8 8"/></svg></span>
+        <div class="pub-col pub-boss">
+          <span class="boss"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8l4.5 4L12 5l4.5 7L21 8l-2 11H5L3 8z"/></svg></span>
+          <b>Марічка</b>
+          <span>Планує все</span>
+        </div>
+        <span class="pub-arrow" aria-hidden="true"><svg viewBox="0 0 48 24"><path d="M2 12h40M34 4l8 8-8 8"/></svg></span>
+        <ul class="pub-col pipes" aria-label="Куди йде контент">
+          <li><span class="plate"><b>Meta</b><span>безкоштовно</span></span><svg class="pipe-arrow" viewBox="0 0 40 16" aria-hidden="true"><path d="M2 8h32M28 3l6 5-6 5"/></svg><span class="logos"><svg class="logo" viewBox="0 0 24 24" role="img" aria-label="Instagram"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg><svg class="logo" viewBox="0 0 24 24" role="img" aria-label="Facebook"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg></span></li>
+          <li><span class="plate"><b>Upload-Post</b><span>довгі рілзи</span></span><svg class="pipe-arrow" viewBox="0 0 40 16" aria-hidden="true"><path d="M2 8h32M28 3l6 5-6 5"/></svg><span class="logos"><svg class="logo" viewBox="0 0 24 24" role="img" aria-label="YouTube"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg><svg class="logo" viewBox="0 0 24 24" role="img" aria-label="Instagram"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg></span></li>
+          <li><span class="plate"><b>Threads</b><span>безкоштовно</span></span><svg class="pipe-arrow" viewBox="0 0 40 16" aria-hidden="true"><path d="M2 8h32M28 3l6 5-6 5"/></svg><span class="logos"><svg class="logo" viewBox="0 0 24 24" role="img" aria-label="Threads"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 0 1 3.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32L7.734 7.847c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388.108.046.216.094.321.142 1.49.7 2.58 1.761 3.154 3.07.797 1.82.871 4.79-1.548 7.158-1.85 1.81-4.094 2.628-7.277 2.65Zm1.003-11.69c-.242 0-.487.007-.739.021-1.836.103-2.98.946-2.916 2.143.067 1.256 1.452 1.839 2.784 1.767 1.224-.065 2.818-.543 3.086-3.71a10.5 10.5 0 0 0-2.215-.221z"/></svg></span></li>
+          <li><span class="plate"><b>Nakarkala</b><span>ставлю сама</span></span><svg class="pipe-arrow" viewBox="0 0 40 16" aria-hidden="true"><path d="M2 8h32M28 3l6 5-6 5"/></svg><span class="logos"><svg class="logo" viewBox="0 0 24 24" role="img" aria-label="Telegram"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></span></li>
+        </ul>
+      </div>
+      <div class="pub-strip">
+        <span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V4M7.5 8.5L12 4l4.5 4.5"/><path d="M4 14v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/></svg><b>Усе, що вийшло</b><svg class="pipe-arrow" viewBox="0 0 40 16" aria-hidden="true"><path d="M2 8h32M28 3l6 5-6 5"/></svg><b>Контент-хаб</b></span>
+        <span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.8 2.8L16.5 9.5"/></svg><b>Картка: Опубліковано</b></span>
+      </div>
+      <p class="pub-note">Для кожної мережі свій найдешевший шлях, а планує все одна помічниця.</p>
     </div>
   </section>
 
