@@ -6,7 +6,8 @@
 <title>Як працює моя система з AI · Катя Шевцова</title>
 <meta name="description" content="Схема моєї системи з AI: два боти в Telegram. Марічка на ноутбуці веде гроші, тіло і монтаж рілз. Марічка Cloud на сервері працює 24/7: дослідження, тексти, візуал і план дня.">
 <link rel="canonical" href="https://katerynashevtsova1.github.io/system-ai/system.html">
-<meta name="theme-color" content="#FFFFFF">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#141414" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta property="og:type" content="website">
@@ -38,6 +39,11 @@
   --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px; --s8:64px; --s9:96px;
   --r-pill:999px; --r-card:18px; --r-small:12px;
   color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141414; --card:#1E1E1E; --line:#2E2E2E; --ink:#F4F4F4; --text:#CFCFCF; --muted:#A8A8A8; --edge:#6A6A6A; color-scheme:dark;
+  }
 }
 :root[data-theme="dark"]{
   --bg:#141414; --card:#1E1E1E; --line:#2E2E2E; --ink:#F4F4F4; --text:#CFCFCF; --muted:#A8A8A8; --edge:#6A6A6A; color-scheme:dark;
