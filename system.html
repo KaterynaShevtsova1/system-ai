@@ -260,6 +260,44 @@ section.block{padding-block:var(--s8);border-top:1px solid var(--line)}
 }
 @media (max-width:400px){.pipes li{grid-template-columns:136px 32px 60px;gap:var(--s2)}.plate{padding-inline:var(--s3)}.pipe-arrow{width:32px}.logo{width:24px;height:24px}.pub-strip{padding:var(--s4)}.pub-strip > span{gap:var(--s2)}.pub-strip b{font-size:14px}.pub-strip .pipe-arrow{width:24px}}
 
+/* Що ти забереш собі */
+.gets{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s4);margin-top:var(--s6)}
+@media (max-width:760px){.gets{grid-template-columns:1fr}}
+.get{border:1.5px solid var(--line);border-radius:var(--r-card);padding:var(--s5);display:grid;gap:var(--s3);align-content:start;min-width:0}
+.get-head{display:flex;align-items:center;gap:var(--s3)}
+.get-ic{width:48px;height:48px;border-radius:50%;border:1.5px solid var(--ink);display:grid;place-items:center;color:var(--ink);flex:none}
+.get-ic svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.get h3{font-size:22px;font-weight:900;line-height:1.15}
+.get .now,.get .then{margin:0;font-size:15px;line-height:1.55}
+.get .now{color:var(--muted)}
+.get .then{color:var(--ink)}
+.get .now b,.get .then b{display:block;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:2px}
+.get .chip{justify-self:start;background:var(--lime);color:var(--on-lime);font-weight:800;font-size:14px;border-radius:var(--r-pill);padding:var(--s1) var(--s4)}
+.levers{list-style:none;margin:var(--s7) 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:2px solid var(--ink)}
+@media (max-width:860px){.levers{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:420px){.levers{grid-template-columns:1fr}}
+.levers li{padding:var(--s5) var(--s4) var(--s5) 0;min-width:0}
+.levers b{display:block;color:var(--ink);font-weight:900;font-size:clamp(34px,4vw,48px);line-height:1}
+.levers span{display:block;margin-top:var(--s2);font-size:15px}
+.path{list-style:none;margin:var(--s5) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s2)}
+@media (max-width:760px){.path{grid-template-columns:1fr}}
+.path li{background:var(--card);border-radius:var(--r-small);padding:var(--s4);min-width:0}
+.path .wk{display:block;font-size:13px;font-weight:700;color:var(--muted)}
+.path b{display:block;color:var(--ink);font-size:18px;font-weight:900;margin-top:2px}
+.path p{margin:var(--s1) 0 0;font-size:14px;line-height:1.5}
+.proof{margin-top:var(--s7);background:var(--ink);color:var(--bg);border-radius:var(--r-card);padding:var(--s6) var(--s5);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:var(--s6)}
+@media (max-width:860px){.proof{grid-template-columns:1fr;gap:var(--s5)}}
+.proof h3{color:var(--bg);font-size:clamp(24px,3vw,32px);font-weight:900;line-height:1.1;text-transform:uppercase}
+.proof h3 .italic{display:block;text-transform:none;font-size:.7em;margin-top:var(--s2);color:var(--bg)}
+.proof p{margin:var(--s3) 0 0;color:var(--bg);opacity:.86;font-size:15px}
+.creds{list-style:none;margin:var(--s4) 0 0;padding:0;display:grid;gap:var(--s2)}
+.creds li{color:var(--bg);font-size:15px}
+.creds b{color:var(--lime);font-weight:900;font-size:20px;margin-right:var(--s2)}
+.skills{list-style:none;margin:var(--s3) 0 0;padding:0;display:flex;flex-wrap:wrap;gap:var(--s2)}
+.skills li{border:1.5px solid rgba(255,255,255,.5);color:var(--bg);border-radius:var(--r-pill);padding:var(--s1) var(--s3);font-size:14px;font-weight:600}
+.proof .sk-h{color:var(--bg);font-weight:800;font-size:17px;margin:0}
+.honest{margin:var(--s5) 0 0;font-size:14px;color:var(--muted);max-width:70ch}
+
 /* CTA */
 .final{background:var(--card);border:1.5px solid var(--line);border-radius:28px;padding:var(--s7) var(--s5);text-align:center;display:grid;gap:var(--s5);justify-items:center;margin-block:var(--s8)}
 .final h2{font-weight:900;text-transform:uppercase;font-size:clamp(28px,6vw,44px);line-height:1.05}
@@ -468,6 +506,69 @@ footer{text-align:center;color:var(--muted);font-size:14px;line-height:1.8;paddi
         <span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.8 2.8L16.5 9.5"/></svg><b>Картка: Опубліковано</b></span>
       </div>
       <p class="pub-note">Для кожної мережі свій найдешевший шлях, а планує все одна помічниця.</p>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="offer-h">
+    <div class="wide">
+      <h2 id="offer-h">Що ти забереш собі<span class="italic">якщо збереш таку систему</span></h2>
+      <p class="lead">Вище моя система. На курсі «Система з AI» ти за 10 тижнів збираєш свою, простішу версію: під свій бізнес, свій блог і свій стиль мовлення.</p>
+      <div class="gets">
+        <article class="get">
+          <div class="get-head"><span class="get-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20V9l8-5 8 5v11"/><path d="M9 20v-6h6v6"/></svg></span><h3>Твій бізнес</h3></div>
+          <p class="now"><b>Зараз</b>Щоразу пояснюєш AI, хто ти і що продаєш, а він видає щось загальне.</p>
+          <p class="then"><b>З системою</b>«Контекст»: 6 сторінок про тебе. Позиціонування з твоїми історіями, аудиторія, стиль мовлення, продукт, теми, брендбук. AI знає твій бізнес з першого слова.</p>
+          <span class="chip">6 сторінок «Контексту»</span>
+        </article>
+        <article class="get">
+          <div class="get-head"><span class="get-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 4z"/><path d="M8 9h8M8 12h5"/></svg></span><h3>Блог</h3></div>
+          <p class="now"><b>Зараз</b>Сідаєш писати пост і годину дивишся в порожній екран.</p>
+          <p class="then"><b>З системою</b>Контент-план на місяць, карусель і рілз зі своєї студії. Тексти звучать як ти, бо щонайменше 80% слів у них твої.</p>
+          <span class="chip">контент-план на місяць</span>
+        </article>
+        <article class="get">
+          <div class="get-head"><span class="get-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><circle cx="12" cy="12" r="4"/></svg></span><h3>Рутина</h3></div>
+          <p class="now"><b>Зараз</b>Ідея приходить у дорозі і губиться, а на текст і картинку немає сил.</p>
+          <p class="then"><b>З системою</b>Свій бот у Telegram з помічниками: Лея пише тексти, Марко придумує візуал. Бот живе на сервері, тому працює, навіть коли комп вимкнений.</p>
+          <span class="chip">свій бот у Telegram</span>
+        </article>
+        <article class="get">
+          <div class="get-head"><span class="get-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 9h8M8 13h8M8 17h4"/></svg></span><h3>Усе в одному місці</h3></div>
+          <p class="now"><b>Зараз</b>Нотатки, файли й ідеї розкидані по чатах, телефону і голові.</p>
+          <p class="then"><b>З системою</b>Одна копія «Контексту» в Notion, її бачать і Claude, і бот. Notion пам'ятає версії, тож будь-яку правку можна повернути як було.</p>
+          <span class="chip">усе в Notion</span>
+        </article>
+      </div>
+
+      <ul class="levers">
+        <li><b>2 тижні</b><span>до першого результату: проєкт у Claude, який пише твоїм стилем</span></li>
+        <li><b>0</b><span>рядків коду: установки робить Claude, а не ти</span></li>
+        <li><b>80%</b><span>слів у текстах твої, AI не пише замість тебе</span></li>
+        <li><b>10 тижнів</b><span>і на виході твоя власна AI-система</span></li>
+      </ul>
+
+      <ol class="path" aria-label="Три модулі курсу">
+        <li><span class="wk">тижні 1-2</span><b>Розпаковка</b><p>Проєкт у Claude на компі й телефоні. Нічого не встановлюємо.</p></li>
+        <li><span class="wk">тижні 3-6</span><b>Проявлення</b><p>Контент-план, карусель, рілз. Своя студія рілз.</p></li>
+        <li><span class="wk">тижні 7-10</span><b>Агенти</b><p>Свій бот у Telegram з Леєю і Марком.</p></li>
+      </ol>
+
+      <div class="proof">
+        <div>
+          <h3>Чому це працює<span class="italic">бо я так живу щодня</span></h3>
+          <p>Усе на цій сторінці я веду сама: свій блог, свій день, свій запуск. На курсі ти отримуєш не теорію, а спрощений сліпок системи, яка вже працює.</p>
+          <ul class="creds">
+            <li><b>13</b>років фінансовою директоркою</li>
+            <li><b>7</b>років в IT, зараз у Швейцарії</li>
+            <li><b>2</b>сертифікації Microsoft</li>
+          </ul>
+        </div>
+        <div>
+          <p class="sk-h">15 моїх навичок для Claude, кожна під мій стиль мовлення:</p>
+          <ul class="skills"><li>хуки для рілз</li><li>сценарії рілз</li><li>монтаж рілз</li><li>каруселі</li><li>сторіс</li><li>пости в Telegram</li><li>лід-магніти</li><li>прогріви</li><li>аналіз конкурентів</li><li>офери</li><li>ціни</li><li>людяні тексти</li><li>ранковий план</li><li>мій AI-двійник</li><li>перевірка ідей</li></ul>
+        </div>
+      </div>
+      <p class="honest">Чесно про умови: потрібна підписка Claude Pro, її оплачуєш окремо, напряму в Claude. Підійде комп на Windows або Mac.</p>
     </div>
   </section>
 
