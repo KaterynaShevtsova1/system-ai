@@ -261,18 +261,17 @@ section.block{padding-block:var(--s8);border-top:1px solid var(--line)}
 @media (max-width:400px){.pipes li{grid-template-columns:136px 32px 60px;gap:var(--s2)}.plate{padding-inline:var(--s3)}.pipe-arrow{width:32px}.logo{width:24px;height:24px}.pub-strip{padding:var(--s4)}.pub-strip > span{gap:var(--s2)}.pub-strip b{font-size:14px}.pub-strip .pipe-arrow{width:24px}}
 
 /* Що ти забереш собі */
-.gets{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s4);margin-top:var(--s6)}
-@media (max-width:760px){.gets{grid-template-columns:1fr}}
-.get{border:1.5px solid var(--line);border-radius:var(--r-card);padding:var(--s5);display:grid;gap:var(--s3);align-content:start;min-width:0}
-.get-head{display:flex;align-items:center;gap:var(--s3)}
-.get-ic{width:48px;height:48px;border-radius:50%;border:1.5px solid var(--ink);display:grid;place-items:center;color:var(--ink);flex:none}
-.get-ic svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.get h3{font-size:22px;font-weight:900;line-height:1.15}
-.get .now,.get .then{margin:0;font-size:15px;line-height:1.55}
-.get .now{color:var(--muted)}
-.get .then{color:var(--ink)}
-.get .now b,.get .then b{display:block;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:2px}
-.get .chip{justify-self:start;background:var(--lime);color:var(--on-lime);font-weight:800;font-size:14px;border-radius:var(--r-pill);padding:var(--s1) var(--s4)}
+.spheres{margin-top:var(--s6);border-top:2px solid var(--ink)}
+.sphere{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:var(--s3) var(--s7);padding-block:var(--s6);border-bottom:1px solid var(--line)}
+@media (max-width:860px){.sphere{grid-template-columns:1fr;padding-block:var(--s5)}}
+.sphere h3{font-weight:900;font-size:clamp(26px,3vw,36px);line-height:1.05;text-transform:uppercase;letter-spacing:-.01em}
+.sphere h3 .n{display:block;font-family:var(--serif);font-style:italic;font-weight:500;font-size:.6em;text-transform:none;color:var(--muted);margin-bottom:var(--s1)}
+.sphere ul{list-style:none;margin:0;padding:0;display:grid;gap:var(--s4)}
+.sphere li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:var(--s3);align-items:start}
+.sphere li::before{content:"";width:28px;height:28px;border-radius:50%;background:var(--lime) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/16px no-repeat;margin-top:2px}
+.sphere b{display:block;color:var(--ink);font-weight:800;font-size:clamp(19px,1.8vw,22px);line-height:1.3}
+.sphere li span{display:block;font-size:15px;color:var(--text);margin-top:2px}
+.sphere .tag{display:inline-block;margin-left:var(--s2);vertical-align:3px;border:1.5px solid var(--ink);border-radius:var(--r-pill);padding:0 var(--s2);font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
 .levers{list-style:none;margin:var(--s7) 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:2px solid var(--ink)}
 @media (max-width:860px){.levers{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:420px){.levers{grid-template-columns:1fr}}
@@ -511,33 +510,37 @@ footer{text-align:center;color:var(--muted);font-size:14px;line-height:1.8;paddi
 
   <section class="block" aria-labelledby="offer-h">
     <div class="wide">
-      <h2 id="offer-h">Що ти забереш собі<span class="italic">якщо збереш таку систему</span></h2>
-      <p class="lead">Вище моя система. На курсі «Система з AI» ти за 10 тижнів збираєш свою, простішу версію: під свій бізнес, свій блог і свій стиль мовлення.</p>
-      <div class="gets">
-        <article class="get">
-          <div class="get-head"><span class="get-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20V9l8-5 8 5v11"/><path d="M9 20v-6h6v6"/></svg></span><h3>Твій бізнес</h3></div>
-          <p class="now"><b>Зараз</b>Щоразу пояснюєш AI, хто ти і що продаєш, а він видає щось загальне.</p>
-          <p class="then"><b>З системою</b>«Контекст»: 6 сторінок про тебе. Позиціонування з твоїми історіями, аудиторія, стиль мовлення, продукт, теми, брендбук. AI знає твій бізнес з першого слова.</p>
-          <span class="chip">6 сторінок «Контексту»</span>
-        </article>
-        <article class="get">
-          <div class="get-head"><span class="get-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 4z"/><path d="M8 9h8M8 12h5"/></svg></span><h3>Блог</h3></div>
-          <p class="now"><b>Зараз</b>Сідаєш писати пост і годину дивишся в порожній екран.</p>
-          <p class="then"><b>З системою</b>Контент-план на місяць, карусель і рілз зі своєї студії. Тексти звучать як ти, бо щонайменше 80% слів у них твої.</p>
-          <span class="chip">контент-план на місяць</span>
-        </article>
-        <article class="get">
-          <div class="get-head"><span class="get-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><circle cx="12" cy="12" r="4"/></svg></span><h3>Рутина</h3></div>
-          <p class="now"><b>Зараз</b>Ідея приходить у дорозі і губиться, а на текст і картинку немає сил.</p>
-          <p class="then"><b>З системою</b>Свій бот у Telegram з помічниками: Лея пише тексти, Марко придумує візуал. Бот живе на сервері, тому працює, навіть коли комп вимкнений.</p>
-          <span class="chip">свій бот у Telegram</span>
-        </article>
-        <article class="get">
-          <div class="get-head"><span class="get-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 9h8M8 13h8M8 17h4"/></svg></span><h3>Усе в одному місці</h3></div>
-          <p class="now"><b>Зараз</b>Нотатки, файли й ідеї розкидані по чатах, телефону і голові.</p>
-          <p class="then"><b>З системою</b>Одна копія «Контексту» в Notion, її бачать і Claude, і бот. Notion пам'ятає версії, тож будь-яку правку можна повернути як було.</p>
-          <span class="chip">усе в Notion</span>
-        </article>
+      <h2 id="offer-h">Що вміє система<span class="italic">і що з цього ти забереш собі</span></h2>
+      <p class="lead">Ось що робить моя система, по напрямках. Те, що позначено «на курсі», ти за 10 тижнів збираєш собі: під свій бізнес, свій блог і свій стиль мовлення.</p>
+      <div class="spheres">
+        <div class="sphere">
+          <h3><span class="n">01</span>Бізнес і продукт</h3>
+          <ul><li><div><b>AI знає твій бізнес з першого слова <i class="tag">на курсі</i></b><span>6 сторінок про тебе: пишеш один раз, і розуміють усі помічники</span></div></li><li><div><b>Офер і ціна, зібрані по структурі</b><span>що людина отримує, чому зараз і скільки це коштує</span></div></li><li><div><b>Перевірка ідеї ще до запуску</b><span>аналоги і слабкі місця, поки ти нічого не зробила</span></div></li><li><div><b>Конкуренти на одній сторінці</b><span>хто що продає і де ти сильніша</span></div></li></ul>
+        </div>
+        <div class="sphere">
+          <h3><span class="n">02</span>Рутина і фокус</h3>
+          <ul><li><div><b>План дня щоранку в Telegram</b><span>календар, задачі, прострочене і головний фокус</span></div></li><li><div><b>Голосове замість списку справ</b><span>надиктувала в дорозі, і задача вже в роботі</span></div></li><li><div><b>Помічник на зв'язку, навіть коли комп вимкнений <i class="tag">на курсі</i></b><span>бот живе на сервері і працює цілодобово</span></div></li></ul>
+        </div>
+        <div class="sphere">
+          <h3><span class="n">03</span>Маркетинг і продажі</h3>
+          <ul><li><div><b>Лід-магніти з кодовим словом</b><span>людина пише слово, бот сам надсилає подарунок</span></div></li><li><div><b>Прогрів до запуску</b><span>серія постів і сторіс, яка веде до покупки</span></div></li><li><div><b>Продаюча презентація</b><span>для вебінару чи розбору: слайди, заперечення, чекліст</span></div></li><li><div><b>Воронка в боті з тегами</b><span>бачиш, хто чого хоче, без таблиць руками</span></div></li></ul>
+        </div>
+        <div class="sphere">
+          <h3><span class="n">04</span>Контент і соцмережі</h3>
+          <ul><li><div><b>Тексти твоїм стилем <i class="tag">на курсі</i></b><span>щонайменше 80% слів твої, AI не пише замість тебе</span></div></li><li><div><b>Каруселі й візуал в одному стилі <i class="tag">на курсі</i></b><span>під твій бренд і твої кольори</span></div></li><li><div><b>Рілз від хука до монтажу <i class="tag">на курсі</i></b><span>субтитри, обкладинка і свій стиль у кожному ролику</span></div></li><li><div><b>Контент-план на місяць <i class="tag">на курсі</i></b><span>ідеї більше не губляться</span></div></li><li><div><b>Болі й тренди твоєї аудиторії</b><span>що зараз заходить, з посиланнями на джерела</span></div></li><li><div><b>Публікація в 5 мереж</b><span>Instagram, Facebook, YouTube, Threads і Telegram</span></div></li></ul>
+        </div>
+        <div class="sphere">
+          <h3><span class="n">05</span>Клієнти і комунікації</h3>
+          <ul><li><div><b>Бот відповідає новим людям першим</b><span>в Instagram і Telegram, навіть уночі</span></div></li><li><div><b>Запис на розбір без переписки</b><span>людина тисне кнопку, а тобі падає задача</span></div></li><li><div><b>Підсумок кожного дзвінка</b><span>що вирішили і що робити далі</span></div></li></ul>
+        </div>
+        <div class="sphere">
+          <h3><span class="n">06</span>Операції і порядок</h3>
+          <ul><li><div><b>Усе, що вийшло, в одній базі</b><span>з позначкою «Опубліковано»</span></div></li><li><div><b>Щовечора копія в архів <i class="tag">на курсі</i></b><span>нічого не губиться</span></div></li><li><div><b>Будь-яку правку можна повернути <i class="tag">на курсі</i></b><span>Notion пам'ятає всі версії</span></div></li></ul>
+        </div>
+        <div class="sphere">
+          <h3><span class="n">07</span>Інструменти й агенти</h3>
+          <ul><li><div><b>Свій бот у Telegram з помічниками <i class="tag">на курсі</i></b><span>Лея пише тексти, Марко придумує візуал</span></div></li><li><div><b>Команда AI-помічників під кожну задачу</b><span>як мої Марічка і Марічка Cloud</span></div></li><li><div><b>15 навичок для Claude</b><span>хуки, сценарії, каруселі, сторіс, прогріви, офери</span></div></li></ul>
+        </div>
       </div>
 
       <ul class="levers">
@@ -829,6 +832,7 @@ footer{text-align:center;color:var(--muted);font-size:14px;line-height:1.8;paddi
     io.observe(wrap);
   }
 })();
+
 </script>
 </body>
 </html>
