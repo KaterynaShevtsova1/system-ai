@@ -162,6 +162,41 @@ section.block:first-child{border-top:0}
 .value .total{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--s4);align-items:center;background:var(--lime);color:var(--on-lime);padding:var(--s5)}
 .value .total b{font-weight:900;font-size:clamp(18px,2vw,24px);text-transform:uppercase}
 .value .total .eur{color:var(--on-lime);font-size:clamp(30px,4vw,44px)}
+.week{margin-top:var(--s5);border:2px solid var(--ink);border-radius:var(--r-card);overflow:hidden}
+.week ul{list-style:none;margin:0;padding:0}
+.wk-head,.wk-row,.wk-total{display:grid;grid-template-columns:minmax(0,1.6fr) repeat(3,minmax(0,1fr));gap:var(--s4);align-items:center;padding:var(--s4) var(--s5)}
+.wk-head{background:var(--card);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
+.wk-sph{padding:var(--s4) var(--s5) var(--s1);font-weight:900;font-size:clamp(20px,2.2vw,26px);text-transform:uppercase;color:var(--ink);border-top:1px solid var(--line)}
+.wk-sph:first-child{border-top:0}
+.wk-row{padding-top:var(--s2)}
+.wk-what b{display:block;color:var(--ink);font-weight:800;font-size:18px}
+.wk-what span,.wk-b span,.wk-a span{display:block;font-size:13px;color:var(--muted)}
+.wk-b b,.wk-a b,.wk-s b{display:block;color:var(--ink);font-weight:900;font-size:clamp(17px,1.7vw,20px)}
+.wk-b b{color:var(--muted);text-decoration:line-through;text-decoration-thickness:2px}
+.wk-row i,.wk-total i{display:none;font-style:normal;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.wk-total{background:var(--lime);color:var(--on-lime)}
+.wk-total b{color:var(--on-lime)!important;font-weight:900}
+.wk-total .wk-what b{text-transform:uppercase;font-size:clamp(17px,1.8vw,22px)}
+.wk-total .wk-b b{text-decoration:line-through}
+.wk-total .wk-s b{font-size:clamp(24px,2.6vw,32px)}
+@media (max-width:700px){
+  .wk-head{display:none}
+  .wk-row,.wk-total{grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s2) var(--s3);padding-inline:var(--s4)}
+  .wk-sph{padding-inline:var(--s4)}
+  .wk-row .wk-what,.wk-total .wk-what{grid-column:1 / -1}
+  .wk-row i,.wk-total i{display:block}
+  .wk-total i{color:var(--on-lime)}
+  .wk-total .wk-s b{font-size:22px}
+  .wk-b b,.wk-a b,.wk-s b{font-size:16px}
+}
+.wk-big{list-style:none;margin:var(--s5) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s3)}
+@media (max-width:760px){.wk-big{grid-template-columns:1fr}}
+.wk-big li{background:var(--card);border-radius:var(--r-card);padding:var(--s5)}
+.wk-big li:first-child{background:var(--ink)}
+.wk-big b{display:block;color:var(--ink);font-weight:900;font-size:clamp(36px,4.4vw,56px);line-height:1}
+.wk-big li:first-child b{color:var(--lime)}
+.wk-big span{display:block;margin-top:var(--s2);font-size:15px}
+.wk-big li:first-child span{color:var(--bg)}
 .value-note{margin:var(--s3) 0 0;font-size:14px;color:var(--muted)}
 .levers{list-style:none;margin:var(--s7) 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:2px solid var(--ink)}
 @media (max-width:860px){.levers{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -337,12 +372,17 @@ footer{text-align:center;color:var(--muted);font-size:14px;line-height:1.8;paddi
         </ul>
       </div>
 
-      <h3 class="value-h">Скільки часу це економить<span class="italic">мені, за місяць</span></h3>
-      <div class="value">
-        <ul><li><div><b>Тексти твоїм стилем</b><span>пости, підписи, тексти каруселей</span></div><span class="eur">8 год</span></li><li><div><b>Каруселі й візуал</b><span>картинки і слайди в одному стилі</span></div><span class="eur">6 год</span></li><li><div><b>Рілз</b><span>сценарій, монтаж, субтитри, обкладинка</span></div><span class="eur">10 год</span></li><li><div><b>Контент-план і дослідження</b><span>теми, болі й тренди аудиторії</span></div><span class="eur">4 год</span></li><li><div><b>План дня і задачі</b><span>щоранку фокус замість хаосу в голові</span></div><span class="eur">5 год</span></li><li><div><b>Notion</b><span>лід-магніти, продукти, база</span></div><span class="eur">4 год</span></li><li><div><b>Публікація в 5 мереж</b><span>без ручного викладання в кожну</span></div><span class="eur">3 год</span></li><li><div><b>Відповіді й воронки</b><span>підказки, як відповісти, і аналіз воронок</span></div><span class="eur">3 год</span></li></ul>
-        <div class="total"><b>Разом на місяць</b><span class="eur">≈ 43 год</span></div>
+      <h3 class="value-h">Мій тиждень до і після<span class="italic">скільки часу звільнила система</span></h3>
+      <div class="week">
+        <div class="wk-head" aria-hidden="true"><span></span><span>До системи</span><span>Після</span><span>Звільнено</span></div>
+        <ul><li class="wk-sph">Блог</li><li class="wk-row"><div class="wk-what"><b>Контент</b><span>пости, рілз, каруселі, сторіс</span></div><div class="wk-b"><i>до</i><b>21 год</b><span>3 год × 7 днів</span></div><div class="wk-a"><i>після</i><b>5 год</b><span>1 год × 5 днів</span></div><div class="wk-s"><i>звільнено</i><b>16 год</b></div></li><li class="wk-sph">Бізнес</li><li class="wk-row"><div class="wk-what"><b>Продукти</b><span>лід-магніти, гайди, сторінки в Notion</span></div><div class="wk-b"><i>до</i><b>4 год</b><span>4 год на тиждень</span></div><div class="wk-a"><i>після</i><b>1 год</b><span>1 год на тиждень</span></div><div class="wk-s"><i>звільнено</i><b>3 год</b></div></li><li class="wk-sph">Рутина</li><li class="wk-row"><div class="wk-what"><b>Задачі</b><span>тримати все в голові і планувати</span></div><div class="wk-b"><i>до</i><b>7 год</b><span>1 год × 7 днів</span></div><div class="wk-a"><i>після</i><b>1 год 15 хв</b><span>15 хв × 5 днів</span></div><div class="wk-s"><i>звільнено</i><b>5 год 45 хв</b></div></li><li class="wk-row"><div class="wk-what"><b>Пошта і відповіді</b><span>розібрати, відповісти, нічого не загубити</span></div><div class="wk-b"><i>до</i><b>7 год</b><span>1 год × 7 днів</span></div><div class="wk-a"><i>після</i><b>50 хв</b><span>10 хв × 5 днів</span></div><div class="wk-s"><i>звільнено</i><b>6 год 10 хв</b></div></li></ul>
+        <div class="wk-total"><div class="wk-what"><b>Разом на тиждень</b></div><div class="wk-b"><i>до</i><b>39 год</b></div><div class="wk-a"><i>після</i><b>≈ 8 год</b></div><div class="wk-s"><i>звільнено</i><b>≈ 31 год</b></div></div>
       </div>
-      <p class="value-note">Це понад тиждень повної роботи щомісяця. У тебе цифри залежатимуть від того, скільки ти публікуєш.</p>
+      <ul class="wk-big">
+        <li><b>79%</b><span>часу на блог, задачі, пошту і продукти я повернула собі</span></li>
+        <li><b>≈ 31 год</b><span>на тиждень для життя, це понад 4 години щодня</span></li>
+        <li><b>2 дні</b><span>вихідних без блогу і задач</span></li>
+      </ul>
 
       <ul class="levers">
         <li><b>2 тижні</b><span>від старту курсу, і Claude вже пише твоїм стилем</span></li>
