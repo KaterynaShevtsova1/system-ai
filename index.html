@@ -22,7 +22,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Cormorant+Garamond:ital,wght@1,500;1,600&display=swap">
 <style>
-/* Структура: герой (обіцянка + кнопка + демо-чат бота) → карта системи → доба системи → для кого → маніфест → CTA → маршрут → курс → результат → автор → відгуки → питання → фінальний CTA. Токени з brandbook 3.5 */
+/* Структура: герой (обіцянка + кнопка + демо-чат бота) → що ти забереш (сфери, сервіси, якби окремо, цифри, модулі) → автор → відгуки → питання → наживо → фінальний CTA. Токени з brandbook 3.5 */
 :root{
   --white:#FFFFFF;
   --bg:#FFFFFF;
@@ -113,135 +113,71 @@ h2[id],section[id]{scroll-margin-top:var(--s5)}
 @media (max-width:860px){.msg.extra{display:none}}
 .chat figcaption{font-size:13px;color:var(--muted);padding:var(--s1) var(--s2) 0}
 
-/* MAP */
-.map-sec{padding-block:var(--s8) var(--s7);border-top:1px solid var(--line)}
+/* Заголовки секцій */
 .sec-head{display:grid;gap:var(--s3);max-width:760px}
 .sec-head h2,.block h2,.who-sec h2,.faq h2,.reviews-sec h2{font-weight:900;font-size:clamp(32px,5.4vw,60px);line-height:1.04;text-transform:uppercase;letter-spacing:-.01em}
 .sec-head h2 .italic,.block h2 .italic,.who-sec h2 .italic,.reviews-sec h2 .italic,.faq h2 .italic{display:block;text-transform:none;font-weight:500;font-size:.62em;line-height:1.1;margin-top:var(--s2);letter-spacing:0}
 .sec-head p{margin:0;max-width:62ch}
-.map{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:var(--s6);align-items:start;margin-top:var(--s6)}
-@media (max-width:860px){.map{grid-template-columns:1fr}}
-.orbit-box{min-width:0}
-@media (min-width:861px){.orbit-box{position:sticky;top:var(--s5)}}
-svg.orbits{width:100%;height:auto;display:block;max-width:100%}
-.ring{fill:none;stroke:var(--line);stroke-width:1.5}
-.ring.on{stroke:var(--ink);stroke-width:2;stroke-dasharray:6 7;animation:spin 40s linear infinite}
-@keyframes spin{to{stroke-dashoffset:-260}}
-.node circle{fill:var(--card);stroke:#9A9A9A;stroke-width:1.5;transition:fill .25s,stroke .25s}
-.node text{fill:var(--text);font-family:var(--sans);font-size:21px;font-weight:600;transition:opacity .25s}
-.node.on circle{fill:var(--lime);stroke:var(--lime)}
-.node.on text{fill:var(--ink)}
-.core circle{fill:var(--lime)}
-.core .big{fill:var(--on-lime);font-family:var(--sans);font-weight:900;font-size:46px}
-.core .small{fill:var(--on-lime);font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.18em}
-.ringlabel{fill:var(--muted);font-family:var(--sans);font-size:15px;font-weight:700;letter-spacing:.2em}
-.ringlabel.on{fill:var(--ink)}
-@media (max-width:560px){
-  .node text{font-size:30px}
-  .node:not(.on) text{opacity:0}
-  .node circle{r:15px}
-  .ringlabel{font-size:24px}
-  .core .big{font-size:56px}
-  .core .small{font-size:15px}
-}
-.tabs{display:flex;flex-wrap:wrap;gap:var(--s2);margin-bottom:var(--s5)}
-.tab{font:inherit;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);min-height:44px;padding:var(--s2) var(--s4);border-radius:var(--r-pill);cursor:pointer;line-height:1.2;transition:border-color .2s ease}
-.tab:hover{border-color:var(--ink)}
-.tab[aria-selected="true"]{background:var(--lime);color:var(--on-lime);border-color:var(--lime)}
-.tab:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
-.panel{min-width:0}
-.panel:focus-visible{outline:2px solid var(--ink);outline-offset:8px;border-radius:var(--r-small)}
-.panel h3.orbit-name{font-weight:900;font-size:clamp(30px,4.4vw,44px);line-height:1.05;text-transform:uppercase;margin-top:var(--s2)}
-.panel .orbit-lead{font-size:19px;color:var(--ink);margin:var(--s3) 0 var(--s5);line-height:1.4}
-.panel .sublabel{display:block;margin:0 0 var(--s3)}
-.num{width:44px;height:44px;border-radius:50%;background:var(--lime);color:var(--on-lime);display:grid;place-items:center;font-weight:800;font-size:16px;font-variant-numeric:tabular-nums}
-.items{list-style:none;margin:0;padding:0;display:grid}
-.items li{display:grid;grid-template-columns:minmax(0,9.5em) minmax(0,1fr);gap:var(--s1) var(--s4);padding:var(--s3) 0;border-top:1px solid var(--line);font-size:15px;line-height:1.55}
-.items li:last-child{border-bottom:1px solid var(--line)}
-.items b{color:var(--ink);font-weight:700}
-@media (max-width:480px){.items li{grid-template-columns:1fr}}
 
 /* Секції-блоки */
 section.block{padding-block:var(--s8);border-top:1px solid var(--line)}
 section.block:first-child{border-top:0}
 
 
-/* PILLARS: три головні речі */
-.pillars{list-style:none;margin:var(--s6) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 var(--s5);border-top:2px solid var(--ink)}
-@media (max-width:760px){.pillars{grid-template-columns:1fr}}
-.pillars li{padding:var(--s5) 0;display:grid;gap:var(--s3);align-content:start;min-width:0}
-@media (max-width:760px){.pillars li+li{border-top:1px solid var(--line)}}
-.pillars h3{font-weight:900;font-size:clamp(24px,2.6vw,30px);line-height:1.1;text-transform:uppercase}
-.pillars p b{font-weight:700;color:var(--ink)}
-.pillars p{margin:0;font-size:16px;max-width:40ch}
+/* OFFER: що ти забереш собі */
+.spheres{margin-top:var(--s6);border-top:2px solid var(--ink)}
+.sphere{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:var(--s3) var(--s7);padding-block:var(--s6);border-bottom:1px solid var(--line)}
+@media (max-width:860px){.sphere{grid-template-columns:1fr;padding-block:var(--s5)}}
+.sphere h3{font-weight:900;font-size:clamp(26px,3vw,36px);line-height:1.05;text-transform:uppercase;letter-spacing:-.01em}
+.sphere h3 .n{display:block;font-family:var(--serif);font-style:italic;font-weight:500;font-size:.6em;text-transform:none;color:var(--muted);margin-bottom:var(--s1)}
+.sphere ul{list-style:none;margin:0;padding:0;display:grid;gap:var(--s4)}
+.sphere li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:var(--s3);align-items:start}
+.sphere li::before{content:"";width:28px;height:28px;border-radius:50%;background:var(--lime) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23111' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/16px no-repeat;margin-top:2px}
+.sphere b{display:block;color:var(--ink);font-weight:800;font-size:clamp(19px,1.8vw,22px);line-height:1.3}
+.sphere li span{display:block;font-size:15px;color:var(--text);margin-top:2px}
+.stack-h,.value-h{margin:var(--s8) 0 0;font-weight:900;font-size:clamp(26px,3.4vw,40px);line-height:1.05;text-transform:uppercase}
+.stack-h .italic,.value-h .italic{display:block;text-transform:none;font-weight:500;font-size:.62em;margin-top:var(--s2)}
+.core{display:grid;grid-template-columns:minmax(0,1fr) 40px minmax(0,1fr) 40px minmax(0,1fr);align-items:stretch;margin-top:var(--s5)}
+@media (max-width:860px){.core{grid-template-columns:1fr;gap:0}}
+.core-item{border:2px solid var(--ink);border-radius:var(--r-card);padding:var(--s5);display:grid;gap:var(--s2);align-content:start;min-width:0}
+.core-item svg{width:44px;height:44px;fill:var(--ink)}
+.core-item b{color:var(--ink);font-weight:900;font-size:24px;line-height:1.1;margin-top:var(--s2)}
+.core-item .role{font-family:var(--serif);font-style:italic;font-weight:500;font-size:20px;color:var(--ink);line-height:1.1}
+.core-item p{margin:var(--s1) 0 0;font-size:15px}
+.plus{display:grid;place-items:center;font-weight:900;font-size:32px;color:var(--ink)}
+@media (max-width:860px){.plus{height:44px}}
+.extra{margin-top:var(--s4);background:var(--card);border-radius:var(--r-card);padding:var(--s5)}
+.extra h4{margin:0;color:var(--ink);font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.extra ul{list-style:none;margin:var(--s3) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s3)}
+@media (max-width:760px){.extra ul{grid-template-columns:1fr}}
+.extra li{background:var(--bg);border:1.5px solid var(--line);border-radius:var(--r-small);padding:var(--s4);min-width:0}
+.extra li b{display:block;color:var(--ink);font-weight:900;font-size:19px}
+.extra li span{display:block;font-size:14px;margin-top:2px}
+.value{margin-top:var(--s5);border:2px solid var(--ink);border-radius:var(--r-card);overflow:hidden}
+.value ul{list-style:none;margin:0;padding:0}
+.value li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--s4);align-items:baseline;padding:var(--s4) var(--s5);border-bottom:1px solid var(--line)}
+.value li b{color:var(--ink);font-weight:800;font-size:clamp(17px,1.7vw,20px)}
+.value li span{display:block;font-size:14px;color:var(--text);margin-top:2px;font-weight:400}
+.value .eur{color:var(--ink);font-weight:900;font-size:clamp(18px,1.8vw,22px);white-space:nowrap}
+.value .total{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--s4);align-items:center;background:var(--lime);color:var(--on-lime);padding:var(--s5)}
+.value .total b{font-weight:900;font-size:clamp(18px,2vw,24px);text-transform:uppercase}
+.value .total .eur{color:var(--on-lime);font-size:clamp(30px,4vw,44px)}
+.value-note{margin:var(--s3) 0 0;font-size:14px;color:var(--muted)}
+.levers{list-style:none;margin:var(--s7) 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:2px solid var(--ink)}
+@media (max-width:860px){.levers{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:420px){.levers{grid-template-columns:1fr}}
+.levers li{padding:var(--s5) var(--s4) var(--s5) 0;min-width:0}
+.levers b{display:block;color:var(--ink);font-weight:900;font-size:clamp(30px,3.2vw,42px);line-height:1}
+.levers span{display:block;margin-top:var(--s2);font-size:15px}
+.path{list-style:none;margin:var(--s5) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s2)}
+@media (max-width:760px){.path{grid-template-columns:1fr}}
+.path li{background:var(--card);border-radius:var(--r-small);padding:var(--s4);min-width:0}
+.path .wk{display:block;font-size:13px;font-weight:700;color:var(--muted)}
+.path b{display:block;color:var(--ink);font-size:18px;font-weight:900;margin-top:2px}
+.path p{margin:var(--s1) 0 0;font-size:14px;line-height:1.5}
+.honest{margin:var(--s5) 0 0;font-size:14px;color:var(--muted);max-width:70ch}
 
-/* TEAM: два боти */
-.bots{margin-top:var(--s6);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s5);align-items:start}
-@media (max-width:900px){.bots{grid-template-columns:1fr}}
-.botcard{display:grid;gap:var(--s3);min-width:0}
-.bot-head{background:var(--ink);color:var(--bg);border-radius:var(--r-card);padding:var(--s5);display:grid;grid-template-columns:auto minmax(0,1fr);gap:var(--s4);align-items:start}
-.bot-head .ava{background:var(--lime);border-color:var(--lime);width:56px;height:56px;font-size:26px}
-.bot-head h3{color:var(--bg);font-weight:900;font-size:clamp(24px,2.6vw,30px);line-height:1.1;text-transform:uppercase}
-.bot-head h3 small{display:block;text-transform:none;font-family:var(--serif);font-style:italic;font-weight:500;font-size:.8em;margin-top:2px}
-.bot-head p{margin:var(--s2) 0 0;font-size:15px;color:var(--bg);opacity:.86}
-.crew{list-style:none;margin:0;padding:0;display:grid;gap:var(--s3)}
-.crew li{background:var(--card);border-radius:var(--r-card);padding:var(--s4);display:grid;grid-template-columns:44px minmax(0,1fr);gap:var(--s3);align-items:start;min-width:0}
-.crew h3{font-weight:800;font-size:19px;line-height:1.2}
-.crew h3 small{display:block;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:2px}
-.crew p{margin:var(--s2) 0 0;font-size:15px;line-height:1.5}
-.bots-more{margin:var(--s4) 0 0}
-.ava{width:44px;height:44px;border-radius:50%;background:var(--bg);border:1.5px solid var(--line);display:grid;place-items:center;font-size:20px;line-height:1}
-
-/* WHO */
-.who-sec{padding-block:var(--s8);border-top:1px solid var(--line)}
-.who{list-style:none;margin:var(--s6) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s4)}
-@media (max-width:760px){.who{grid-template-columns:1fr}}
-.who li{background:var(--card);border-radius:var(--r-card);padding:var(--s5);min-width:0;display:grid;gap:var(--s3);align-content:start}
-.who h3{font-weight:800;font-size:21px;line-height:1.2}
-.who p{margin:0;font-size:15px;line-height:1.6}
-
-/* MANIFESTO (вузька колонка, ритм після широких блоків) */
-.manifesto{background:var(--card);padding-block:var(--s8)}
-.lead{text-align:center;color:var(--ink);font-family:var(--serif);font-style:italic;font-size:clamp(30px,6vw,44px);line-height:1.15;margin:0 0 var(--s6)}
-.prose{display:grid;gap:var(--s5)}
-.prose p{margin:0;max-width:62ch}
-.prose b{font-weight:700;color:var(--ink)}
-.pull{text-align:center;padding-block:var(--s6);display:grid;gap:var(--s2)}
-.pull .italic{font-size:clamp(32px,7vw,48px);line-height:1.1;color:var(--ink)}
-.pull small{font-size:16px;color:var(--text)}
-
-/* CTA BAND */
-.band{padding-block:var(--s8);text-align:center;border-top:1px solid var(--line)}
-.band h2{font-weight:900;font-size:clamp(28px,5vw,44px);line-height:1.08;text-transform:uppercase;margin:0 auto var(--s5);max-width:20ch}
-.why{list-style:none;margin:0 auto var(--s5);padding:0;display:grid;gap:var(--s3);max-width:30em;text-align:left}
-.why li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:var(--s3);align-items:center;color:var(--ink);font-size:17px;line-height:1.4}
-.ok{width:28px;height:28px;border-radius:50%;background:var(--lime);color:var(--on-lime);display:grid;place-items:center;font-weight:900;font-size:15px;line-height:1}
-.band .cta-row{justify-content:center}
-.band-lead{margin:0 auto var(--s5);max-width:40ch;color:var(--ink)}
-.band-free{margin:0 auto var(--s5);font-size:15px;color:var(--text)}
-.band .fine{margin:var(--s4) 0 0;font-size:14px;color:var(--muted)}
-
-
-/* COURSE */
-.course{margin-top:var(--s6);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s4)}
-@media (max-width:760px){.course{grid-template-columns:1fr}}
-.cstep{background:var(--card);border-radius:var(--r-card);padding:var(--s5);min-width:0;display:grid;gap:var(--s2);align-content:start}
-.cstep h3{font-weight:900;font-size:24px;text-transform:uppercase;line-height:1.1}
-.cstep .orb{font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-.cstep p{margin:0;font-size:15px;line-height:1.6}
-.nocode{margin-top:var(--s4);background:var(--dark);color:#F4F4F4;border-radius:var(--r-card);padding:var(--s5) var(--s6);display:grid;grid-template-columns:auto minmax(0,1fr);gap:var(--s5);align-items:center}
-.nocode b{display:block;font-weight:900;text-transform:uppercase;color:var(--lime);font-size:clamp(22px,3vw,30px);line-height:1.1}
-.nocode p{margin:0;font-size:16px;line-height:1.6;max-width:64ch}
-.fmt-h{margin-top:var(--s7);font-weight:900;font-size:clamp(24px,3vw,32px);line-height:1.1;text-transform:uppercase}
-.fmt{list-style:none;margin:var(--s5) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s4)}
-@media (max-width:760px){.fmt{grid-template-columns:1fr}}
-.fmt li{background:var(--card);border-radius:var(--r-card);padding:var(--s5);display:grid;gap:var(--s2);align-content:start;min-width:0}
-.fmt li.key{background:var(--lime);color:var(--on-lime)}
-.fmt b{display:block;font-weight:900;font-size:20px;line-height:1.15;color:var(--ink)}
-.fmt li.key b{color:var(--on-lime);font-size:22px;text-transform:uppercase}
-.fmt p{margin:0;font-size:15px;line-height:1.55}
-@media (max-width:640px){.nocode{grid-template-columns:1fr;gap:var(--s3);padding:var(--s5)}}
-
+.offer-lead{margin:var(--s4) 0 0;max-width:60ch;font-size:18px}
 
 /* AUTHOR */
 .author{padding-block:var(--s8);border-top:1px solid var(--line);display:grid;gap:var(--s5)}
@@ -324,7 +260,7 @@ footer{text-align:center;color:var(--muted);font-size:14px;line-height:1.8;paddi
 <nav class="topbar" aria-label="Сторінки сайту">
   <div class="wide">
     <span class="brand">Система з AI · Катя Шевцова</span>
-    <a class="how" href="cloud.html">Як це працює у мене</a>
+    <a class="how" href="system.html">Як це працює у мене</a>
   </div>
 </nav>
 
@@ -354,131 +290,76 @@ footer{text-align:center;color:var(--muted);font-size:14px;line-height:1.8;paddi
 </header>
 
 <main id="main">
-  <div class="wide">
-    <section class="block" aria-labelledby="pillars-h">
-      <h2 id="pillars-h">Що робить система<span class="italic">три речі, заради яких її будують</span></h2>
-      <ol class="pillars">
-        <li><span class="num" aria-hidden="true">1</span><h3>Фокус на день</h3><p>Зранку одне повідомлення: задачі, зустрічі і пошта разом. Ти одразу бачиш, що саме тобі сьогодні робити, і не тримаєш усе в голові.</p></li>
-        <li><span class="num" aria-hidden="true">2</span><h3>Конвеєр контенту</h3><p>Сценарії, рілз, відео, каруселі і сторіз ідуть по готовому процесу, разом з монтажем. <b>Усе твоїм голосом і з твоїм контекстом.</b></p></li>
-        <li><span class="num" aria-hidden="true">3</span><h3>Усе в одному місці</h3><p>Задачі, ідеї, гроші, тіло і контент живуть у команді AI-агентів. Пишеш одне голосове, а далі вони розбираються самі.</p></li>
+  <section class="block" aria-labelledby="offer-h">
+    <div class="wide">
+      <h2 id="offer-h">Що ти забереш собі<span class="italic">по сферах твого бізнесу і життя</span></h2>
+      <p class="offer-lead">На курсі ти за 10 тижнів збираєш свою AI-систему і забираєш усі мої навички для Claude пакетом. Ось що вона робить для тебе.</p>
+      <div class="spheres">
+        <div class="sphere">
+          <h3><span class="n">01</span>Бізнес і продукт</h3>
+          <ul><li><div><b>AI знає твій бізнес з першого слова</b><span>6 сторінок про тебе: пишеш один раз, і розуміють усі помічники</span></div></li><li><div><b>Лід-магніти і продукти одразу в Notion</b><span>Claude підключений до Notion і сам збирає сторінку: гайд, чекліст, базу. Тобі лишається поправити і поділитись</span></div></li><li><div><b>Офер і ціна, зібрані по структурі</b><span>що людина отримує, чому зараз і скільки це коштує</span></div></li><li><div><b>Перевірка ідеї ще до запуску</b><span>аналоги і слабкі місця, поки ти нічого не зробила</span></div></li><li><div><b>Конкуренти на одній сторінці</b><span>хто що продає і де ти сильніша</span></div></li></ul>
+        </div>
+        <div class="sphere">
+          <h3><span class="n">02</span>Рутина і фокус</h3>
+          <ul><li><div><b>План дня щоранку в Telegram</b><span>календар, задачі, прострочене і головний фокус</span></div></li><li><div><b>Голосове замість списку справ</b><span>надиктувала в дорозі, і задача вже в роботі</span></div></li><li><div><b>Помічник на зв'язку, навіть коли комп вимкнений</b><span>бот живе на сервері і працює цілодобово</span></div></li></ul>
+        </div>
+        <div class="sphere">
+          <h3><span class="n">03</span>Маркетинг і продажі</h3>
+          <ul><li><div><b>Лід-магніти з кодовим словом</b><span>людина пише слово, бот сам надсилає подарунок</span></div></li><li><div><b>Прогрів до запуску</b><span>серія постів і сторіс, яка веде до покупки</span></div></li><li><div><b>Продаюча презентація</b><span>для вебінару чи розбору: слайди, заперечення, чекліст</span></div></li><li><div><b>Воронка в боті з тегами</b><span>бачиш, хто чого хоче, без таблиць руками</span></div></li></ul>
+        </div>
+        <div class="sphere">
+          <h3><span class="n">04</span>Контент і соцмережі</h3>
+          <ul><li><div><b>Тексти твоїм стилем</b><span>щонайменше 80% слів твої, AI не пише замість тебе</span></div></li><li><div><b>Каруселі й візуал в одному стилі</b><span>під твій бренд і твої кольори</span></div></li><li><div><b>Рілз від хука до монтажу</b><span>субтитри, обкладинка і свій стиль у кожному ролику</span></div></li><li><div><b>Контент-план на місяць</b><span>ідеї більше не губляться</span></div></li><li><div><b>Болі й тренди твоєї аудиторії</b><span>що зараз заходить, з посиланнями на джерела</span></div></li><li><div><b>Публікація в 5 мереж</b><span>Instagram, Facebook, YouTube, Threads і Telegram</span></div></li></ul>
+        </div>
+        <div class="sphere">
+          <h3><span class="n">05</span>Клієнти і комунікації</h3>
+          <ul><li><div><b>Підказки, як відповісти людині</b><span>бот аналізує, що пишуть люди, і пропонує відповідь, а вирішуєш і відповідаєш ти</span></div></li><li><div><b>Аналіз і збирання воронок</b><span>видно, де люди зупиняються і що спрацювало, а нову воронку бот допомагає зібрати</span></div></li><li><div><b>Запис на розбір без переписки</b><span>людина тисне кнопку, а тобі падає задача</span></div></li><li><div><b>Підсумок кожного дзвінка</b><span>що вирішили і що робити далі</span></div></li></ul>
+        </div>
+        <div class="sphere">
+          <h3><span class="n">06</span>Операції і порядок</h3>
+          <ul><li><div><b>Усе, що вийшло, в одній базі</b><span>з позначкою «Опубліковано»</span></div></li><li><div><b>Щовечора копія в архів</b><span>нічого не губиться</span></div></li><li><div><b>Будь-яку правку можна повернути</b><span>Notion пам'ятає всі версії</span></div></li></ul>
+        </div>
+        <div class="sphere">
+          <h3><span class="n">07</span>Інструменти й агенти</h3>
+          <ul><li><div><b>Свій бот у Telegram з помічниками</b><span>Лея пише тексти, Марко придумує візуал</span></div></li><li><div><b>Команда AI-помічників під кожну задачу</b><span>як мої Марічка і Марічка Cloud</span></div></li><li><div><b>Усі мої навички для Claude пакетом</b><span>хуки, сценарії, каруселі, сторіс, прогріви, офери: встановила, і працюють</span></div></li></ul>
+        </div>
+      </div>
+
+
+      <h3 class="stack-h">На чому стоїть система<span class="italic">три сервіси, і все працює</span></h3>
+      <div class="core"><div class="core-item"><svg viewBox="0 0 24 24" role="img" aria-label="Claude"><path d="m4.7144 15.9555 4.7174-2.6471.079-.2307-.079-.1275h-.2307l-.7893-.0486-2.6956-.0729-2.3375-.0971-2.2646-.1214-.5707-.1215-.5343-.7042.0546-.3522.4797-.3218.686.0608 1.5179.1032 2.2767.1578 1.6514.0972 2.4468.255h.3886l.0546-.1579-.1336-.0971-.1032-.0972L6.973 9.8356l-2.55-1.6879-1.3356-.9714-.7225-.4918-.3643-.4614-.1578-1.0078.6557-.7225.8803.0607.2246.0607.8925.686 1.9064 1.4754 2.4893 1.8336.3643.3035.1457-.1032.0182-.0728-.164-.2733-1.3539-2.4467-1.445-2.4893-.6435-1.032-.17-.6194c-.0607-.255-.1032-.4674-.1032-.7285L6.287.1335 6.6997 0l.9957.1336.419.3642.6192 1.4147 1.0018 2.2282 1.5543 3.0296.4553.8985.2429.8318.091.255h.1579v-.1457l.1275-1.706.2368-2.0947.2307-2.6957.0789-.7589.3764-.9107.7468-.4918.5828.2793.4797.686-.0668.4433-.2853 1.8517-.5586 2.9021-.3643 1.9429h.2125l.2429-.2429.9835-1.3053 1.6514-2.0643.7286-.8196.85-.9046.5464-.4311h1.0321l.759 1.1293-.34 1.1657-1.0625 1.3478-.8804 1.1414-1.2628 1.7-.7893 1.36.0729.1093.1882-.0183 2.8535-.607 1.5421-.2794 1.8396-.3157.8318.3886.091.3946-.3278.8075-1.967.4857-2.3072.4614-3.4364.8136-.0425.0304.0486.0607 1.5482.1457.6618.0364h1.621l3.0175.2247.7892.522.4736.6376-.079.4857-1.2142.6193-1.6393-.3886-3.825-.9107-1.3113-.3279h-.1822v.1093l1.0929 1.0686 2.0035 1.8092 2.5075 2.3314.1275.5768-.3218.4554-.34-.0486-2.2039-1.6575-.85-.7468-1.9246-1.621h-.1275v.17l.4432.6496 2.3436 3.5214.1214 1.0807-.17.3521-.6071.2125-.6679-.1214-1.3721-1.9246L14.38 17.959l-1.1414-1.9428-.1397.079-.674 7.2552-.3156.3703-.7286.2793-.6071-.4614-.3218-.7468.3218-1.4753.3886-1.9246.3157-1.53.2853-1.9004.17-.6314-.0121-.0425-.1397.0182-1.4328 1.9672-2.1796 2.9446-1.7243 1.8456-.4128.164-.7164-.3704.0667-.6618.4008-.5889 2.386-3.0357 1.4389-1.882.929-1.0868-.0062-.1579h-.0546l-6.3385 4.1164-1.1293.1457-.4857-.4554.0608-.7467.2307-.2429 1.9064-1.3114Z"/></svg><b>Claude</b><span class="role">мозок</span><p>Думає, пише твоїм стилем, будує сайти і ботів.</p></div><span class="plus" aria-hidden="true">+</span><div class="core-item"><svg viewBox="0 0 24 24" role="img" aria-label="Notion"><path d="M4.459 4.208c.746.606 1.026.56 2.428.466l13.215-.793c.28 0 .047-.28-.046-.326L17.86 1.968c-.42-.326-.981-.7-2.055-.607L3.01 2.295c-.466.046-.56.28-.374.466zm.793 3.08v13.904c0 .747.373 1.027 1.214.98l14.523-.84c.841-.046.935-.56.935-1.167V6.354c0-.606-.233-.933-.748-.887l-15.177.887c-.56.047-.747.327-.747.933zm14.337.745c.093.42 0 .84-.42.888l-.7.14v10.264c-.608.327-1.168.514-1.635.514-.748 0-.935-.234-1.495-.933l-4.577-7.186v6.952L12.21 19s0 .84-1.168.84l-3.222.186c-.093-.186 0-.653.327-.746l.84-.233V9.854L7.822 9.76c-.094-.42.14-1.026.793-1.073l3.456-.233 4.764 7.279v-6.44l-1.215-.139c-.093-.514.28-.887.747-.933zM1.936 1.035l13.31-.98c1.634-.14 2.055-.047 3.082.7l4.249 2.986c.7.513.934.653.934 1.213v16.378c0 1.026-.373 1.634-1.68 1.726l-15.458.934c-.98.047-1.448-.093-1.962-.747l-3.129-4.06c-.56-.747-.793-1.306-.793-1.96V2.667c0-.839.374-1.54 1.447-1.632z"/></svg><b>Notion</b><span class="role">пам'ять</span><p>«Контекст», контент-план, лід-магніти і продукти.</p></div><span class="plus" aria-hidden="true">+</span><div class="core-item"><svg viewBox="0 0 24 24" role="img" aria-label="GitHub"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg><b>GitHub</b><span class="role">сайти</span><p>Твої сайти живуть тут, як цей, і викладаються одним кліком.</p></div></div>
+      <div class="extra">
+        <h4>За бажанням, окремі платні сервіси</h4>
+        <ul>
+          <li><b>Higgsfield</b><span>картинки і відео з AI</span></li>
+          <li><b>HeyGen</b><span>відео з твоїм AI-аватаром</span></li>
+          <li><b>Nakarkala</b><span>воронки в Telegram і Instagram</span></li>
+        </ul>
+      </div>
+
+      <h3 class="value-h">Якби збирати окремо<span class="italic">кожен блок як окремий продукт</span></h3>
+      <div class="value">
+        <ul><li><div><b>«Контекст»</b><span>6 сторінок про тебе, твій бізнес і твоїх клієнтів</span></div><span class="eur">250 €</span></li><li><div><b>Контент-план на місяць</b><span>теми наперед, тексти твоїм стилем</span></div><span class="eur">250 €</span></li><li><div><b>Каруселі й візуал</b><span>в одному стилі з твоїм брендом</span></div><span class="eur">250 €</span></li><li><div><b>Рілз</b><span>сценарії, своя студія, монтаж</span></div><span class="eur">250 €</span></li><li><div><b>Notion</b><span>база, лід-магніти і продукти</span></div><span class="eur">250 €</span></li><li><div><b>Бот у Telegram</b><span>з помічниками для текстів і візуалу, на сервері</span></div><span class="eur">800 €</span></li><li><div><b>Усі мої навички для Claude</b><span>хуки, сценарії, сторіс, прогріви, офери, ціни</span></div><span class="eur">250 €</span></li></ul>
+        <div class="total"><b>Разом окремо</b><span class="eur">2 300 €</span></div>
+      </div>
+      <p class="value-note">Орієнтовна вартість, якби кожен блок купувати окремим міні-курсом чи налаштуванням. На курсі все це збирається разом за 10 тижнів.</p>
+
+      <ul class="levers">
+        <li><b>2 тижні</b><span>від старту курсу, і Claude вже пише твоїм стилем</span></li>
+        <li><b>0</b><span>рядків коду: установки робить Claude, а не ти</span></li>
+        <li><b>80%</b><span>слів у текстах твої, AI не пише замість тебе</span></li>
+        <li><b>10 тижнів</b><span>і на виході твоя власна AI-система</span></li>
+      </ul>
+
+      <ol class="path" aria-label="Три модулі курсу">
+        <li><span class="wk">тижні 1-2</span><b>Розпаковка</b><p>Проєкт у Claude на компі й телефоні. Нічого не встановлюємо.</p></li>
+        <li><span class="wk">тижні 3-6</span><b>Проявлення</b><p>Контент-план, карусель, рілз. Своя студія рілз.</p></li>
+        <li><span class="wk">тижні 7-10</span><b>Агенти</b><p>Свій бот у Telegram з Леєю і Марком.</p></li>
       </ol>
-    </section>
 
-    <section class="block" aria-labelledby="team-h">
-      <span class="label">Моя команда в Telegram</span>
-      <h2 id="team-h">Знайомся: мої два боти<span class="italic">ти збереш таку команду собі</span></h2>
-      <div class="bots">
-        <article class="botcard">
-          <div class="bot-head">
-            <span class="ava" aria-hidden="true">💻</span>
-            <div><h3>Марічка <small>на ноутбуці</small></h3><p>Тут те, для чого потрібен саме мій комп. Гроші не виходять з ноута, рілз монтуються в моїй відеостудії, голосові розпізнаються прямо тут.</p></div>
-          </div>
-          <ul class="crew">
-            <li><span class="ava" aria-hidden="true">💰</span><div><h3>Белла <small>гроші</small></h3><p>Записує витрати й доходи, рахує підсумки місяця.</p></div></li>
-            <li><span class="ava" aria-hidden="true">🌿</span><div><h3>Віта <small>тіло</small></h3><p>Калорії, тренування і що з'їсти.</p></div></li>
-            <li><span class="ava" aria-hidden="true">🎬</span><div><h3>Тарас <small>монтаж рілз</small></h3><p>Монтує рілз з відео: субтитри, обкладинка, перебивки.</p></div></li>
-          </ul>
-        </article>
-        <article class="botcard">
-          <div class="bot-head">
-            <span class="ava" aria-hidden="true">☁️</span>
-            <div><h3>Марічка Cloud <small>на сервері, 24/7</small></h3><p>Працює, навіть коли ноут вимкнений. Щоранку надсилає план дня, роздає задачі команді, ставить задачі в Notion і планує пости тільки після мого «так».</p></div>
-          </div>
-          <ul class="crew">
-            <li><span class="ava" aria-hidden="true">💡</span><div><h3>Мія <small>дослідження</small></h3><p>Аудиторія, болі, конкуренти, тренди, з посиланнями на джерела.</p></div></li>
-            <li><span class="ava" aria-hidden="true">✍️</span><div><h3>Лея <small>тексти</small></h3><p>Пости, каруселі, сценарії рілз і підписи моїм голосом.</p></div></li>
-            <li><span class="ava" aria-hidden="true">🎬</span><div><h3>Марко <small>візуал</small></h3><p>Ідея картинки до тексту і опис для її створення.</p></div></li>
-          </ul>
-        </article>
-      </div>
-      <p class="bots-more"><a class="alt" href="system.html">Як це працює у мене, на схемі</a></p>
-    </section>
-  </div>
-
-  <section class="who-sec" aria-labelledby="who-h">
-    <div class="wide">
-      <h2 id="who-h">Для кого ця система<span class="italic">блог у ній одна з частин</span></h2>
-      <ul class="who">
-        <li><span class="num" aria-hidden="true">1</span><h3>Хочеш <span class="mark">автоматизувати</span> важливе в житті</h3><p>Гроші, план дня, задачі, тіло, звіт за день. Те, що зараз тримається в голові й нотатках, переїжджає в систему, яка працює щодня, навіть коли ти про неї не згадуєш.</p></li>
-        <li><span class="num" aria-hidden="true">2</span><h3>Хочеш <span class="mark">проявлятися</span></h3><p>Досвід є, а пости відкладаються на «потім». Система тримає твій голос, історії і теми під рукою, тому вийти до людей стає простіше, ніж промовчати.</p></li>
-        <li><span class="num" aria-hidden="true">3</span><h3>Ведеш блог або хочеш почати</h3><p>Контент від ідеї до аналізу йде по готовому процесу, і блог перестає з'їдати вечори.</p></li>
-      </ul>
+      <p class="honest">Чесно про умови: потрібна підписка Claude Pro, її оплачуєш окремо, напряму в Claude. Підійде комп на Windows або Mac.</p>
     </div>
   </section>
-
-  <section class="manifesto" aria-label="Чому система">
-    <div class="wrap">
-      <p class="lead">Тобі вже є що сказати.</p>
-      <div class="prose">
-        <p>Досвід є, клієнти є, ідеї в нотатках є. А день розтягують дрібниці: витрати, задачі, план. Блог або стоїть, або з'їдає вечори: шукаєш теми, пишеш з нуля, переписуєш, сумніваєшся.</p>
-        <p>Коротше, усе це тримається на тобі вручну. Кожен пост як перший, кожен понеділок з нуля.</p>
-        <p>Я це прожила: 13 років фінансовою директоркою, вигорання, потім IT і консалтинг у Швейцарії. По факту мене завжди рятувало одне правило: <b>система для мене, а не я для системи</b>. Так я і зібрала свою систему з AI.</p>
-      </div>
-      <div class="pull">
-        <span class="italic">AI забирає рутину.<br><span class="mark">Автором залишаєшся ти.</span></span>
-        <small>твій голос, твої історії, твій ритм</small>
-      </div>
-    </div>
-  </section>
-
-  <section class="band" aria-labelledby="band-h">
-    <div class="wrap">
-      <h2 id="band-h">Відчуваєш, що тобі сюди?</h2>
-      <p class="band-lead">Тоді тисни кнопку: відкриється мій Telegram. Ось що це тобі дає:</p>
-      <ul class="why">
-        <li><span class="ok" aria-hidden="true">✓</span><span>безкоштовний <span class="mark">розбір 1:1</span> зі мною</span></li>
-        <li><span class="ok" aria-hidden="true">✓</span><span>подивимось саме на твою ситуацію, без загальних порад</span></li>
-        <li><span class="ok" aria-hidden="true">✓</span><span>напишу тобі особисто в Telegram, і домовимось про час</span></li>
-      </ul>
-      <p class="band-free">Це ні до чого не зобов'язує і нічого платити не треба.</p>
-      <div class="cta-row">
-        <a class="btn" href="https://t.me/kateryna_shevtsova_bot?start=trf98b18b3f27702d9bd717ec1" target="_blank" rel="noopener">РОЗБІР</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="map-sec" aria-labelledby="map-h">
-    <div class="wide">
-      <div class="sec-head">
-        <h2 id="map-h">Так влаштована моя система<span class="italic">чотири орбіти навколо мене</span></h2>
-        <p>У центрі я: голос, історії, мій ритм. Навколо чотири орбіти, які забирають рутину: <span class="mark">контекст</span>, <span class="mark">проєкти</span>, <span class="mark">скіли</span> і <span class="mark">агенти</span>. Натисни на орбіту, щоб побачити, що в ній.</p>
-      </div>
-      <div class="map">
-        <div class="orbit-box">
-          <svg class="orbits" id="orbits" viewBox="-510 -375 1020 750" role="img" aria-labelledby="mapTitle">
-            <title id="mapTitle">Чотири орбіти навколо Каті: контекст, проєкти, скіли, агенти</title>
-          </svg>
-        </div>
-        <div class="panel-wrap">
-          <div class="tabs" role="tablist" id="tabs" aria-label="Орбіти системи"></div>
-          <div id="panel" class="panel" role="tabpanel" tabindex="0"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="wide">
-    <section class="block" aria-labelledby="course-h">
-      <span class="label">Курс «Система з AI» · старт 01.12.2026</span>
-      <h2 id="course-h">Як ти збереш свою<span class="italic">ті самі орбіти, тільки твої</span></h2>
-      <div class="course">
-        <article class="cstep"><div class="num" aria-hidden="true">1</div><span class="orb">Орбіта «Контекст»</span><h3>Розпаковка</h3><p>Розумієш, про що говорити. Збираєш свій контекст: хто ти, для кого, твій стиль, твій продукт. І проєкт у Claude, який тебе знає.</p></article>
-        <article class="cstep"><div class="num" aria-hidden="true">2</div><span class="orb">Орбіти «Проєкти» і «Скіли»</span><h3>Проявлення</h3><p>Будуєш систему контенту у своєму стилі, разом зі студією монтажу рілз, яка збирає ролик за тебе. Поки ролик монтується, ти живеш.</p></article>
-        <article class="cstep"><div class="num" aria-hidden="true">3</div><span class="orb">Орбіта «Агенти»</span><h3>Система агентів</h3><p>Свій бот у Telegram, як у мене: гроші, план дня, тіло і контент. Ти пишеш голосовим, він робить роботу.</p></article>
-      </div>
-      <div class="nocode">
-        <b>Без коду</b>
-        <p>Ти отримуєш готовий пакет, відкриваєш його в Claude і пишеш «розгорни». Claude сам встановлює систему, ставить тобі питання і налаштовує під тебе. Інструкції для Windows і Mac.</p>
-      </div>
-      <h3 class="fmt-h">Як проходить навчання</h3>
-      <ul class="fmt">
-        <li><b>10 тижнів</b><p>Старт 01.12.2026.</p></li>
-        <li><b>3 модулі</b><p>Розпаковка, проявлення і система агентів.</p></li>
-        <li class="key"><b>Результат</b><p>Твоя власна AI-система.</p></li>
-      </ul>
-    </section>
-
-  </div>
 
   <div class="wrap">
     <section class="author" aria-labelledby="author-h">
@@ -546,7 +427,7 @@ footer{text-align:center;color:var(--muted);font-size:14px;line-height:1.8;paddi
       <p>Ефіри, живі покази і всі анонси я роблю в Telegram-каналі. Там видно, як моя система працює щодня. А як вона влаштована зсередини, я показала на схемі.</p>
       <div class="live-btns">
         <a class="btn ghost" href="https://t.me/kateryna_shevtsova_tg" target="_blank" rel="noopener">Мій Telegram-канал</a>
-        <a class="btn ghost" href="cloud.html">Як це працює у мене</a>
+        <a class="btn ghost" href="system.html">Як це працює у мене</a>
       </div>
     </div>
   </section>
@@ -592,81 +473,6 @@ footer{text-align:center;color:var(--muted);font-size:14px;line-height:1.8;paddi
 </footer>
 
 <script>
-const ORBITS = [
-  { id:"know", name:"Контекст", r:118, lead:"Усе, що робить мене мною, записано один раз. Системі не треба щоразу пояснювати, хто я.",
-    nodes:["голос","історії","аудиторія","продукт","стиль"],
-    items:[["Хто я і для кого","моя тема, моя аудиторія і те, що її болить"],["Мій голос і історії","як я говорю, мій досвід і живі приклади"],["Продукт і стиль","що я пропоную і як це виглядає"]] },
-  { id:"proj", name:"Проєкти", r:190, lead:"Робочі кімнати в Claude. Кожна знає свою частину мого життя, і нічого не змішується.",
-    nodes:["Контент","Продукти","Візуал","Робота","Особисте"],
-    items:[["Контент","пости, каруселі, рілз і сторіз моїм голосом"],["Продукти","курс, подарунки для підписників, запуски"],["Візуал","фото з моїм AI-двійником і обкладинки"],["Робота і особисте","окремі кімнати для роботи і для себе"]] },
-  { id:"skill", name:"Скіли", r:262, lead:"Готові рецепти: як зробити конкретну річ так, як я люблю. Один раз налаштувала, далі просто прошу.",
-    nodes:["карусель","сторіз","пост","хуки","сценарії","фото","монтаж","прогрів"],
-    items:[["Тексти","каруселі, сторіз, пости, хуки і сценарії рілз"],["Візуал і відео","фото з AI-двійником і монтаж рілз"],["Продажі","прогріви і подарунки для підписників"]] },
-  { id:"agent", name:"Агенти", r:340, lead:"Мої два боти в Telegram: Марічка на ноутбуці і Марічка Cloud на сервері. Я пишу голосовим, вони роблять роботу.",
-    nodes:["Гроші","Тіло","Монтаж","Дослідження","Тексти","Візуал","План дня"],
-    items:[["На ноутбуці","гроші, тіло і монтаж рілз"],["У хмарі, 24/7","дослідження, тексти і візуал"],["Щоранку","план дня від Марічки Cloud"]] }
-];
-const NS="http://www.w3.org/2000/svg";
-const svg=document.getElementById("orbits");
-const el=(t,a={},p=svg)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);p.appendChild(e);return e;};
-const groups={};
-ORBITS.forEach(o=>{
-  const g=el("g",{"data-orbit":o.id});
-  el("circle",{r:o.r,class:"ring"},g);
-  const lab=el("text",{x:0,y:-o.r-12,"text-anchor":"middle",class:"ringlabel"},g); lab.textContent=o.name.toUpperCase();
-  const n=o.nodes.length, off=-Math.PI/2+Math.PI/n;
-  const nodes=[];
-  o.nodes.forEach((name,i)=>{
-    const a=off+i*2*Math.PI/n, x=Math.cos(a)*o.r, y=Math.sin(a)*o.r;
-    const ng=el("g",{class:"node"},g);
-    el("circle",{cx:x.toFixed(1),cy:y.toFixed(1),r:11},ng);
-    const right=Math.cos(a)>=0, tx=x+(right?18:-18);
-    const t=el("text",{x:tx.toFixed(1),y:(y+7).toFixed(1),"text-anchor":right?"start":"end"},ng);
-    t.textContent=name; nodes.push(ng);
-  });
-  groups[o.id]={g,ring:g.querySelector(".ring"),label:lab,nodes};
-});
-const core=el("g",{class:"core"});
-el("circle",{r:60},core);
-const t1=el("text",{y:12,"text-anchor":"middle",class:"big"},core); t1.textContent="Я";
-const t2=el("text",{y:36,"text-anchor":"middle",class:"small"},core); t2.textContent="КАТЯ";
-
-/* Вкладки орбіт: ARIA tabs з клавіатурою (стрілки, Home, End) */
-const tabs=document.getElementById("tabs"), panel=document.getElementById("panel");
-const tabEls=ORBITS.map(o=>{
-  const b=document.createElement("button");
-  b.className="tab"; b.id="tab-"+o.id; b.type="button";
-  b.setAttribute("role","tab"); b.setAttribute("aria-controls","panel"); b.textContent=o.name;
-  b.addEventListener("click",()=>select(o.id)); tabs.appendChild(b);
-  groups[o.id].g.style.cursor="pointer";
-  groups[o.id].g.addEventListener("click",()=>select(o.id));
-  return b;
-});
-tabs.addEventListener("keydown",e=>{
-  const i=tabEls.indexOf(document.activeElement); if(i<0) return;
-  let j=null;
-  if(e.key==="ArrowRight"||e.key==="ArrowDown") j=(i+1)%tabEls.length;
-  else if(e.key==="ArrowLeft"||e.key==="ArrowUp") j=(i-1+tabEls.length)%tabEls.length;
-  else if(e.key==="Home") j=0; else if(e.key==="End") j=tabEls.length-1;
-  if(j===null) return;
-  e.preventDefault(); select(ORBITS[j].id); tabEls[j].focus();
-});
-function esc(s){return s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
-function select(id){
-  const o=ORBITS.find(x=>x.id===id);
-  ORBITS.forEach((x,i)=>{
-    const on=x.id===id, G=groups[x.id];
-    G.ring.classList.toggle("on",on); G.label.classList.toggle("on",on);
-    G.nodes.forEach(n=>n.classList.toggle("on",on));
-    tabEls[i].setAttribute("aria-selected",on?"true":"false");
-    tabEls[i].tabIndex=on?0:-1;
-  });
-  panel.setAttribute("aria-labelledby","tab-"+id);
-  panel.innerHTML='<span class="label">Орбіта '+(ORBITS.indexOf(o)+1)+' з 4</span><h3 class="orbit-name">'+esc(o.name)+'</h3><p class="orbit-lead">'+esc(o.lead)+'</p>'
-    +'<span class="label sublabel">З чого складається</span><ul class="items">'+o.items.map(([a,b])=>'<li><b>'+esc(a)+'</b><span>'+esc(b)+'</span></li>').join("")+'</ul>';
-}
-select("know");
-
 /* Липка кнопка на телефоні: з'являється після першого екрана, ховається біля фінальної кнопки */
 const sticky=document.getElementById("sticky");
 if("IntersectionObserver" in window){
