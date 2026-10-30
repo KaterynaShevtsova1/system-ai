@@ -198,6 +198,9 @@ section.block:first-child{border-top:0}
 .wk-big span{display:block;margin-top:var(--s2);font-size:15px}
 .wk-big li:first-child span{color:var(--bg)}
 .value-note{margin:var(--s3) 0 0;font-size:14px;color:var(--muted)}
+.calc-cta{margin-top:var(--s5);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--s4);border:1.5px solid var(--line);border-radius:var(--r-card);padding:var(--s5)}
+.calc-cta p{margin:0;max-width:52ch;font-size:16px}
+.calc-cta b{color:var(--ink)}
 .levers{list-style:none;margin:var(--s7) 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:2px solid var(--ink)}
 @media (max-width:860px){.levers{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:420px){.levers{grid-template-columns:1fr}}
@@ -372,7 +375,7 @@ footer{text-align:center;color:var(--muted);font-size:14px;line-height:1.8;paddi
         </ul>
       </div>
 
-      <h3 class="value-h">Мій тиждень до і після<span class="italic">скільки часу звільнила система</span></h3>
+      <h3 class="value-h" id="week">Мій тиждень до і після<span class="italic">скільки часу звільнила система</span></h3>
       <div class="week">
         <div class="wk-head" aria-hidden="true"><span></span><span>До системи</span><span>Після</span><span>Звільнено</span></div>
         <ul><li class="wk-sph">Блог</li><li class="wk-row"><div class="wk-what"><b>Пости, каруселі, сторіс</b><span>тексти, візуал і щоденні сторіс</span></div><div class="wk-b"><i>до</i><b>21 год</b><span>3 год × 7 днів</span></div><div class="wk-a"><i>після</i><b>5 год</b><span>1 год × 5 днів</span></div><div class="wk-s"><i>звільнено</i><b>16 год</b></div></li><li class="wk-row"><div class="wk-what"><b>Монтаж рілз</b><span>субтитри, обкладинка, перебивки</span></div><div class="wk-b"><i>до</i><b>7 год 30 хв</b><span>5 рілз × 1,5 год</span></div><div class="wk-a"><i>після</i><b>50 хв</b><span>5 рілз × 10 хв</span></div><div class="wk-s"><i>звільнено</i><b>6 год 40 хв</b></div></li><li class="wk-row"><div class="wk-what"><b>Дослідження тем і трендів</b><span>що болить аудиторії і що зараз заходить</span></div><div class="wk-b"><i>до</i><b>2 год</b><span>2 год на тиждень</span></div><div class="wk-a"><i>після</i><b>30 хв</b><span>30 хв на тиждень</span></div><div class="wk-s"><i>звільнено</i><b>1 год 30 хв</b></div></li><li class="wk-sph">Бізнес</li><li class="wk-row"><div class="wk-what"><b>Продукти</b><span>лід-магніти, гайди, сторінки в Notion</span></div><div class="wk-b"><i>до</i><b>4 год</b><span>4 год на тиждень</span></div><div class="wk-a"><i>після</i><b>1 год</b><span>1 год на тиждень</span></div><div class="wk-s"><i>звільнено</i><b>3 год</b></div></li><li class="wk-row"><div class="wk-what"><b>Воронки</b><span>лід-магніти з кодовим словом, прогріви, аналіз</span></div><div class="wk-b"><i>до</i><b>2 год</b><span>2 год на тиждень</span></div><div class="wk-a"><i>після</i><b>30 хв</b><span>30 хв на тиждень</span></div><div class="wk-s"><i>звільнено</i><b>1 год 30 хв</b></div></li><li class="wk-sph">Рутина</li><li class="wk-row"><div class="wk-what"><b>Задачі</b><span>тримати все в голові і планувати</span></div><div class="wk-b"><i>до</i><b>3 год 30 хв</b><span>30 хв × 7 днів</span></div><div class="wk-a"><i>після</i><b>25 хв</b><span>5 хв × 5 днів</span></div><div class="wk-s"><i>звільнено</i><b>3 год 5 хв</b></div></li><li class="wk-row"><div class="wk-what"><b>Пошта і відповіді</b><span>розібрати, відповісти, нічого не загубити</span></div><div class="wk-b"><i>до</i><b>7 год</b><span>1 год × 7 днів</span></div><div class="wk-a"><i>після</i><b>50 хв</b><span>10 хв × 5 днів</span></div><div class="wk-s"><i>звільнено</i><b>6 год 10 хв</b></div></li><li class="wk-sph">Робота</li><li class="wk-row"><div class="wk-what"><b>Навчання і презентації</b><span>підготовка тренінгів і слайдів</span></div><div class="wk-b"><i>до</i><b>2 год</b><span>2 год на тиждень</span></div><div class="wk-a"><i>після</i><b>30 хв</b><span>30 хв на тиждень</span></div><div class="wk-s"><i>звільнено</i><b>1 год 30 хв</b></div></li></ul>
@@ -384,6 +387,10 @@ footer{text-align:center;color:var(--muted);font-size:14px;line-height:1.8;paddi
         <li><b>2 дні</b><span>вихідних без блогу і задач</span></li>
       </ul>
       <p class="value-note">* І це лише частина: в основній професійній роботі AI економить мені ще більше.</p>
+      <div class="calc-cta">
+        <p><b>А скільки годин звільниться в тебе?</b> Порахуй на колесі балансу: 3 кроки, з телефона, нічого нікуди не відправляється.</p>
+        <a class="btn ghost" href="balance.html">Порахувати свій тиждень</a>
+      </div>
 
       <ul class="levers">
         <li><b>2 тижні</b><span>від старту курсу, і Claude вже пише твоїм стилем</span></li>
@@ -509,7 +516,7 @@ footer{text-align:center;color:var(--muted);font-size:14px;line-height:1.8;paddi
       </a>
     </nav>
     <span translate="no">Катя Шевцова · @kateryna__shevtsova</span><br>
-    <a class="foot-link" href="https://docs.google.com/document/d/1AdnG4zik_Zfr_Ey2bZ7SesfqhV_v2jKYPkeP9GPb5I4" target="_blank" rel="noopener">Оферта</a> і <a class="foot-link" href="privacy-ch.html">політика конфіденційності</a>
+    <a class="foot-link" href="https://docs.google.com/document/d/1AdnG4zik_Zfr_Ey2bZ7SesfqhV_v2jKYPkeP9GPb5I4" target="_blank" rel="noopener">Оферта</a> і <a class="foot-link" href="privacy-ch.html">політика конфіденційності</a><br><a class="foot-link" href="balance.html">Калькулятор: колесо балансу і що віддати AI</a>
   </div>
 </footer>
 
