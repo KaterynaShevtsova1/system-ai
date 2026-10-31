@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Cormorant+Garamond:ital,wght@1,500;1,600&display=swap">
 <style>
-/* Структура: герой (одна думка) → інтерактивна схема системи з анімацією голосового → два боти → CTA. Токени ті самі, що в index.html */
+/* Структура: герой (одна думка) → інтерактивна схема системи з анімацією голосового → два боти → студія монтажу → CTA. Токени ті самі, що в index.html */
 :root{
   --bg:#FFFFFF;
   --card:#F4F4F4;
@@ -152,6 +152,18 @@ section.block{padding-block:var(--s8);border-top:1px solid var(--line)}
 .more:hover{text-decoration-color:var(--lime)}
 .more:focus-visible{outline:3px solid var(--ink);outline-offset:3px;border-radius:4px}
 
+/* Студія монтажу */
+.studio{list-style:none;margin:var(--s6) 0 0;padding:0;counter-reset:stg;display:grid;gap:var(--s3)}
+.st-stage{counter-increment:stg;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,3fr);gap:var(--s4) var(--s6);padding:var(--s5) 0;border-top:1px solid var(--line)}
+.st-stage:first-child{border-top:2px solid var(--ink)}
+@media (max-width:760px){.st-stage{grid-template-columns:1fr;gap:var(--s3)}}
+.st-stage h3{display:flex;align-items:center;gap:var(--s3);font-weight:900;font-size:clamp(22px,2.4vw,30px);text-transform:uppercase;line-height:1.1}
+.st-stage h3::before{content:counter(stg);flex:none;width:40px;height:40px;border-radius:50%;background:var(--lime);color:var(--on-lime);display:grid;place-items:center;font-size:16px}
+.st-stage ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:var(--s3)}
+.st-stage ul li{background:var(--card);border-radius:var(--r-card);padding:var(--s4) var(--s5);min-width:0}
+.st-stage b{display:block;color:var(--ink);font-weight:900;font-size:18px;line-height:1.2}
+.st-stage span{display:block;margin-top:var(--s1);font-size:15px;line-height:1.5}
+
 /* CTA */
 .final{background:var(--card);border:1.5px solid var(--line);border-radius:28px;padding:var(--s7) var(--s5);text-align:center;display:grid;gap:var(--s5);justify-items:center;margin-block:var(--s8)}
 .final h2{font-weight:900;text-transform:uppercase;font-size:clamp(28px,6vw,44px);line-height:1.05}
@@ -236,6 +248,20 @@ footer{text-align:center;color:var(--muted);font-size:14px;line-height:1.8;paddi
           </ul>
         </article>
       </div>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="studio-h">
+    <div class="wide">
+      <h2 id="studio-h">Студія монтажу<span class="italic">10 агентів, кожен робить одну річ</span></h2>
+      <p class="lead">Тарас на ноутбуці керує студією, а всередині працює ціла команда. Ролик проходить шлях від тексту до здачі, і на кожному кроці його перевіряють.</p>
+      <ol class="studio">
+        <li class="st-stage"><h3>Текст</h3><ul><li><b>Сценарист</b><span>пише текст ролика твоїм тоном: хук з болю → суть → заклик</span></li><li><b>Факт-чекер</b><span>перевіряє цифри, ціни й дати на офіційних сайтах, щоб у ролику не було неправди</span></li><li><b>Суддя</b><span>коли є 2-3 варіанти (хуки, сценарії, стилі), ставить бали й обирає найкращий</span></li></ul></li>
+        <li class="st-stage"><h3>Голос</h3><ul><li><b>Диктор-редактор</b><span>готує текст до озвучки: наголоси, числа словами, без русизмів. Після озвучки переслуховує, чи все сказано правильно</span></li></ul></li>
+        <li class="st-stage"><h3>Картинка</h3><ul><li><b>Розкадровник</b><span>розписує, що показувати на кожній фразі: «кажу це → на екрані оце»</span></li><li><b>Будівник сцени</b><span>малює одну сцену ролика. Кілька будівників можуть працювати одночасно</span></li><li><b>Критик кадрів</b><span>дивиться кожен кадр: чи не вилазить текст, чи не задрібно, чи не перекрито. Якщо щось не так, повертає на доробку</span></li></ul></li>
+        <li class="st-stage"><h3>Здача</h3><ul><li><b>Випусковий контроль</b><span>остання перевірка перед здачею: гучність, синхрон звуку, якість 1080p, описи для соцмереж</span></li></ul></li>
+        <li class="st-stage"><h3>Каруселі</h3><ul><li><b>Копірайтер каруселі</b><span>пише текст слайдів каруселі</span></li><li><b>Критик каруселі</b><span>перевіряє готову карусель: обрізаний текст, порожні слайди, стики між слайдами</span></li></ul></li>
+      </ol>
     </div>
   </section>
 
