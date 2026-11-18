@@ -228,6 +228,9 @@ section.block:first-child{border-top:0}
 .big h3{color:var(--ink);font-weight:900;font-size:clamp(22px,2.2vw,28px);line-height:1.1;text-transform:uppercase;margin-top:var(--s2)}
 .big p{margin:0;font-size:17px;max-width:60ch}
 .big-main h3,.big-main p{color:var(--bg)}
+.big-list{list-style:none;margin:var(--s2) 0 0;padding:0;display:grid;gap:var(--s2)}
+.big-list li{display:grid;grid-template-columns:20px minmax(0,1fr);gap:var(--s2);font-size:17px;line-height:1.4;color:var(--text)}
+.big-list li::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--ink);margin:8px 0 0 4px}
 .pack{list-style:none;margin:var(--s3) 0 0;padding:0;display:flex;flex-wrap:wrap;gap:var(--s2)}
 .pack li{border:1.5px solid var(--lime);color:var(--bg);border-radius:var(--r-pill);padding:var(--s1) var(--s4);font-weight:700;font-size:15px}
 .extra-h2{margin-top:var(--s5)!important}
@@ -357,10 +360,10 @@ footer{text-align:center;color:var(--muted);font-size:14px;line-height:1.8;paddi
       <h2 id="offer-h">Що ти забереш собі<span class="italic">цілу систему, а не уроки про неї</span></h2>
       <p class="offer-lead">За 10 тижнів ти збираєш свою AI-систему. Вона працює на твоєму контексті, і в ній є все, що працює в мене.</p>
       <div class="bigs">
-        <article class="big big-main"><span class="big-tag">Студія монтажу</span><h3>Від відео до готового контенту</h3><p>Від тебе тільки відео: знімаєш і кидаєш на Google Диск. Я передаю тобі весь процес створення контенту, як він працює в мене, і на виході ти отримуєш готовий пакет:</p><ul class="pack"><li>змонтований рілз</li><li>допис</li><li>лід-магніт</li><li>гайд</li><li>воронка</li><li>уроки для курсу</li></ul></article>
-        <article class="big"><span class="big-tag">Контекст</span><h3>Система створена під тебе</h3><p>6 сторінок про тебе, твій продукт і твоїх клієнтів. Пишеш один раз, і всі помічники знають тебе з першого слова.</p></article>
-        <article class="big"><span class="big-tag">Telegram</span><h3>Агенти-помічники завжди на зв'язку</h3><p>Свій бот на сервері з помічницями для текстів і візуалу. Працює цілодобово, навіть коли комп вимкнений.</p></article>
-        <article class="big"><span class="big-tag">Claude</span><h3>Усі мої навички пакетом</h3><p>Хуки, сценарії, каруселі, сторіс, прогріви, офери. Встановила, і працюють.</p></article>
+        <article class="big big-main"><span class="big-tag">Студія монтажу</span><h3>Від відео до готового контенту</h3><p>Від тебе тільки відео на Google Диску. Назад отримуєш готовий пакет:</p><ul class="pack"><li>змонтований рілз</li><li>допис</li><li>лід-магніт</li><li>гайд</li><li>воронка</li><li>уроки для курсу</li></ul></article>
+        <article class="big"><span class="big-tag">Контекст</span><h3>Система створена під тебе</h3><ul class="big-list"><li>Усе про тебе зібрано в одному місці</li><li>Твій Claude і твої агенти беруть інформацію звідти</li><li>Пишуть і працюють так, ніби давно тебе знають</li></ul></article>
+        <article class="big"><span class="big-tag">Telegram</span><h3>Помічники завжди на зв'язку</h3><ul class="big-list"><li>Пишеш голосове в Telegram</li><li>Помічниці готують текст і картинку</li><li>Працюють навіть уночі, коли комп вимкнений</li></ul></article>
+        <article class="big"><span class="big-tag">Claude</span><h3>Усі мої навички пакетом</h3><ul class="big-list"><li>Готові інструкції для каруселей, сторіс, рілз і продажів</li><li>Підключила, і вони працюють</li></ul></article>
       </div>
 
       <h3 class="stack-h">І ще по сферах<span class="italic">що система робить щодня</span></h3>
